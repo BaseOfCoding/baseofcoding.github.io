@@ -1,0 +1,29 @@
+I"�<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    <li><strong>팔로우:</strong></li>
+       
+    <li>
+      <a href="mailto:jmboc.0501@gmail.com" rel="nofollow noopener noreferrer"
+        ><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a
+      >
+    </li>
+        
+    <li>
+      <a href="https://github.com/BaseOfCoding" rel="nofollow noopener noreferrer"
+        ><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a
+      >
+    </li>
+             
+    <li>
+      <a
+        href="/feed.xml"
+        ><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a
+      >
+    </li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Nerd Lee</div>
+:ET
