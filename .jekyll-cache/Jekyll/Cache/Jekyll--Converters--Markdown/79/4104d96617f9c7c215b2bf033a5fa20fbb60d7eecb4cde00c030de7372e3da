@@ -1,0 +1,23 @@
+I"�<h1 id="오늘-블로그-처음-개설">오늘 블로그 처음 개설</h1>
+
+<p>잘 부탁드려요!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(5.8)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(2342423424.3)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(4.0)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(0.0)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(-23.5)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+</span></code></pre></div></div>
+:ET

@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-07T17:16:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">코딩의 기초는 Nerd Lee</title><subtitle>코딩을 말하다</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">첫 포스팅 입니다.</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="첫 포스팅 입니다." /><published>2021-01-13T00:00:00+09:00</published><updated>2021-01-13T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<h1 id="오늘-블로그-처음-개설">오늘 블로그 처음 개설</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-07T17:43:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">코딩의 기초는 Nerd Lee</title><subtitle>코딩을 말하다</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">첫 포스팅 입니다.</title><link href="http://localhost:4000/typescript/first/" rel="alternate" type="text/html" title="첫 포스팅 입니다." /><published>2021-01-13T00:00:00+09:00</published><updated>2021-01-13T00:00:00+09:00</updated><id>http://localhost:4000/typescript/first</id><content type="html" xml:base="http://localhost:4000/typescript/first/"><![CDATA[<h1 id="오늘-블로그-처음-개설">오늘 블로그 처음 개설</h1>
 
-<p>잘 부탁드려요!</p>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><summary type="html"><![CDATA[오늘 블로그 처음 개설]]></summary></entry></feed>
+<p>잘 부탁드려요!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(5.8)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(2342423424.3)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(4.0)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(0.0)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+
+&gt;&gt;&gt; type(-23.5)
+&lt;class '</span><span class="nb">float</span><span class="s">'&gt;
+</span></code></pre></div></div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Typescript" /><category term="typescript" /><category term="reactjs" /><summary type="html"><![CDATA[오늘 블로그 처음 개설]]></summary></entry></feed>

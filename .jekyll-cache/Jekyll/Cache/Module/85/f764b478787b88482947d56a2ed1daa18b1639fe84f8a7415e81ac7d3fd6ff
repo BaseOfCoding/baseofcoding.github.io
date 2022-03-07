@@ -1,4 +1,4 @@
-I"¢
+I"›
 <!-- /assets/img/etc/mylogo.png -->
 
 <div class="masthead">
@@ -14,12 +14,12 @@
           >
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-            <a href="/year_archive_grid/" 
-              >Blogs</a
+            <a href="/categories/" 
+              >Category</a
             >
           </li><li class="masthead__menu-item">
-            <a href="/about/" 
-              >About</a
+            <a href="/tags/" 
+              >Tag</a
             >
           </li><li class="masthead__menu-item">
             <a href="/sitemap/" 
