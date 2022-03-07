@@ -1,13 +1,17 @@
-I"�
-<!--  -->
+I"�
+<!-- /assets/img/etc/mylogo.png -->
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         <!--  -->
+        <a class="site-logo" href="/"><img src="/assets/img/favicons/android-chrome-192x192.png" alt /> </a>
+        <!--  -->
         <a class="site-title" href="/">
-          Nerd Lee, 코딩을 말하다 
+          코딩의 기초는 Nerd Lee <span class="site-subtitle"
+            >Nerd Lee, 코딩을 말하다</span
+          >
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
             <a href="/year_archive_grid/" 
@@ -16,14 +20,6 @@
           </li><li class="masthead__menu-item">
             <a href="/about/" 
               >About</a
-            >
-          </li><li class="masthead__menu-item">
-            <a href="/tags/" 
-              >Tags</a
-            >
-          </li><li class="masthead__menu-item">
-            <a href="/collection-archive/" 
-              >Sample Collections</a
             >
           </li><li class="masthead__menu-item">
             <a href="/sitemap/" 

@@ -8,9 +8,5 @@ main:
     url: /year_archive_grid/
   - title: "About"
     url: /about/
-  - title: "Tags"
-    url: /tags/
-  - title: "Sample Collections"
-    url: /collection-archive/
   - title: "Sitemap"
     url: /sitemap/

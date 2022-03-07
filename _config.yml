@@ -16,18 +16,18 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "Nerd Lee, 코딩을 말하다"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+title                    : "코딩의 기초는 Nerd Lee"
+title_separator          : "|"
+subtitle                 : "Nerd Lee, 코딩을 말하다" # site tagline that appears below site title in masthead
 name                     : "Nerd Lee"
-description              : "웹 개발에 관련 된 기록을 말하다"
+description              : "코딩을 말하다"
 url                      : 'https://baseofcoding.github.io/' # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : '' # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : '/assets/img/etc/mylogo.png' # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-# breadcrumbs            : false # true, false (default)
+breadcrumbs            : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
@@ -181,6 +181,7 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - year_archive_grid
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
 keep_files:
@@ -290,8 +291,12 @@ defaults:
       comments: # true
       share: true
       related: true
+      show_date: true
+
+date_format: "%Y년 %m월 %d일"
 
 comments:
+  provider: "disqus"
   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
