@@ -1,0 +1,18 @@
+I"�<p>안녕하세요.</p>
+
+<p>React.js에서 Firebase를 사용하는 방법에 대해서 알아보도록 하겠습니다.</p>
+
+<h1 id="사용방법">사용방법</h1>
+
+<h2 id="1-터미널을-이용하여-reactjs를-설치한다--npm이-설치가-되어-있어야-합니다-">1. 터미널을 이용하여 React.js를 설치한다. ( npm이 설치가 되어 있어야 합니다. )</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span> Javascript <span class="o">]</span>
+npx create-react-app <span class="s1">'프로젝트 이름'</span> 
+
+<span class="o">[</span> Typescript <span class="o">]</span>
+npx create-react-app <span class="s1">'프로젝트 이름'</span> <span class="nt">--template</span> typescript
+</code></pre></div></div>
+
+<h2 id="2-firebase로-이동해서-프로젝트를-만든다">2. Firebase로 이동해서 프로젝트를 만든다.</h2>
+
+:ET
