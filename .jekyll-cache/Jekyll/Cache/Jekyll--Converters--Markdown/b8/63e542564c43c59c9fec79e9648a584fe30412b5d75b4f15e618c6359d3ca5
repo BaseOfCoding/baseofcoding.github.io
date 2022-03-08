@@ -1,0 +1,187 @@
+I"�*<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+
+<p>📖 지난 글 보기<br /></p>
+
+<ul>
+  <li><a href="/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
+  <li><a href="/styled-components/0001/">02. Styled-Components 확장해서 사용하기</a></li>
+</ul>
+
+<hr />
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>지난 글에서, styled-components를 클래스처럼 상속받아서 확장시켜 사용하는 방법에 대해서 알아봤습니다.</p>
+
+<p>이번 글에서는 styled-components에서 사용되는 as와 Attrs에 대해서 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<h1 id="styled-components-as--attrs">Styled-Components as | Attrs</h1>
+
+<hr />
+
+<h3 id="1-as란-무엇일까">1. as란 무엇일까?</h3>
+
+<blockquote>
+  <p>이렇게 코드를 작성해보세요.</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Button</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">button</span><span class="s2">`
+  background-color: black;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Button</span><span class="p">&gt;</span>로그인<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>저는 button이란 태그를 가지고 있는 styled-components를 사용하려고 합니다.<br />
+그런데, 만약 anchor 태그를 가지고 싶은데, Button에 있는 속성값은 그대로 사용하고 싶다면 어떻게 해야할까요?<br />
+그 때 사용하는 게 as라는 것입니다.</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Button</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">button</span><span class="s2">`
+  background-color: black;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Button</span><span class="p">&gt;</span>로그인<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">as</span><span class="p">=</span><span class="s">"a"</span><span class="p">&gt;</span>전 a 태그입니다.<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이러면, Button의 속성은 그대로 사용하고, a 태그로 사용이 되게 됩니다.<br />
+버튼 태그에서는 사용하지 못하는 href 속성을 a 태그로 사용이 가능해지거든요.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-attrs란-무엇일까">2. Attrs란 무엇일까?</h3>
+
+<blockquote>
+  <p>Parent만 빼고 모두 지운 다음, Input을 추가해봅시다.</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Input</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">input</span><span class="s2">`
+  background-color: black;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"hello"</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"hello"</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"hello"</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"hello"</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"hello"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자 이렇게, 많은 Input이 있고, 모든 Input의 placeholder 속성값을 hello 라고 하고 싶다라고 에를 들어보겠습니다.<br />
+그런데, 여기서 hello가 아니라 bye라고 하고 싶으면, 저 5개를 다 수정해야하는데<br />
+프로그래머들은 저런 귀찮은 작업 하기 싫어하잖아요ㅠㅠ
+그래서 styled-components에서 제공하는 것이 attrs 함수 입니다!</li>
+</ul>
+
+<blockquote>
+  <p>이렇게 한 번 코드를 수정해보세요.</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Input</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">attrs</span><span class="p">()</span><span class="s2">`
+  background-color: black;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Input</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>styled.input.attrs() 를 해줍니다. 그러면 attrs 함수를 사용할 수 있는데요.<br />
+attrs 함수로, input 태그에 있는 속성값을 가질 수 있습니다. 그래서, 만약 같은 태그에 같은 속성을 사용한다면<br />
+attrs에 속성값만 추가해주면 된다는 것입니다!</li>
+</ul>
+
+<blockquote>
+  <p>이렇게 말이죠!!</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Input</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">attrs</span><span class="p">({</span> <span class="na">placeholder</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="p">})</span><span class="s2">`
+  background-color: black;
+`</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이렇게 하면, bye로 바꾸고 싶으면, hello를 bye로만 바꿔주면 됩니다ㅎㅎㅎ 참 쉽죠?</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

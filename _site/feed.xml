@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-09T04:19:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">코딩의 기초는 Nerd Lee</title><subtitle>코딩을 말하다</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">.env 파일 .gitignore에 추가해도 구동될 수 있게 하기</title><link href="http://localhost:4000/error/0001/" rel="alternate" type="text/html" title=".env 파일 .gitignore에 추가해도 구동될 수 있게 하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/error/0001</id><content type="html" xml:base="http://localhost:4000/error/0001/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-09T04:25:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">코딩의 기초는 Nerd Lee</title><subtitle>코딩을 말하다</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">.env 파일 .gitignore에 추가해도 구동될 수 있게 하기</title><link href="http://localhost:4000/error/0001/" rel="alternate" type="text/html" title=".env 파일 .gitignore에 추가해도 구동될 수 있게 하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/error/0001</id><content type="html" xml:base="http://localhost:4000/error/0001/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
 
 <p>안녕하세요. Nerd Lee 입니다.</p>
 
@@ -130,6 +130,14 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 
 </div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Error" /><category term=".env" /><category term="env" /><category term=".gitignore" /><category term="dotenv" /><category term="heroku_env" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components 설치하기</title><link href="http://localhost:4000/styled-components/0001/" rel="alternate" type="text/html" title="Styled-Components 설치하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0001</id><content type="html" xml:base="http://localhost:4000/styled-components/0001/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
 
+<p>🖥 Styled-components 관련 모든 글 보기 (현재 진행 작성 중..)</p>
+
+<ul>
+  <li><a href="/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
+  <li><a href="/styled-components/0002/">02. Styled-Components 확장해서 사용하기</a></li>
+  <li><a href="/styled-components/0003/">03. Styled-Components에서 as와 attrs란?</a></li>
+</ul>
+
 <p>안녕하세요. Nerd Lee 입니다.</p>
 
 <p>이번 글은 styled-components를 설치하고 어떻게 사용하는 지에 대해서 한 번 알아보도록 하겠습니다.
@@ -253,7 +261,7 @@ flex로, 정렬을 해주고, 두 개의 정사각형인 box를 만들어 준다
 <p>📖 지난 글 보기<br /></p>
 
 <ul>
-  <li><a href="baseofcoding.github.io/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
+  <li><a href="/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
 </ul>
 
 <hr />
@@ -475,8 +483,8 @@ Box에 있는 값을 Circle에 복사 / 붙여넣기 한 다음, border-radius�
 <p>📖 지난 글 보기<br /></p>
 
 <ul>
-  <li><a href="baseofcoding.github.io/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
-  <li><a href="baseofcoding.github.io/styled-components/0001/">02. Styled-Components 확장해서 사용하기</a></li>
+  <li><a href="/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
+  <li><a href="/styled-components/0001/">02. Styled-Components 확장해서 사용하기</a></li>
 </ul>
 
 <hr />
