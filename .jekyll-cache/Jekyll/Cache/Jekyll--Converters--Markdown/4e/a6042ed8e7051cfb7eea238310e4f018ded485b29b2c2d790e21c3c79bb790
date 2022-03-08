@@ -1,0 +1,97 @@
+I"�<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+
+<p>📖 지난 글 보기<br />
+<a href="baseofcoding.github.io/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></p>
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>지난 글에서, styled-components를 사용하는 방법에 대해서 알아봤습니다.</p>
+
+<p>그런데! 지난 글을 보면, 같은 크기의 박스인데.. color만 다를 뿐인데</p>
+
+<p>이걸 꼭 굳이 두개를 같이 써야할까? 라는 고민을 하실 수 있습니다.</p>
+
+<p>그럼 어떻게 하면, 같은 Box 컴포넌트를 가지고 색깔을 변경할 수 있을까에 대해서 한 번 알아보도록 하겠습니다!</p>
+
+<hr />
+
+<h1 id="styled-components-확장-사용">Styled-Components 확장 사용</h1>
+
+<hr />
+
+<h3 id="1-설치하기">1. 설치하기</h3>
+
+<blockquote>
+  <p>지난 강의 코드</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ChlidBoxOne</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  background-color: pink;
+  width: 100px;
+  height: 100px;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ChlidBoxTwo</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  background-color: black;
+  width: 100px;
+  height: 100px;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ChlidBoxOne</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ChlidBoxTwo</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>위의 코드를 밑에처럼 변경해주세요.</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ChlidBox</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  background-color: pink;
+  width: 100px;
+  height: 100px;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ChlidBox</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ChlidBox</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

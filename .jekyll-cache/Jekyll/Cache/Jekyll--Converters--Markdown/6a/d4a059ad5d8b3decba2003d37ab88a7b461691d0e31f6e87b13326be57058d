@@ -1,0 +1,117 @@
+I"�<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>이번 글은 styled-components를 설치하고 어떻게 사용하는 지에 대해서 한 번 알아보도록 하겠습니다.
+기본적으로 react 프레임워크가 있어야합니다.</p>
+
+<hr />
+
+<h1 id="styled-components">Styled-Components</h1>
+
+<hr />
+
+<h3 id="1-설치하기">1. 설치하기</h3>
+
+<blockquote>
+  <p>React.js 설치 방법</p>
+</blockquote>
+
+<ul>
+  <li>기본적으로 npm 패키지가 설치되어 있어야 합니다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>desktop <span class="o">(</span>desktop 폴더로 이동<span class="o">)</span>
+npx create-react-app <span class="o">{</span>폴더 이름<span class="o">}</span> <span class="o">(</span> 설치 <span class="o">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>styled-components 설치</p>
+</blockquote>
+
+<ul>
+  <li>vs code로 설치 한 리액트 프로젝트를 열어서 터미널로 설치해주세요.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i styled-components
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-기본-문법을-사용해보기">2. 기본 문법을 사용해보기</h3>
+
+<blockquote>
+  <p>기본 문법 작성 (src -&gt; App.js )</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">display</span><span class="p">:</span> <span class="dl">"</span><span class="s2">flex</span><span class="dl">"</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pink</span><span class="dl">"</span><span class="p">,</span> <span class="na">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">100</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">black</span><span class="dl">"</span><span class="p">,</span> <span class="na">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">100</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+<ul>
+  <li>import 된 부분을 전부 삭제하고, 이렇게 코드를 작성해볼게요.<br />
+flex로, 정렬을 해주고, 두 개의 정사각형인 box를 만들어 준다라고 얼추 눈에 보이시죠?<br />
+그런데.. 너무 가독성이 떨어집니다. div 태그만 보이기 때문에, 가끔은 헷갈릴 때도 있죠.<br />
+그래서 사용하기 좋은 것이 styled-components 입니다.!</li>
+</ul>
+
+<hr />
+
+<h3 id="3-위의-코드-이쁘게-변경하기">3. 위의 코드 이쁘게 변경하기</h3>
+
+<blockquote>
+  <p>styled-components가 설치되셨다면 밑에 처럼 코드를 작성해보세요.</p>
+</blockquote>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">styled</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">styled-components</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Parent</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  display: flex;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ChlidBoxOne</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  background-color: pink;
+  width: 100px;
+  height: 100px;
+`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ChlidBoxTwo</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="s2">`
+  background-color: black;
+  width: 100px;
+  height: 100px;
+`</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Parent</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ChlidBoxOne</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ChlidBoxTwo</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Parent</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아주 깔끔해졌죠?ㅎㅎㅎ<br />styled.div로 div 태그와 같다는 것을 명시해주고
+그 안에 css 속성값들을 넣어줘서<br />class 형식으로 사용이 가능해지기 때문에 가독성도 좋아져서 이게 어떤식의 코드인지도 명확해지게 됩니다.</li>
+</ul>
+
+<hr />
+
+<p><br /><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
