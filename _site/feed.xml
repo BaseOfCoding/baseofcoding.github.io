@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-09T04:25:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">코딩의 기초는 Nerd Lee</title><subtitle>코딩을 말하다</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">.env 파일 .gitignore에 추가해도 구동될 수 있게 하기</title><link href="http://localhost:4000/error/0001/" rel="alternate" type="text/html" title=".env 파일 .gitignore에 추가해도 구동될 수 있게 하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/error/0001</id><content type="html" xml:base="http://localhost:4000/error/0001/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-09T14:16:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">코딩의 기초는 Nerd Lee</title><subtitle>코딩을 말하다</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">.env 파일 .gitignore에 추가해도 구동될 수 있게 하기</title><link href="http://localhost:4000/error/0001/" rel="alternate" type="text/html" title=".env 파일 .gitignore에 추가해도 구동될 수 있게 하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/error/0001</id><content type="html" xml:base="http://localhost:4000/error/0001/"><![CDATA[<p><img src="/assets/img/etc/error.png" alt="" /></p>
 
 <p>안녕하세요. Nerd Lee 입니다.</p>
 
@@ -128,7 +128,7 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
 
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Error" /><category term=".env" /><category term="env" /><category term=".gitignore" /><category term="dotenv" /><category term="heroku_env" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components 설치하기</title><link href="http://localhost:4000/styled-components/0001/" rel="alternate" type="text/html" title="Styled-Components 설치하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0001</id><content type="html" xml:base="http://localhost:4000/styled-components/0001/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Error" /><category term=".env" /><category term="env" /><category term=".gitignore" /><category term="dotenv" /><category term="heroku_env" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components 설치하기</title><link href="http://localhost:4000/styled-components/0001/" rel="alternate" type="text/html" title="Styled-Components 설치하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0001</id><content type="html" xml:base="http://localhost:4000/styled-components/0001/"><![CDATA[<p><img src="/assets/img/etc/styledcomponents.png" alt="" /></p>
 
 <p>🖥 Styled-components 관련 모든 글 보기 (현재 진행 작성 중..)</p>
 
@@ -256,7 +256,7 @@ flex로, 정렬을 해주고, 두 개의 정사각형인 box를 만들어 준다
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
 
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Styled-Components" /><category term="styled-components" /><category term="css" /><category term="scss" /><category term="sass" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components 확장해서 사용하기</title><link href="http://localhost:4000/styled-components/0002/" rel="alternate" type="text/html" title="Styled-Components 확장해서 사용하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0002</id><content type="html" xml:base="http://localhost:4000/styled-components/0002/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Styled-Components" /><category term="styled-components" /><category term="css" /><category term="scss" /><category term="sass" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components 확장해서 사용하기</title><link href="http://localhost:4000/styled-components/0002/" rel="alternate" type="text/html" title="Styled-Components 확장해서 사용하기" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0002</id><content type="html" xml:base="http://localhost:4000/styled-components/0002/"><![CDATA[<p><img src="/assets/img/etc/styledcomponents.png" alt="" /></p>
 
 <p>📖 지난 글 보기<br /></p>
 
@@ -478,13 +478,13 @@ Box에 있는 값을 Circle에 복사 / 붙여넣기 한 다음, border-radius�
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
 
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Styled-Components" /><category term="styled-components" /><category term="css" /><category term="scss" /><category term="sass" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components에서 as와 attrs란?</title><link href="http://localhost:4000/styled-components/0003/" rel="alternate" type="text/html" title="Styled-Components에서 as와 attrs란?" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0003</id><content type="html" xml:base="http://localhost:4000/styled-components/0003/"><![CDATA[<p><img src="/images/2022-03-09/logo.png" alt="" /></p>
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Styled-Components" /><category term="styled-components" /><category term="css" /><category term="scss" /><category term="sass" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Styled-Components에서 as와 attrs란?</title><link href="http://localhost:4000/styled-components/0003/" rel="alternate" type="text/html" title="Styled-Components에서 as와 attrs란?" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/styled-components/0003</id><content type="html" xml:base="http://localhost:4000/styled-components/0003/"><![CDATA[<p><img src="/assets/img/etc/styledcomponents.png" alt="" /></p>
 
 <p>📖 지난 글 보기<br /></p>
 
 <ul>
   <li><a href="/styled-components/0001/">01. Styled-Components 설치 및 사용하기</a></li>
-  <li><a href="/styled-components/0001/">02. Styled-Components 확장해서 사용하기</a></li>
+  <li><a href="/styled-components/0002/">02. Styled-Components 확장해서 사용하기</a></li>
 </ul>
 
 <hr />
@@ -663,7 +663,9 @@ attrs에 속성값만 추가해주면 된다는 것입니다!</li>
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
 
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Styled-Components" /><category term="styled-components" /><category term="css" /><category term="scss" /><category term="sass" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">React.js에서 Typescript 사용하는 방법</title><link href="http://localhost:4000/reactjs/0001/" rel="alternate" type="text/html" title="React.js에서 Typescript 사용하는 방법" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/reactjs/0001</id><content type="html" xml:base="http://localhost:4000/reactjs/0001/"><![CDATA[<p>안녕하세요. React.js에서 Typescript를 사용하는 방법에 대해서 알아보도록 하겠습니다.</p>
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Styled-Components" /><category term="styled-components" /><category term="css" /><category term="scss" /><category term="sass" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">React.js에서 Typescript 사용하는 방법</title><link href="http://localhost:4000/reactjs/0001/" rel="alternate" type="text/html" title="React.js에서 Typescript 사용하는 방법" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/reactjs/0001</id><content type="html" xml:base="http://localhost:4000/reactjs/0001/"><![CDATA[<p><img src="/assets/img/etc/reactjs.png" alt="" /></p>
+
+<p>안녕하세요. React.js에서 Typescript를 사용하는 방법에 대해서 알아보도록 하겠습니다.</p>
 
 <h1 id="설치방법">설치방법</h1>
 
@@ -678,7 +680,9 @@ attrs에 속성값만 추가해주면 된다는 것입니다!</li>
 
 <p>이 글이 도움이 되셨다면 댓글 부탁드립니다^^</p>
 
-<p>다음 글로 찾아오겠습니다!</p>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="ReactJS" /><category term="typescript" /><category term="reactjs" /><category term="타입스크립트" /><category term="리액트" /><summary type="html"><![CDATA[안녕하세요. React.js에서 Typescript를 사용하는 방법에 대해서 알아보도록 하겠습니다.]]></summary></entry><entry><title type="html">React.js에서 Firebase 사용하기</title><link href="http://localhost:4000/reactjs/0002/" rel="alternate" type="text/html" title="React.js에서 Firebase 사용하기" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/reactjs/0002</id><content type="html" xml:base="http://localhost:4000/reactjs/0002/"><![CDATA[<p>안녕하세요.</p>
+<p>다음 글로 찾아오겠습니다!</p>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="ReactJS" /><category term="typescript" /><category term="reactjs" /><category term="타입스크립트" /><category term="리액트" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">React.js에서 Firebase 사용하기</title><link href="http://localhost:4000/reactjs/0002/" rel="alternate" type="text/html" title="React.js에서 Firebase 사용하기" /><published>2022-03-08T00:00:00+09:00</published><updated>2022-03-08T00:00:00+09:00</updated><id>http://localhost:4000/reactjs/0002</id><content type="html" xml:base="http://localhost:4000/reactjs/0002/"><![CDATA[<p><img src="/assets/img/etc/reactjs.png" alt="" /></p>
+
+<p>안녕하세요.</p>
 
 <p>React.js에서 Firebase를 사용하는 방법에 대해서 알아보도록 하겠습니다.</p>
 
@@ -801,4 +805,4 @@ npx create-react-app <span class="s1">'프로젝트 이름'</span> <span class="
 
 <p>이 글이 도움이 되셨다면 댓글 부탁드립니다^^</p>
 
-<p>다음 글로 찾아오겠습니다!</p>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="ReactJS" /><category term="firebase" /><category term="파이어베이스" /><category term="reactjs" /><category term="리액트js" /><summary type="html"><![CDATA[안녕하세요.]]></summary></entry></feed>
+<p>다음 글로 찾아오겠습니다!</p>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="ReactJS" /><category term="firebase" /><category term="파이어베이스" /><category term="reactjs" /><category term="리액트js" /><summary type="html"><![CDATA[]]></summary></entry></feed>
