@@ -71,10 +71,10 @@ google:
   search_engine_id: # YOUR_SEARCH_ENGINE_ID
   instant_search: # false (default), true
 # SEO Related
-google_site_verification: "u4ohbm84CRzj9F3VGCjTrBCgDZf1sLaFyGw3U0T0Olk"
+google_site_verification: "zhrJdFmjOJb-icotFHwO5FF3oYCDzbDmF0SkFCztpm0"
 bing_site_verification: "5F1BF6D8890298EF538529C207538355"
-naver_site_verification: "e8ede0a88fd7233a368d39bb42c945e9e468e721"
-yandex_site_verification: "f9d2c21770b0f1f7"
+naver_site_verification: "9317ea9fa962b8213b6766361dca01d93600d20c"
+yandex_site_verification: "8d8d7993c2157605"
 baidu_site_verification:
 
 # Social Sharing
@@ -96,7 +96,7 @@ social:
 analytics:
   provider: "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id: "G-4F3PKXRFCM"
+    tracking_id: "G-P9ZH3L4SFD"
     anonymize_ip: false # true, false (default)
 
 # Site Author
