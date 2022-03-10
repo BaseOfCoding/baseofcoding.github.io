@@ -50,6 +50,7 @@
   h4,
   h5,
   h6 {
+    font-size: 0.7rem;
     margin-bottom: 0;
     font-family: $sans-serif-narrow;
   }
@@ -216,7 +217,7 @@
 
     &:before {
       @supports (pointer-events: none) {
-        content: '';
+        content: "";
         position: fixed;
         top: 0;
         left: 0;
@@ -350,4 +351,3 @@
     margin-right: initial;
   }
 }
-
