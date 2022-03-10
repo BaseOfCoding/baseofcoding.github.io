@@ -1,0 +1,65 @@
+I"�	<p><img src="/assets/img/etc/error.png" alt="" /></p>
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>이번 글은 typescript용 styled-components를 설치할 때</p>
+
+<p>Cannot find module ‘styled-components’ or its corresponding type declarations.</p>
+
+<p>오류를 해결하는 방법에 대해서 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<h2 id="--cannot-find-module-styled-components-or-its-corresponding-type-declarations--">- Cannot find module ‘styled-components’<br /> or its corresponding type declarations. -</h2>
+
+<h3 id="1-packagejson-수정">1. package.json 수정</h3>
+
+<blockquote>
+  <p>react.js 환경에 있는 package.json 파일 수정</p>
+</blockquote>
+
+<ul>
+  <li>dependencies 또는 dev 환경으로 설치하셨다면<br />
+devDependencies에 있는 버전을 수정해주셔야 합니다.</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="p">,</span><span class="w">
+    </span><span class="err">styled-components:</span><span class="w"> </span><span class="s2">"version"</span><span class="p">,</span><span class="w">
+    </span><span class="err">@types/styled-components:</span><span class="w"> </span><span class="s2">"version"</span><span class="w">
+  </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>에러가 나는 이유는 두 버전의 값이 같지 않기 때문입니다.<br />
+저 두 패키지 중, 낮은 패키지의 버전에 맞춰서 값을 변경해주시면 됩니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-node_module-폴더-삭제">2. node_module 폴더 삭제</h3>
+
+<ul>
+  <li>
+    <p>node_module 폴더를 삭제해주세요.</p>
+  </li>
+  <li>
+    <p>그리고 vs code terminal 환경에서 npm i를 입력합니다.</p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i
+</code></pre></div></div>
+
+<ul>
+  <li>그럼 package.json에 있는 dependencies에 있는 패키지들을 전부 설치하게 됩니다.<br />
+에러가 없어지고 웹페이지가 정상적으로 작동이 될 것이라고 생각이 됩니다.</li>
+</ul>
+
+<hr />
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+</div>
+:ET
