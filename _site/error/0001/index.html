@@ -62,17 +62,17 @@
 </script>
 
 
-  <meta name="google-site-verification" content="u4ohbm84CRzj9F3VGCjTrBCgDZf1sLaFyGw3U0T0Olk" />
+  <meta name="google-site-verification" content="zhrJdFmjOJb-icotFHwO5FF3oYCDzbDmF0SkFCztpm0" />
 
 
   <meta name="msvalidate.01" content="5F1BF6D8890298EF538529C207538355">
 
 
 
-  <meta name="yandex-verification" content="f9d2c21770b0f1f7">
+  <meta name="yandex-verification" content="8d8d7993c2157605">
 
 
-  <meta name="naver-site-verification" content="e8ede0a88fd7233a368d39bb42c945e9e468e721">
+  <meta name="naver-site-verification" content="9317ea9fa962b8213b6766361dca01d93600d20c">
 
 
 <!-- end _includes/seo.html -->
@@ -153,6 +153,10 @@
           </li><li class="masthead__menu-item">
             <a href="/tags/" 
               >태그</a
+            >
+          </li><li class="masthead__menu-item">
+            <a href="/gress_project/" 
+              >잔디심기</a
             >
           </li></ul>
         
@@ -293,8 +297,9 @@
   <li>npm을 이용하여 dotenv 라이브러리를 다운받습니다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i dotenv
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>npm i dotenv
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <hr />
 
@@ -304,9 +309,11 @@
   <li>프로젝트 폴더 최상단에 .env 라고 파일을 만들어줍니다.<br />그럼 process.env 라는 코드로 디렉토리에 있는 .env 파일을 읽어오는 역할을 합니다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">AWS_KEY</span><span class="o">=</span>어쩌구 저쩌구
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nv">AWS_KEY</span><span class="o">=</span>어쩌구 저쩌구
 <span class="nv">AWS_SECRET_KEY</span><span class="o">=</span>어쩌구 저쩌구
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <hr />
 
@@ -320,22 +327,31 @@
   <p>require 사용 방법</p>
 </blockquote>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_KEY</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_SECRET_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_SECRET_KEY</span><span class="p">);</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <blockquote>
   <p>import 사용 방법</p>
 </blockquote>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">dotenv</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">dotenv</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">;</span>
 <span class="nx">dotenv</span><span class="p">.</span><span class="nx">config</span><span class="p">();</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_KEY</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_SECRET_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_SECRET_KEY</span><span class="p">);</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>이렇게 사용하면, .gitignore에 .env 파일을 넣어놓더라도 사용을 할 수 있게 됩니다.</li>
@@ -345,9 +361,11 @@
   <p>위 코드 실행 시 출력 결과</p>
 </blockquote>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AWS_KEY : 어쩌구 저쩌구
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>AWS_KEY : 어쩌구 저쩌구
 AWS_SECRET_KEY : 어쩌구 저쩌구
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <hr />
 
@@ -357,11 +375,15 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
   <p>config() 함수를 맨 위에 호출을 해야 합니다.</p>
 </blockquote>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_KEY</span><span class="p">);</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_KEY</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">AWS_SECRET_KEY : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AWS_SECRET_KEY</span><span class="p">);</span>
 
 <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>위와 같이 코드를 작성하게 되면, 빈 값이 뜨게 됩니다. 그렇기 때문에 3번과 같이 위에 config() 함수를 호출을 하고 사용하시는 걸 주의하시길 바랍니다.</li>
@@ -371,8 +393,9 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
   <p>만약 다른 폴더에 .env를 만들었다면?</p>
 </blockquote>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">).</span><span class="nx">config</span><span class="p">({</span> <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">해당 .env path 작성</span><span class="dl">"</span> <span class="p">});</span>
-</code></pre></div></div>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">).</span><span class="nx">config</span><span class="p">({</span> <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">해당 .env path 작성</span><span class="dl">"</span> <span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>config() 함수 안에 object 형식으로, path : value를 작성해주셔야 사용이 가능해집니다.</li>
@@ -386,15 +409,17 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
   <p>heroku-dotenv 설치</p>
 </blockquote>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-g</span> heroku-dotenv
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>npm i <span class="nt">-g</span> heroku-dotenv
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <blockquote>
   <p>heroku-dotenv push 하기</p>
 </blockquote>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku-dotenv push
-</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>heroku-dotenv push
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
   <li>이렇게 설치하고, 명령어를 입력해서 push를 하게 되면, 해당 키 값의 환경변수를 heroku 서버에 전달했다는 식의 log가 출력이 되고 사용이 가능해집니다.<br /><br /></li>
@@ -493,6 +518,53 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/nextjs/0001/" rel="permalink">[Next.js] 1. Intro
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-03-12T00:00:00+09:00">2022년 03월 12일</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">작업 환경 : Mac OS 🧑🏻‍💻
+</p>
+  </article>
+</div>
+
         
           
 
@@ -635,53 +707,6 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 </div>
 
         
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/styled-components/0003/" rel="permalink">Styled-Components에서 as와 attrs란?
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-03-09T00:00:00+09:00">2022년 03월 09일</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-</p>
-  </article>
-</div>
-
-        
       </div>
     </div>
   
@@ -713,7 +738,7 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
     <li><strong>팔로우:</strong></li>
        
     <li>
-      <a href="https://github.com/BaseOfCoding" rel="nofollow noopener noreferrer" target="_blank"
+      <a href="https://github.com/Nerd-Lee" rel="nofollow noopener noreferrer" target="_blank"
         ><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a
       >
     </li>

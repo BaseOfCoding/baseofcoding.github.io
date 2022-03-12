@@ -6,6 +6,8 @@ main:
     url: /categories/
   - title: "태그"
     url: /tags/
+  - title: "잔디심기"
+    url: /gress_project/
 
 styled-components-recom:
   - title: "📖 전체 보기"
