@@ -60,8 +60,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Next.js] 2. url 구조에 대해서 알아봅시다.",
-        "excerpt":"작업 환경 : Mac OS 🧑🏻‍💻 언어 : Typescript      🖥 Next.js 관련 지난 글 보기      01. Next.js 프로젝트 생성 및 실행 방법   안녕하세요. Nerd Lee 입니다.   이번 글은 next.js의 url 구조에 대해서 알아보겠습니다.     NEXT.JS url 구조     1. react.js의 url 생성 방법      react.js의 url path 지정 방법       react.js는, react-router-dom을 설치하고 BrowserRouter로 감싸고, Switch 컴포넌트를 감싼 뒤, Route 컴포넌트를 이용해서, 각 컴포넌트(페이지)를 자식으로 둬야 합니다. 밑에 코드처럼 말이죠.       2. next.js는 더 쉽다!      next.js의 url path 지정 방법       이전 글에서 보시면 아시겠지만 pages 폴더가 있습니다. 그 폴더의 파일 이름이 url 주소가 됩니다. 하지만, 프레임워크인 만큼 next.js만의 룰이 있는데요. _app.tsx와 index.tsx 만큼은 가지고 있어야 합니다. index.tsx가 localhost:3000/ 이기 때문입니다.      예 ) 만약에 localhost:3000/test 를 만들고 싶다면?         예 ) localhost:3000/coin/price를 만들고 싶다면?         이렇게 파일 구조를 가지게 되면, 쉽게 url 구조를 만들 수 있습니다.        이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["NextJS"],
+        "excerpt":"작업 환경 : Mac OS 🧑🏻‍💻 언어 : Typescript      🖥 Next.js 관련 지난 글 보기      01. Next.js 프로젝트 생성 및 실행 방법   안녕하세요. Nerd Lee 입니다.   이번 글은 next.js의 url 구조에 대해서 알아보겠습니다.     NEXT.JS url 구조     1. react.js의 url 생성 방법      react.js의 url path 지정 방법       react.js는, react-router-dom을 설치하고 BrowserRouter로 감싸고, Switch 컴포넌트를 감싼 뒤, Route 컴포넌트를 이용해서, 각 컴포넌트(페이지)를 자식으로 둬야 합니다. 밑에 코드처럼 말이죠.       2. next.js는 더 쉽다!      next.js의 url path 지정 방법       이전 글에서 보시면 아시겠지만 pages 폴더가 있습니다. 그 폴더의 파일 이름이 url 주소가 됩니다. 하지만, 프레임워크인 만큼 next.js만의 룰이 있는데요. _app.tsx와 index.tsx 만큼은 가지고 있어야 합니다. index.tsx가 localhost:3000/ 이기 때문입니다.      예 ) 만약에 localhost:3000/test 를 만들고 싶다면?         예 ) localhost:3000/coin/price를 만들고 싶다면?         이렇게 파일 구조를 가지게 되면, 쉽게 url 구조를 만들 수 있습니다.          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["NextJS"],
         "tags": ["next.js","typescript","nextjs","reactjs","vercel","url"],
         "url": "/nextjs/0002/",
+        "teaser": null
+      },{
+        "title": "[포트폴리오 작업] 01. 주식 커뮤니티 작업환경 설정",
+        "excerpt":"작업 환경 : Mac OS 🧑🏻‍💻  Lauguage : Typescript  Web Framework: React.js  Framework To Use : react-router-dom, react-query, styled-components … 등등     📈 주식 커뮤니티 개발 1일차 ( 작업 환경 설정 )      모든 부분을 적지 않고, 생략되는 부분들도 많습니다.  프로젝트 하면서 반복되는 작업 또는 까먹을 수 있는 중요한 해결 문제들만 적을 예정이니  정확한 정보를 얻으실 수도 없을 수 있다는 점 알려드립니다.      1. 작업 환경 설정하기      1-1) react.js 설치하기         1-2) vs code extension 설치하기            indent-rainbow              들여쓰기를 할 경우, 유용한 익스텐션 중 하나, start point와 end point가 어디인지를 알 수 있다.                Material Icon Theme              해당 확장자나, 폴더의 이름이 무엇이냐에 따라, 파일의 아이콘이 이쁘게 변경된다.                Prettier              Command + S를 눌러 저장을 할 경우, 알아서 Prettier가 코드를 가독성 좋게 저장해준다.                vscode-styled-components             styled-components를 사용할 때, 속성 값을 보여주는 역할을 하는 익스텐션이다.              1-3) npm 패키지로 사용할 프레임워크들 설치하기             이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["project"],
+        "tags": ["포트폴리오","프로젝트","개발","개발환경"],
+        "url": "/project/0001/",
         "teaser": null
       }]

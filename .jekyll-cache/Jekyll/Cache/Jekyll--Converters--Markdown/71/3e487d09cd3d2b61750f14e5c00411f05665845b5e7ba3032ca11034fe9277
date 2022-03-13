@@ -1,0 +1,75 @@
+I"�<p class="notice--danger">작업 환경 : Mac OS 🧑🏻‍💻<br />
+Lauguage : Typescript<br />
+Web Framework: React.js<br />
+Framework To Use : react-router-dom, react-query, styled-components … 등등</p>
+
+<hr />
+
+<h1 id="-주식-커뮤니티-개발-1일차">📈 주식 커뮤니티 개발 1일차</h1>
+
+<ul>
+  <li>모든 부분을 적지 않고, 생략되는 부분들도 많습니다.<br />
+프로젝트 하면서 반복되는 작업 또는 까먹을 수 있는 중요한 해결 문제들만 적을 예정이니<br />
+정확한 정보를 얻으실 수도 없을 수 있다는 점 알려드립니다.<br /></li>
+</ul>
+
+<hr />
+
+<h3 id="1-작업-환경-설정하기">1. 작업 환경 설정하기</h3>
+
+<blockquote>
+  <h4 id="1-1-reactjs-설치하기">1-1) react.js 설치하기</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/43081a3158f5160051fe0f4f91801c6b.js"></script>
+
+<blockquote>
+  <h4 id="1-2-vs-code-extension-설치하기">1-2) vs code extension 설치하기</h4>
+</blockquote>
+
+<ul>
+  <li>
+    <p>indent-rainbow</p>
+
+    <ul>
+      <li>들여쓰기를 할 경우, 유용한 익스텐션 중 하나, start point와 end point가 어디인지를 알 수 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Material Icon Theme</p>
+
+    <ul>
+      <li>해당 확장자나, 폴더의 이름이 무엇이냐에 따라, 파일의 아이콘이 이쁘게 변경된다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Prettier</p>
+
+    <ul>
+      <li>Command + S를 눌러 저장을 할 경우, 알아서 Prettier가 코드를 가독성 좋게 저장해준다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>vscode-styled-components</p>
+    <ul>
+      <li>styled-components를 사용할 때, 속성 값을 보여주는 역할을 하는 익스텐션이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <h4 id="1-3-npm-패키지로-사용할-프레임워크들-설치하기">1-3) npm 패키지로 사용할 프레임워크들 설치하기</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/4941413b3eda64bbe03c7ee69edf27fd.js"></script>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
