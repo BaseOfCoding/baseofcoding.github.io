@@ -70,4 +70,10 @@ var store = [{
         "tags": ["포트폴리오","프로젝트","개발","개발환경"],
         "url": "/project/0001/",
         "teaser": null
+      },{
+        "title": "[포트폴리오 작업] 02. 주식 커뮤니티 카테고리 및 미디어 쿼리 설정",
+        "excerpt":"작업 환경 : Mac OS 🧑🏻‍💻  Lauguage : Typescript  Web Framework: React.js  Framework To Use : react-router-dom, react-query, styled-components … 등등     📈 주식 커뮤니티 개발 Two      모든 부분을 적지 않고, 생략되는 부분들도 많습니다.  프로젝트 하면서 반복되는 작업 또는 까먹을 수 있는 중요한 해결 문제들만 적을 예정이니  정확한 정보를 얻으실 수도 없을 수 있다는 점 알려드립니다.      1. 카테고리 설정      1-1 ) 폴더 구조         1-2 ) 카테고리       카테고리는 총 4가지로 구성. 국내 주식 / 해외 주식 / 코인 / 주식 계산기로, 주식 계산기는 예전에 만든 주식 계산기를 조금 디자인 이쁘게 만들면 될 듯 싶음.     2. Styled-components 미디어 쿼리 설정하기      2-1 ) theme.ts 수정         2-2 ) styled-components에서 미디어 쿼리 사용하기         한 예로, 브라우저가 laptop의 크기라면, font-size를 16 픽셀로 tablet이면, 14, 모바일 크기면 12 픽셀로 하게끔 미디어 쿼리를 작성함. styled-components에서는 미디어 쿼리를 이렇게 사용 가능하다.          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["project"],
+        "tags": ["포트폴리오","프로젝트","개발","개발환경"],
+        "url": "/project/0002/",
+        "teaser": null
       }]

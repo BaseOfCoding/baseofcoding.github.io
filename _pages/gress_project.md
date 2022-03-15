@@ -6,7 +6,7 @@ permalink: /gress_project/
 author_profile: true
 toc: true
 classes: wide
-last_modified_at: 2022-03-11
+last_modified_at: 2022-03-16
 ---
 
 # 잔디 심기 프로젝트 화이팅!!
@@ -15,29 +15,22 @@ last_modified_at: 2022-03-11
 
 - 1일차 ( 2022.03.06 ) : 4 commits
 
-  - 블로그 1 commit
-  - 나튜브 프론트엔드 포트폴리오 1 commit
-  - 나튜브 백엔드 포트폴리오 2 commits
-
 - 2일차 ( 2022.03.07 ) : 5 commits
-
-  - 블로그 5 commits
 
 - 3일차 ( 2022.03.08 ) : 3 commits
 
-  - 블로그 3 commits
-
 - 4일차 ( 2022.03.09 ) : 5 commits
-
-  - 블로그 4 commits
-  - 포폴 홈페이지 1 commit
 
 - 5일차 ( 2022. 03. 10 ) : 3 commits
 
-  - 블로그 3 commits
+- 6일차 ( 2022. 03. 11 ) : 4 commits
 
-- 6일차 ( 2022. 03. 11 ) : 3 commits
-  - 블로그 2 commits
-  - 포폴 홈페이지 1 commit
+- 7일차 ( 2022. 03. 12 ) : 2 commits
+
+- 8일차 ( 2022. 03. 13 ) : 9 commits
+
+- 9일차 ( 2022. 03. 14 ) : 3 commits
+
+- 10일차 ( 2022. 03. 15 ) : 1 commit
 
 ---

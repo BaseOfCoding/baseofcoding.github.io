@@ -5,9 +5,92 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 13 Mar 2022 19:58:30 +0900</pubDate>
-    <lastBuildDate>Sun, 13 Mar 2022 19:58:30 +0900</lastBuildDate>
+    <pubDate>Wed, 16 Mar 2022 03:12:58 +0900</pubDate>
+    <lastBuildDate>Wed, 16 Mar 2022 03:12:58 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[포트폴리오 작업] 02. 주식 커뮤니티 카테고리 및 미디어 쿼리 설정</title>
+        <description>&lt;p class=&quot;notice--danger&quot;&gt;작업 환경 : Mac OS 🧑🏻‍💻&lt;br /&gt;
+Lauguage : Typescript&lt;br /&gt;
+Web Framework: React.js&lt;br /&gt;
+Framework To Use : react-router-dom, react-query, styled-components … 등등&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-주식-커뮤니티-개발-two&quot;&gt;📈 주식 커뮤니티 개발 Two&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모든 부분을 적지 않고, 생략되는 부분들도 많습니다.&lt;br /&gt;
+프로젝트 하면서 반복되는 작업 또는 까먹을 수 있는 중요한 해결 문제들만 적을 예정이니&lt;br /&gt;
+정확한 정보를 얻으실 수도 없을 수 있다는 점 알려드립니다.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-카테고리-설정&quot;&gt;1. 카테고리 설정&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;1-1--폴더-구조&quot;&gt;1-1 ) 폴더 구조&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/1bbfd15dec005445e17c5d9d560345f7.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;1-2--카테고리&quot;&gt;1-2 ) 카테고리&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;카테고리는 총 4가지로 구성. 국내 주식 / 해외 주식 / 코인 / 주식 계산기로, 주식 계산기는 예전에 만든 주식 계산기를 조금 디자인 이쁘게 만들면 될 듯 싶음.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-styled-components-미디어-쿼리-설정하기&quot;&gt;2. Styled-components 미디어 쿼리 설정하기&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;2-1--themets-수정&quot;&gt;2-1 ) theme.ts 수정&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/1ed40238d9ee52cce109b7cc3d47a87b.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;2-2--styled-components에서-미디어-쿼리-사용하기&quot;&gt;2-2 ) styled-components에서 미디어 쿼리 사용하기&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/0bd619884d2f0f2c0ac153e043d90d0c.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;한 예로, 브라우저가 laptop의 크기라면, font-size를 16 픽셀로 tablet이면, 14, 모바일 크기면 12 픽셀로 하게끔 미디어 쿼리를 작성함.
+styled-components에서는 미디어 쿼리를 이렇게 사용 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 16 Mar 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/project/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000/project/0002/</guid>
+        
+        <category>포트폴리오</category>
+        
+        <category>프로젝트</category>
+        
+        <category>개발</category>
+        
+        <category>개발환경</category>
+        
+        
+        <category>project</category>
+        
+      </item>
     
       <item>
         <title>[포트폴리오 작업] 01. 주식 커뮤니티 작업환경 설정</title>
