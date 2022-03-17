@@ -5,9 +5,137 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 16 Mar 2022 03:12:58 +0900</pubDate>
-    <lastBuildDate>Wed, 16 Mar 2022 03:12:58 +0900</lastBuildDate>
+    <pubDate>Thu, 17 Mar 2022 20:11:03 +0900</pubDate>
+    <lastBuildDate>Thu, 17 Mar 2022 20:11:03 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[HTML/CSS] 1. HTML 구조</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;🖥 Styled-components 관련 모든 글 보기&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
+
+&lt;p&gt;게임 프로그래밍을 전공하면서, AR / VR을 개발하다가 회의감을 느끼고 1년여간 쉬면서&lt;/p&gt;
+
+&lt;p&gt;평소에 관심이 있던 웹 개발쪽을 공부해서 취업을 해야겠다 라고 생각을 한 뒤&lt;/p&gt;
+
+&lt;p&gt;독학을 하고 포트폴리오를 2가지를 만들면서 HTML과 CSS를 얕봤습니다.&lt;/p&gt;
+
+&lt;p&gt;그냥 만들면 되겠지 하다가 반응형 페이지도 만들어야 되는데, 계속 노가다 형식으로 때려 맞추다보니&lt;/p&gt;
+
+&lt;p&gt;이래선 안되겠다 싶어, HTML / CSS를 공부했습니다.&lt;/p&gt;
+
+&lt;p&gt;HTML을 공부했던 내용 중, HTML의 간단한 구조에 대해 알아보도록 하겠습니다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;html-구조&quot;&gt;HTML 구조&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-html의-기본-형식&quot;&gt;1. HTML의 기본 형식&lt;/h3&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/057dc0430122148772ffd44f0add1149.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;11-doctype-html&quot;&gt;1.1) DOCTYPE html?&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 문서의 타입이 html이란 내용입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;12-html태그의-속성-중-lang이란&quot;&gt;1.2) html태그의 속성 중 lang이란?&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;lang이란 속성은, 이 페이지의 언어를 뜻합니다. 저 언어에 따라 구글이 자동으로 번역할 건지 안할건지를 물어보기도 합니다. 저는 한국어로 되어 있기에, ko라는 값을 넣어줬습니다.
+ISO 코드에 대한 부분이 궁금하시다면 밑에 있는 버튼을 클릭해주세요.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(v=cs.20)?redirectedfrom=MSDN&quot; class=&quot;btn btn--primary&quot; target=&quot;_blank&quot;&gt;ISO 코드&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;13-meta-태그의-charset-속성이란&quot;&gt;1.3) meta 태그의 charset 속성이란?&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;파일의 인코딩 형식에 대해 알려주는 속성입니다. UTF-8은 유니코드라는 문자 인코딩 방식 중 하나이며,
+charset이 없다면, 한글 또는 특수문자 등의 문자들이 깨져서 나올 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;14-name-content-속성&quot;&gt;1.4) name, content 속성?&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;보통 name속성은, viewport라는 값으로 사용되고 있고, iOS 장치로 인해서, 표준처럼 사용되고 있고
+화면 상의 화상 표시 영역을 뜻합니다.
+가장 기본적으로 사용되는 content 속성의 값이 width-device-width인데, 해당 기기의 넓이에 맞게
+viewport의 넓이도 조절이 된다라는 뜻입니다.
+예를 들어, 나의 pc의 최대 px이 1024px이라면 1024px만큼 화면 영역을 표시해줍니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;15-title-태그&quot;&gt;1.5) title 태그?&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;title 태그는, 웹 페이지의 제목을 나타내는 태그입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/9a009054e5dde54b2dc0de43e3a55c94.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;이렇게 작성을 했다면 밑에 사진과 같이 안녕 난 타이틀이야 라고 제목이 변경되는 것을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2022-03-17/img.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;16-head-와-body-태그란&quot;&gt;1.6) &amp;lt;head&amp;gt; 와 &amp;lt;body&amp;gt; 태그란?&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;head태그는 문서의 내부 정보를 관리하는 용도로 사용되고
+body태그는 화면의 모든 출력 내용을 가지는 컨테이너이며, 개발자가 내용을 출력할 수 있는 영역을 뜻합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 17 Mar 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/html_css/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/html_css/0001/</guid>
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+        <category>head</category>
+        
+        <category>body</category>
+        
+        
+        <category>HTML_CSS</category>
+        
+      </item>
     
       <item>
         <title>[포트폴리오 작업] 02. 주식 커뮤니티 카테고리 및 미디어 쿼리 설정</title>

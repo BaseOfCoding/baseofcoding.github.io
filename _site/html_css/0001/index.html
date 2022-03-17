@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Vercel process.env.CI = true 오류 해결 방법 | 코딩의 기초는 Nerd Lee</title>
-<meta name="description" content=".Vercel process.env.CI = true 오류 해결합시다">
+<!-- begin _includes/seo.html --><title>[HTML/CSS] 1. HTML 구조 | 코딩의 기초는 Nerd Lee</title>
+<meta name="description" content="간단하게 HTML의 구조에 대해 공부한 내용입니다!">
 
 
   <meta name="author" content="Nerd Lee">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="코딩의 기초는 Nerd Lee">
-<meta property="og:title" content="Vercel process.env.CI = true 오류 해결 방법">
-<meta property="og:url" content="http://localhost:4000/error/0002/">
+<meta property="og:title" content="[HTML/CSS] 1. HTML 구조">
+<meta property="og:url" content="http://localhost:4000/html_css/0001/">
 
 
-  <meta property="og:description" content=".Vercel process.env.CI = true 오류 해결합시다">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-03-10T00:00:00+09:00">
+  <meta property="og:description" content="간단하게 HTML의 구조에 대해 공부한 내용입니다!">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-03-17T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/error/0002/">
+
+<link rel="canonical" href="http://localhost:4000/html_css/0001/">
 
 
 
@@ -203,7 +203,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#error" itemprop="item"><span itemprop="name">Error</span></a>
+          <a href="/categories/#html_css" itemprop="item"><span itemprop="name">Html_css</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -211,7 +211,7 @@
     
       
       
-        <li class="current">Vercel process.env.CI = true 오류 해결 방법</li>
+        <li class="current">[HTML/CSS] 1. HTML 구조</li>
       
     
   </ol>
@@ -225,16 +225,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Vercel process.env.CI = true 오류 해결 방법">
+    <meta itemprop="headline" content="[HTML/CSS] 1. HTML 구조">
     <meta itemprop="description" content="">
-    <meta itemprop="datePublished" content="2022-03-10T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2022-03-17T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/error/0002/" class="u-url" itemprop="url">Vercel process.env.CI = true 오류 해결 방법
+            <a href="http://localhost:4000/html_css/0001/" class="u-url" itemprop="url">[HTML/CSS] 1. HTML 구조
 </a>
           </h1>
           
@@ -245,7 +245,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2022-03-10T00:00:00+09:00">2022년 03월 10일</time>
+        <time datetime="2022-03-17T00:00:00+09:00">2022년 03월 17일</time>
       </span>
     
 
@@ -258,7 +258,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          1 분 소요
         
       </span>
     
@@ -273,69 +273,118 @@
           <aside class="sidebar__right ">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#--vercel-processenvci--true-오류-해결-방법에-대해-알아보자--">- Vercel process.env.CI = true 오류 해결 방법에 대해 알아보자! -</a><ul><li><a href="#1-홈으로-돌아와-해당-프로젝트를-클릭">1. 홈으로 돌아와 해당 프로젝트를 클릭</a></li><li><a href="#2-environment-variables-클릭하기">2. Environment Variables 클릭하기</a></li><li><a href="#3-name에는-ci-value에는-false를-입력-후-add-클릭">3. NAME에는 CI, VALUE에는 false를 입력 후 Add 클릭</a></li><li><a href="#4-그리고-다시-상단에-보이는-메뉴-중-deployments를-클릭해서-redeploy를-하자">4. 그리고 다시 상단에 보이는 메뉴 중, Deployments를 클릭해서 Redeploy를 하자!</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#html-구조">HTML 구조</a><ul><li><a href="#1-html의-기본-형식">1. HTML의 기본 형식</a><ul><li><a href="#11-doctype-html">1.1) DOCTYPE html?</a></li><li><a href="#12-html태그의-속성-중-lang이란">1.2) html태그의 속성 중 lang이란?</a></li><li><a href="#13-meta-태그의-charset-속성이란">1.3) meta 태그의 charset 속성이란?</a></li><li><a href="#14-name-content-속성">1.4) name, content 속성?</a></li><li><a href="#15-title-태그">1.5) title 태그?</a></li><li><a href="#16-head-와-body-태그란">1.6) &lt;head&gt; 와 &lt;body&gt; 태그란?</a></li></ul></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p><img src="/assets/img/etc/error.png" alt="" /></p>
+        <p><img src="/assets/img/etc/html_css.jpeg" alt="" /></p>
 
-<p>안녕하세요. Nerd Lee 입니다.</p>
-
-<p>이번 글은 Vercel을 이용해서 홈페이지를 배포할 때 빌드 중에 process.env.CI=true 라는 에러를 볼 때</p>
-
-<p>해결할 수 있는 방법에 대해서 알려드리도록 하겠습니다!</p>
-
-<hr />
-
-<h2 id="--vercel-processenvci--true-오류-해결-방법에-대해-알아보자--">- Vercel process.env.CI = true 오류 해결 방법에 대해 알아보자! -</h2>
-
-<h3 id="1-홈으로-돌아와-해당-프로젝트를-클릭">1. 홈으로 돌아와 해당 프로젝트를 클릭</h3>
-
-<blockquote>
-  <p>프로젝트 홈에서, 메뉴에 Settings 클릭하기</p>
-</blockquote>
-
-<p><img src="/images/2022-03-09-0002/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-03-09%20%EC%98%A4%ED%9B%84%201.58.50.png" alt="" /></p>
+<p>🖥 Styled-components 관련 모든 글 보기</p>
 
 <ul>
-  <li>맨 위에 보이는 메뉴 중에, Settings를 클릭해주세요.</li>
+  <li><a href="/html_css/0001/">01. HTML의 구조에 대해서</a></li>
 </ul>
 
 <hr />
 
-<h3 id="2-environment-variables-클릭하기">2. Environment Variables 클릭하기</h3>
+<p>안녕하세요. Nerd Lee 입니다.</p>
 
-<blockquote>
-  <p>Settings에 있는 소메뉴 중 Environment Variables가 있습니다. 그걸 클릭해주세요.</p>
-</blockquote>
+<p>게임 프로그래밍을 전공하면서, AR / VR을 개발하다가 회의감을 느끼고 1년여간 쉬면서</p>
 
-<p><img src="/images/2022-03-09-0002/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-03-09%20%EC%98%A4%ED%9B%84%202.02.12.png" /></p>
+<p>평소에 관심이 있던 웹 개발쪽을 공부해서 취업을 해야겠다 라고 생각을 한 뒤</p>
 
-<hr />
+<p>독학을 하고 포트폴리오를 2가지를 만들면서 HTML과 CSS를 얕봤습니다.</p>
 
-<h3 id="3-name에는-ci-value에는-false를-입력-후-add-클릭">3. NAME에는 CI, VALUE에는 false를 입력 후 Add 클릭</h3>
+<p>그냥 만들면 되겠지 하다가 반응형 페이지도 만들어야 되는데, 계속 노가다 형식으로 때려 맞추다보니</p>
 
-<blockquote>
-  <p>NAME 부분엔 CI를 입력하고, VALUE 부분엔 false를 입력하고 추가해줍니다.</p>
-</blockquote>
+<p>이래선 안되겠다 싶어, HTML / CSS를 공부했습니다.</p>
 
-<p><img src="/images/2022-03-09-0002/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-03-09%20%EC%98%A4%ED%9B%84%202.04.21.png" alt="" /></p>
+<p>HTML을 공부했던 내용 중, HTML의 간단한 구조에 대해 알아보도록 하겠습니다!</p>
 
 <hr />
 
-<h3 id="4-그리고-다시-상단에-보이는-메뉴-중-deployments를-클릭해서-redeploy를-하자">4. 그리고 다시 상단에 보이는 메뉴 중, Deployments를 클릭해서 Redeploy를 하자!</h3>
-
-<blockquote>
-  <p>상단에 Deployments라는 메뉴가 있습니다. 빌드가 실패 된 것을 클릭하면
-<br />Redeploy 버튼을 클릭할 수 있습니다. 그걸 클릭해서 재 빌드하면 됩니다.</p>
-</blockquote>
+<h1 id="html-구조">HTML 구조</h1>
 
 <hr />
+
+<h3 id="1-html의-기본-형식">1. HTML의 기본 형식</h3>
+
+<script src="https://gist.github.com/Nerd-Lee/057dc0430122148772ffd44f0add1149.js"></script>
+
+<blockquote>
+  <h4 id="11-doctype-html">1.1) DOCTYPE html?</h4>
+</blockquote>
+
+<ul>
+  <li>이 문서의 타입이 html이란 내용입니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="12-html태그의-속성-중-lang이란">1.2) html태그의 속성 중 lang이란?</h4>
+</blockquote>
+
+<ul>
+  <li>
+    <p>lang이란 속성은, 이 페이지의 언어를 뜻합니다. 저 언어에 따라 구글이 자동으로 번역할 건지 안할건지를 물어보기도 합니다. 저는 한국어로 되어 있기에, ko라는 값을 넣어줬습니다.
+ISO 코드에 대한 부분이 궁금하시다면 밑에 있는 버튼을 클릭해주세요.</p>
+
+    <p><a href="https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(v=cs.20)?redirectedfrom=MSDN" class="btn btn--primary" target="_blank">ISO 코드</a></p>
+  </li>
+</ul>
+
+<blockquote>
+  <h4 id="13-meta-태그의-charset-속성이란">1.3) meta 태그의 charset 속성이란?</h4>
+</blockquote>
+
+<ul>
+  <li>파일의 인코딩 형식에 대해 알려주는 속성입니다. UTF-8은 유니코드라는 문자 인코딩 방식 중 하나이며,
+charset이 없다면, 한글 또는 특수문자 등의 문자들이 깨져서 나올 수 있습니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="14-name-content-속성">1.4) name, content 속성?</h4>
+</blockquote>
+
+<ul>
+  <li>보통 name속성은, viewport라는 값으로 사용되고 있고, iOS 장치로 인해서, 표준처럼 사용되고 있고
+화면 상의 화상 표시 영역을 뜻합니다.
+가장 기본적으로 사용되는 content 속성의 값이 width-device-width인데, 해당 기기의 넓이에 맞게
+viewport의 넓이도 조절이 된다라는 뜻입니다.
+예를 들어, 나의 pc의 최대 px이 1024px이라면 1024px만큼 화면 영역을 표시해줍니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="15-title-태그">1.5) title 태그?</h4>
+</blockquote>
+
+<ul>
+  <li>title 태그는, 웹 페이지의 제목을 나타내는 태그입니다.</li>
+</ul>
+
+<script src="https://gist.github.com/Nerd-Lee/9a009054e5dde54b2dc0de43e3a55c94.js"></script>
+
+<p>이렇게 작성을 했다면 밑에 사진과 같이 안녕 난 타이틀이야 라고 제목이 변경되는 것을 볼 수 있습니다.</p>
+
+<p><img src="/images/2022-03-17/img.png" alt="" /></p>
+
+<blockquote>
+  <h4 id="16-head-와-body-태그란">1.6) &lt;head&gt; 와 &lt;body&gt; 태그란?</h4>
+</blockquote>
+
+<ul>
+  <li>head태그는 문서의 내부 정보를 관리하는 용도로 사용되고
+body태그는 화면의 모든 출력 내용을 가지는 컨테이너이며, 개발자가 내용을 출력할 수 있는 영역을 뜻합니다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
 
 <div style="font-size:25px; text-align:center">
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
+
 </div>
 
         
@@ -353,15 +402,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#cierror" class="page__taxonomy-item p-category" rel="tag">CIError</a><span class="sep">, </span>
+      <a href="/tags/#body" class="page__taxonomy-item p-category" rel="tag">body</a><span class="sep">, </span>
     
-      <a href="/tags/#ci%EC%98%A4%EB%A5%98" class="page__taxonomy-item p-category" rel="tag">CI오류</a><span class="sep">, </span>
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">css</a><span class="sep">, </span>
     
-      <a href="/tags/#process-env-ci" class="page__taxonomy-item p-category" rel="tag">process.env.CI</a><span class="sep">, </span>
+      <a href="/tags/#head" class="page__taxonomy-item p-category" rel="tag">head</a><span class="sep">, </span>
     
-      <a href="/tags/#vercel" class="page__taxonomy-item p-category" rel="tag">vercel</a><span class="sep">, </span>
-    
-      <a href="/tags/#vercel" class="page__taxonomy-item p-category" rel="tag">Vercel</a>
+      <a href="/tags/#html" class="page__taxonomy-item p-category" rel="tag">html</a>
     
     </span>
   </p>
@@ -378,7 +425,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#error" class="page__taxonomy-item p-category" rel="tag">Error</a>
+      <a href="/categories/#html-css" class="page__taxonomy-item p-category" rel="tag">HTML_CSS</a>
     
     </span>
   </p>
@@ -386,7 +433,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-03-10T00:00:00+09:00">2022년 03월 10일</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-03-17T00:00:00+09:00">2022년 03월 17일</time></p>
 
       </footer>
 
@@ -395,23 +442,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Vercel+process.env.CI+%3D+true+%EC%98%A4%EB%A5%98+%ED%95%B4%EA%B2%B0+%EB%B0%A9%EB%B2%95%20http%3A%2F%2Flocalhost%3A4000%2Ferror%2F0002%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BHTML%2FCSS%5D+1.+HTML+%EA%B5%AC%EC%A1%B0%20http%3A%2F%2Flocalhost%3A4000%2Fhtml_css%2F0001%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Ferror%2F0002%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fhtml_css%2F0001%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Ferror%2F0002%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fhtml_css%2F0001%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/styled-components/0003/" class="pagination--pager" title="Styled-Components에서 as와 attrs란?
+      <a href="/project/0002/" class="pagination--pager" title="[포트폴리오 작업] 02. 주식 커뮤니티 카테고리 및 미디어 쿼리 설정
 ">이전</a>
     
     
-      <a href="/error/0003/" class="pagination--pager" title="타입스크립트로 styled-components 설치 할 때 Cannot find module ‘styled-components’ or its corresponding type declarations. 오류 해결 방법
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -425,53 +471,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/html_css/0001/" rel="permalink">[HTML/CSS] 1. HTML 구조
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-03-17T00:00:00+09:00">2022년 03월 17일</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-</p>
-  </article>
-</div>
-
         
           
 
@@ -621,6 +620,53 @@ Framework To Use : react-router-dom, react-query, styled-components … 등등
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/nextjs/0001/" rel="permalink">[Next.js] 1. Intro
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-03-12T00:00:00+09:00">2022년 03월 12일</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">작업 환경 : Mac OS 🧑🏻‍💻
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -688,8 +734,8 @@ Framework To Use : react-router-dom, react-query, styled-components … 등등
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/error/0002/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/error/0002"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "http://localhost:4000/html_css/0001/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/html_css/0001"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
