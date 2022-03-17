@@ -1,0 +1,66 @@
+I"}<p><img src="/assets/img/etc/html_css.jpeg" alt="" /></p>
+
+<p>🖥 HTML / CSS 이전 글 보기</p>
+
+<ul>
+  <li><a href="/html_css/0001/">01. HTML의 구조에 대해서</a></li>
+</ul>
+
+<hr />
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>HTML을 공부했던 내용 중, HTML의 간단한 기본 문법에 대해 알아보도록 하겠습니다!</p>
+
+<hr />
+
+<h1 id="html-기본-문법">HTML 기본 문법</h1>
+
+<hr />
+
+<h3 id="1-html의-사용-방법">1. HTML의 사용 방법</h3>
+
+<blockquote>
+  <h4 id="11-element">1.1) element</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/449a6afedb863100f8ed230c78a92ec7.js"></script>
+
+<ul>
+  <li>위의 코드처럼 HTML은 &lt;&gt; 태그로 감싸져있고, 끝을 표현할 때엔 &lt;/&gt; 이렇게 사용합니다.
+만약에 &lt;&gt;value&lt;/&gt; 라면, 브라우저에 문자열을 표현하기도 하고
+태그 안에 다른 자식 element나 또는 value가 필요 없다면 <tag></tag> 로 사용할 수 있습니다.
+그리고 이것들을 element라고 부릅니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="12-attribute--속성-">1.2) attribute ( 속성 )</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/00c24fed1ef34a68859d871df09e34a5.js"></script>
+
+<ul>
+  <li>attribute는 태그에 대한 더 구체적인 설명을 제공하는 역할로
+대표적으로 class와 id와 같이 해당 태그에 대한 속성을 지정해서 태그의 기능들을 추가해주기도 합니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="13--주석">1.3 ) 주석</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/c4666a2c41522253eccacd42a1fcfc30.js"></script>
+
+<ul>
+  <li>html에서 주석은 ‘<!-- -->’ 이렇게 표현합니다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

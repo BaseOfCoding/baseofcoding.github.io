@@ -5,15 +5,202 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Mar 2022 20:11:03 +0900</pubDate>
-    <lastBuildDate>Thu, 17 Mar 2022 20:11:03 +0900</lastBuildDate>
+    <pubDate>Fri, 18 Mar 2022 03:25:29 +0900</pubDate>
+    <lastBuildDate>Fri, 18 Mar 2022 03:25:29 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[HTML/CSS] 2. HTML 기본 문법</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
+
+&lt;p&gt;HTML을 공부했던 내용 중, HTML의 간단한 기본 문법에 대해 알아보도록 하겠습니다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;html-기본-문법&quot;&gt;HTML 기본 문법&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-html의-사용-방법&quot;&gt;1. HTML의 사용 방법&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;11-element&quot;&gt;1.1) element&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/449a6afedb863100f8ed230c78a92ec7.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;위의 코드처럼 HTML은 &amp;lt;&amp;gt; 태그로 감싸져있고, 끝을 표현할 때엔 &amp;lt;/&amp;gt; 이렇게 사용합니다.
+만약에 &amp;lt;&amp;gt;value&amp;lt;/&amp;gt; 라면, 브라우저에 문자열을 표현하기도 하고
+태그 안에 다른 자식 element나 또는 value가 필요 없다면 &lt;tag&gt;&lt;/tag&gt; 로 사용할 수 있습니다.
+그리고 이것들을 element라고 부릅니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;12-attribute--속성-&quot;&gt;1.2) attribute ( 속성 )&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/00c24fed1ef34a68859d871df09e34a5.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;attribute는 태그에 대한 더 구체적인 설명을 제공하는 역할로
+대표적으로 class와 id와 같이 해당 태그에 대한 속성을 지정해서 태그의 기능들을 추가해주기도 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;13--주석&quot;&gt;1.3 ) 주석&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/c4666a2c41522253eccacd42a1fcfc30.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;html에서 주석은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt; 이렇게 표현합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-각-태그에-대한-내용들&quot;&gt;2. 각 태그에 대한 내용들&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;21-텍스트-관련-태그&quot;&gt;2.1) 텍스트 관련 태그&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/24d227b00b957dd486cb2eaec836d7da.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;~&amp;lt;h6&amp;gt;&lt;/code&gt; 태그는 Headings라고 하며, 문서의 제목 작성에 필요한 태그이며&lt;br /&gt;숫자가 크면 클수록 글씨의 크기가 작아집니다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 태그는 paragraph라고 하며, 본문 또는 한 단락에 대한 글을 작성하기 좋은 태그입니다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; 태그는 한 줄 띄어쓰기로 C언어나 JAVA에서의 \n과 같다고 생각하면 됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;22--anchor-태그-및-속성&quot;&gt;2.2 ) Anchor 태그 및 속성&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/dc67bb3c9d15c281389c5f6391ce05b7.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; 태그는 Anchor, 한국말로 닻인데, 왜 Anchor인지는 모르겠지만 앵커 태그라고 합니다.&lt;br /&gt;
+자주 쓰이는 속성은 href, target, title 정도입니다.&lt;br /&gt;
+“href” 속성은 이동하려는 링크를 값으로 주면 클릭 시 해당 홈페이지로 이동합니다.&lt;br /&gt;
+“target” 속성은, 현재 페이지에서 홈페이지로 이동할 지 아니면&lt;br /&gt;
+새로운 탭을 추가해서 홈페이지로 이동할 지를 결정하는 속성입니다.&lt;br /&gt;
+default값으로, _self이며 _self는 현재 페이지에서 홈페이지 이동, _blank는 다른 탭에서의 홈페이지 이동입니다.&lt;br /&gt;
+“title” 속성은 링크에 마우스를 가져다 대고 있으면 구글로 이동합니다. 라는 글이 뜨게 됩니다.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;23--리스트&quot;&gt;2.3 ) 리스트&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/8ca7474e3df7462946b6914c38a42dfe.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;li&amp;gt;&lt;/code&gt; 태그는 list를 ㄹ뜻합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;ul&amp;gt;&lt;/code&gt; 태그는 unordered list라고 하며, 순서가 정해지지 않은 리스트를 말합니다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;ol&amp;gt;&lt;/code&gt; 태그는 ordered list라고 하며, 순서가 정해진 리스트를 말합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;아래 코드의 실행 결과입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;LYeGjgp&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io//pen/LYeGjgp/&quot;&gt;hello&lt;/a&gt; by  (&lt;a href=&quot;https://codepen.io/&quot;&gt;@&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;ul 태그는 순서는 올바르게 출력하지만, ol 태그처럼 앞에 순서를 적어서 정렬하지 않는 반면에&lt;br /&gt;
+ol 태그는 순서에 맞게 1. 2. 3. 을 앞에 붙여주게 됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;또한 ol 태그에서는 type이란 속성을 사용할 수 있는데, type에는 “a”, “A”, “1”, “I”, “i” 라는 값을 넣어줄 수 있습니다.
+해당 값에 따른 출력값은 다음과 같습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;xxpZLLo&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io//pen/xxpZLLo/&quot;&gt;hello&lt;/a&gt; by  (&lt;a href=&quot;https://codepen.io/&quot;&gt;@&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;24--이미지-태그&quot;&gt;2.4 ) 이미지 태그&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;img 태그는, 이미지를 나타내는 태그이고 src 속성은, source의 줄임말로써
+해당 프로젝트 폴더에 있는 경로를 넣어주거나 다른 웹페이지에 있는 이미지 url을 넣어 사용할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/etc/logo.png&quot; style=&quot;width:200px; height:200px;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;25--input-태그&quot;&gt;2.5 ) input 태그&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;input 태그는 쓰이는 속성도 많고 그만큼 사용하는 값도 많기 때문에 링크를 따로 남기겠습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/HTML/Element/Input&quot; class=&quot;btn btn--primary&quot; target=&quot;_blank&quot;&gt;Input 속성이 궁금하다면 클릭!&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;26--strong과-i-태그&quot;&gt;2.6 ) strong과 i 태그&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;strong 태그는 bold 처리, i 태그는 이탤릭체(italic)를 만들 때 사용합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;eYyJGOq&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io//pen/eYyJGOq/&quot;&gt;hello&lt;/a&gt; by  (&lt;a href=&quot;https://codepen.io/&quot;&gt;@&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Mar 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/html_css/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000/html_css/0002/</guid>
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+        <category>head</category>
+        
+        <category>body</category>
+        
+        
+        <category>HTML_CSS</category>
+        
+      </item>
     
       <item>
         <title>[HTML/CSS] 1. HTML 구조</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;🖥 Styled-components 관련 모든 글 보기&lt;/p&gt;
+&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
@@ -943,7 +1130,7 @@ as 키워드로, 이 태그가 anchor 태그가 되었든, input 태그가 되�
       </item>
     
       <item>
-        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module &apos;styled-components&apos; or its corresponding type declarations. 오류 해결 방법</title>
+        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module 'styled-components' or its corresponding type declarations. 오류 해결 방법</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
@@ -1025,7 +1212,7 @@ devDependencies에 있는 버전을 수정해주셔야 합니다.&lt;/li&gt;
         
         <category>typescript용 에러</category>
         
-        <category>Cannot find module &apos;styled-components&apos; or its corresponding type declarations</category>
+        <category>Cannot find module 'styled-components' or its corresponding type declarations</category>
         
         
         <category>Error</category>
@@ -2170,10 +2357,10 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 4
 5
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Javascript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt;
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Typescript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -2348,7 +2535,7 @@ npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&
 &lt;p&gt;react.js를 설치할 수 있는 환경이 갖춰졌다는 가정하에 작성이 되었습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;이렇게 입력을 하게 되면 React.js 환경에서 Typescript를 사용할 수 있게 됩니다.&lt;/p&gt;

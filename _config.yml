@@ -255,3 +255,4 @@ defaults:
       show_date: true
 
 date_format: "%Y년 %m월 %d일"
+codepen_username: nerd-lee
