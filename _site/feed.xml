@@ -5,9 +5,137 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Mar 2022 01:23:18 +0900</pubDate>
-    <lastBuildDate>Sat, 19 Mar 2022 01:23:18 +0900</lastBuildDate>
+    <pubDate>Sat, 19 Mar 2022 02:22:31 +0900</pubDate>
+    <lastBuildDate>Sat, 19 Mar 2022 02:22:31 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[HTML/CSS] 3. CSS 기본 구조 (1)</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0002/&quot;&gt;02. HTML의 기본 문법에 대해서&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
+
+&lt;p&gt;HTML과 CSS를 공부 한 내용 중 CSS의 기본구조에 대한 내용에 대해 알아보도록 하겠습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;css-기본-구조&quot;&gt;CSS 기본 구조&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-css-공부-전-html의-코드&quot;&gt;1. CSS 공부 전 html의 코드&lt;/h3&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/f4d96a935f5f65292a9407f44552c928.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;위 코드로 공부를 진행했습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-css란-무엇인가&quot;&gt;2. CSS란 무엇인가?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cascading Style Sheets의 약자로&lt;br /&gt;
+HTML이나 XML로 작성된 문서의 표시 방법을 기술하기 위한 스타일 시트 언어라고 합니다.&lt;br /&gt;
+CSS는 HTML의 요소 하나하나를 어떻게 렌더링되어야 하는지를 지정할 수 있고&lt;br /&gt;
+Cascade란, 한국어로 종속을 뜻하는데 서로 다른 원점에서 가져온 속성 여럿을 조합해서&lt;br /&gt;
+최종 결과를 도출하는 알고리즘을 뜻한다고,
+&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/CSS/Cascade&quot;&gt;MDN Web Docs&lt;/a&gt;에선 표시되어 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-css의-기본-구조&quot;&gt;3. CSS의 기본 구조&lt;/h3&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/dadb54cbf3f155e11d4542d828a5c953.js&quot;&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;4-css-사용-방법&quot;&gt;4. CSS 사용 방법&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;41--html-style-태그에서-사용하기&quot;&gt;4.1 ) HTML style 태그에서 사용하기&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/3e4816d077b7ab01a164444bde3802ce.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;style&amp;gt;&lt;/code&gt; 태그 안에 h1 태그의 스타일을 지정해주는 코드를 작성했습니다.&lt;br /&gt;
+color는, 문자의 색상의 속성을 뜻하고 green은 아시다시피 초록색으로 지정했기에&lt;br /&gt;
+청춘예찬이라는 글씨가 초록색으로 변합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;42--스타일을-변경-할-태그-안에-style-속성을-이용하기&quot;&gt;4.2 ) 스타일을 변경 할 태그 안에 style 속성을 이용하기&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/675483c4a49d75cf82773fd0b740171e.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; 태그 안에 직접 style 속성에, css의 속성값을 사용할 수도 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;43--css-파일을-만들어서-html에-연결해서-사용하기&quot;&gt;4.3 ) CSS 파일을 만들어서 html에 연결해서 사용하기&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;index.css 라는 파일을 만들어준다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 태그 안에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;link&amp;gt;&lt;/code&gt; 태그를 추가한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com//336f0da433d6f49789fda1d7dfc62158.js&quot;&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;link&amp;gt;&lt;/code&gt;의 rel 속성이 궁금하다면 밑에 버튼을 클릭해주세요.&lt;br /&gt;
+&lt;a href=&quot;http://tcpschool.com/html-tag-attrs/link-rel&quot; class=&quot;btn btn--primary&quot; target=&quot;_blank&quot;&gt;Link의 rel 속성이 궁금하다면 클릭!&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;index.css 파일에 값을 넣어줍니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com//75ea5cf71f712758a443cae815df7d87.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;글이 길어지기 때문에, 2편으로 다시 돌아오겠습니다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 19 Mar 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/html_css/0003/</link>
+        <guid isPermaLink="true">http://localhost:4000/html_css/0003/</guid>
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+        <category>head</category>
+        
+        <category>body</category>
+        
+        
+        <category>HTML_CSS</category>
+        
+      </item>
     
       <item>
         <title>[HTML/CSS] 2. HTML 기본 문법</title>
@@ -200,10 +328,12 @@ ol 태그는 순서에 맞게 1. 2. 3. 을 앞에 붙여주게 됩니다.&lt;/p&
         <title>[HTML/CSS] 1. HTML 구조</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
+&lt;p&gt;🖥 HTML / CSS 전체 글 보기&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0002/&quot;&gt;02. HTML의 기본 문법에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0003/&quot;&gt;02. CSS 기본 구조 (1)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;

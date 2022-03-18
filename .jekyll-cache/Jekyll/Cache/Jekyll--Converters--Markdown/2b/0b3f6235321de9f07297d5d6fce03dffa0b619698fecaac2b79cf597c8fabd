@@ -1,0 +1,105 @@
+I"<p><img src="/assets/img/etc/html_css.jpeg" alt="" /></p>
+
+<p>🖥 HTML / CSS 이전 글 보기</p>
+
+<ul>
+  <li><a href="/html_css/0001/">01. HTML의 구조에 대해서</a></li>
+  <li><a href="/html_css/0002/">02. HTML의 기본 문법에 대해서</a></li>
+</ul>
+
+<hr />
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>HTML과 CSS를 공부 한 내용 중 CSS의 기본구조에 대한 내용에 대해 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<h1 id="css-기본-구조">CSS 기본 구조</h1>
+
+<hr />
+
+<h3 id="1-css-공부-전-html의-코드">1. CSS 공부 전 html의 코드</h3>
+
+<script src="https://gist.github.com/Nerd-Lee/f4d96a935f5f65292a9407f44552c928.js"></script>
+
+<ul>
+  <li>위 코드로 공부를 진행했습니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-css란-무엇인가">2. CSS란 무엇인가?</h3>
+
+<ul>
+  <li>Cascading Style Sheets의 약자로<br />
+HTML이나 XML로 작성된 문서의 표시 방법을 기술하기 위한 스타일 시트 언어라고 합니다.<br />
+CSS는 HTML의 요소 하나하나를 어떻게 렌더링되어야 하는지를 지정할 수 있고<br />
+Cascade란, 한국어로 종속을 뜻하는데 서로 다른 원점에서 가져온 속성 여럿을 조합해서<br />
+최종 결과를 도출하는 알고리즘을 뜻한다고,
+<a href="https://developer.mozilla.org/ko/docs/Web/CSS/Cascade">MDN Web Docs</a>에선 표시되어 있습니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-css의-기본-구조">3. CSS의 기본 구조</h3>
+
+<script src="https://gist.github.com/Nerd-Lee/dadb54cbf3f155e11d4542d828a5c953.js"></script>
+
+<hr />
+
+<h3 id="4-css-사용-방법">4. CSS 사용 방법</h3>
+
+<blockquote>
+  <h4 id="41--html-style-태그에서-사용하기">4.1 ) HTML style 태그에서 사용하기</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/3e4816d077b7ab01a164444bde3802ce.js"></script>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;style&gt;</code> 태그 안에 h1 태그의 스타일을 지정해주는 코드를 작성했습니다.<br />
+color는, 문자의 색상의 속성을 뜻하고 green은 아시다시피 초록색으로 지정했기에<br />
+청춘예찬이라는 글씨가 초록색으로 변합니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="42--스타일을-변경-할-태그-안에-style-속성을-이용하기">4.2 ) 스타일을 변경 할 태그 안에 style 속성을 이용하기</h4>
+</blockquote>
+
+<script src="https://gist.github.com/Nerd-Lee/675483c4a49d75cf82773fd0b740171e.js"></script>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> 태그 안에 직접 style 속성에, css의 속성값을 사용할 수도 있습니다.</li>
+</ul>
+
+<blockquote>
+  <h4 id="43--css-파일을-만들어서-html에-연결해서-사용하기">4.3 ) CSS 파일을 만들어서 html에 연결해서 사용하기</h4>
+</blockquote>
+
+<ul>
+  <li>index.css 라는 파일을 만들어준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 태그 안에 <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> 태그를 추가한다.</li>
+</ul>
+
+<script src="https://gist.github.com//336f0da433d6f49789fda1d7dfc62158.js"></script>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&lt;link&gt;</code>의 rel 속성이 궁금하다면 밑에 버튼을 클릭해주세요.<br />
+<a href="http://tcpschool.com/html-tag-attrs/link-rel" class="btn btn--primary" target="_blank">Link의 rel 속성이 궁금하다면 클릭!</a></p>
+  </li>
+  <li>
+    <p>index.css 파일에 값을 넣어줍니다.</p>
+  </li>
+</ul>
+
+<script src="https://gist.github.com//75ea5cf71f712758a443cae815df7d87.js"></script>
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
