@@ -5,8 +5,8 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 18 Mar 2022 03:25:29 +0900</pubDate>
-    <lastBuildDate>Fri, 18 Mar 2022 03:25:29 +0900</lastBuildDate>
+    <pubDate>Sat, 19 Mar 2022 01:23:18 +0900</pubDate>
+    <lastBuildDate>Sat, 19 Mar 2022 01:23:18 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -114,8 +114,8 @@ default값으로, _self이며 _self는 현재 페이지에서 홈페이지 이�
   &lt;li&gt;아래 코드의 실행 결과입니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;LYeGjgp&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;&quot; class=&quot;codepen split-output&quot;&gt;
-  See the Pen &lt;a href=&quot;https://codepen.io//pen/LYeGjgp/&quot;&gt;hello&lt;/a&gt; by  (&lt;a href=&quot;https://codepen.io/&quot;&gt;@&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;LYeGjgp&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/LYeGjgp/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
 &lt;/p&gt;
 &lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
 
@@ -130,8 +130,8 @@ ol 태그는 순서에 맞게 1. 2. 3. 을 앞에 붙여주게 됩니다.&lt;/p&
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;xxpZLLo&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;&quot; class=&quot;codepen split-output&quot;&gt;
-  See the Pen &lt;a href=&quot;https://codepen.io//pen/xxpZLLo/&quot;&gt;hello&lt;/a&gt; by  (&lt;a href=&quot;https://codepen.io/&quot;&gt;@&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;xxpZLLo&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/xxpZLLo/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
 &lt;/p&gt;
 &lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
 
@@ -164,8 +164,8 @@ ol 태그는 순서에 맞게 1. 2. 3. 을 앞에 붙여주게 됩니다.&lt;/p&
   &lt;li&gt;strong 태그는 bold 처리, i 태그는 이탤릭체(italic)를 만들 때 사용합니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;eYyJGOq&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;&quot; class=&quot;codepen split-output&quot;&gt;
-  See the Pen &lt;a href=&quot;https://codepen.io//pen/eYyJGOq/&quot;&gt;hello&lt;/a&gt; by  (&lt;a href=&quot;https://codepen.io/&quot;&gt;@&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;eYyJGOq&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/eYyJGOq/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
 &lt;/p&gt;
 &lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
 
