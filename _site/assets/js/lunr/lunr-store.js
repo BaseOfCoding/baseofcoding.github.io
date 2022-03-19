@@ -94,4 +94,10 @@ var store = [{
         "tags": ["html","css","head","body"],
         "url": "/html_css/0003/",
         "teaser": null
+      },{
+        "title": "[HTML/CSS] 3. CSS 기본 구조 (2)",
+        "excerpt":"   🖥 HTML / CSS 이전 글 보기      01. HTML의 구조에 대해서   02. HTML의 기본 문법에 대해서   03. CSS 기본 구조 (1)     안녕하세요. Nerd Lee 입니다.   이전 내용에 이어 CSS 기본 구조에 대한 2번째 글을 작성해보도록 하겠습니다!     CSS 기본 구조 (2)     1. 선택자 (Selector)      1.1) type 선택자       아래 코드와 같이, HTML 태그를 지정하는 것을 type 선택자라고 합니다.        1.2) atrribute 선택자       아래 코드처럼, a 태그인데, href의 속성이 https://google.com 인 태그를 지정하는 것인데 쓰일일은 없다고 생각합니다. PASS!        1.3) id 선택자와 class 선택자       클래스와 id 선택자는 같으면서도 다른 점을 가지고 있습니다.            클래스 선택자는 앞에 .(클래스 네임)을 붙이는 반면에 id 선택자는 #(클래스 네임)을 붙여서 사용합니다.       id 선택자는 주민등록번호라면, class는 성별이라고 생각하면 편할 것 같습니다.                    주민등록번호는 한 사람 당 하나만 존재하지만, 성별이 남자인 사람, 여자인 사람 여러명이 있죠?           즉, id는 태그당 하나만 가질 수 있고, 클래스는 여러 태그에 넣어서 사용할 수 있습니다. 밑에 코드를 보면 자세히 이해가 갈 것입니다.                                1.4) 그룹 선택자       밑에 코드처럼, &lt;h1&gt; 태그와 &lt;span&gt; 태그를 묶어서 한 번에 속성을 변경할 수 있습니다.        1.5) 가상 선택자       가상 선택자는 여러개가 있기 때문에, 가상 선택자에 대해 알고 싶다면 밑에 버튼을 클릭해보세요.  밑에 Codepen 예제를 넣어놨습니다. p 태그를 마우스로 가져다대면 p 태그의 배경색이 회색으로 변경하는 예제입니다.   가상 선택자가 궁금하다면 클릭!      See the Pen hello by nerd-lee (@nerd-lee) on CodePen.       2. div와 span 태그에 대해서      div와 span의 차이점은, block과 lnline이라는 차이점이 있습니다.  block은 글자가 하나밖에 없더라도 가로영역이 100%가 다 잡혀집니다.  기본으로 지정된 margin과 padding을 제외한다면 말이죠.  하지만 inline은, 글자가 한 글자라면, 해당 글자에 대한 영역이 잡혀집니다.  그리고 div는 margin을 사용할 수 있지만, inline은 margin을 사용할 수 없습니다.      See the Pen hello by nerd-lee (@nerd-lee) on CodePen.       3. CSS 속성에 관해      css의 속성은 너무나도 많습니다. 그렇기 때문에, 필요한 속성이 있다면 밑에 버튼을 클릭해서 보시면 될 것 같습니다.     css 속성이 궁금하다면 클릭!          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["HTML_CSS"],
+        "tags": ["html","css","head","body"],
+        "url": "/html_css/0004/",
+        "teaser": null
       }]

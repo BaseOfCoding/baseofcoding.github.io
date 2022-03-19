@@ -5,9 +5,155 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Mar 2022 02:22:31 +0900</pubDate>
-    <lastBuildDate>Sat, 19 Mar 2022 02:22:31 +0900</lastBuildDate>
+    <pubDate>Sun, 20 Mar 2022 01:17:02 +0900</pubDate>
+    <lastBuildDate>Sun, 20 Mar 2022 01:17:02 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[HTML/CSS] 3. CSS 기본 구조 (2)</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0002/&quot;&gt;02. HTML의 기본 문법에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0003/&quot;&gt;03. CSS 기본 구조 (1)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
+
+&lt;p&gt;이전 내용에 이어 CSS 기본 구조에 대한 2번째 글을 작성해보도록 하겠습니다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;css-기본-구조-2&quot;&gt;CSS 기본 구조 (2)&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-선택자-selector&quot;&gt;1. 선택자 (Selector)&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;11-type-선택자&quot;&gt;1.1) type 선택자&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;아래 코드와 같이, HTML 태그를 지정하는 것을 type 선택자라고 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/3888be1eda363b932253b55313a8e095.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;12-atrribute-선택자&quot;&gt;1.2) atrribute 선택자&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;아래 코드처럼, a 태그인데, href의 속성이 https://google.com 인 태그를 지정하는 것인데
+쓰일일은 없다고 생각합니다. PASS!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/aa947dd1a453ce8e84f73d81cc70ff3c.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;13-id-선택자와-class-선택자&quot;&gt;1.3) id 선택자와 class 선택자&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;클래스와 id 선택자는 같으면서도 다른 점을 가지고 있습니다.
+    &lt;ul&gt;
+      &lt;li&gt;클래스 선택자는 앞에 .(클래스 네임)을 붙이는 반면에 id 선택자는 #(클래스 네임)을 붙여서 사용합니다.&lt;/li&gt;
+      &lt;li&gt;id 선택자는 주민등록번호라면, class는 성별이라고 생각하면 편할 것 같습니다.
+        &lt;ul&gt;
+          &lt;li&gt;주민등록번호는 한 사람 당 하나만 존재하지만, 성별이 남자인 사람, 여자인 사람 여러명이 있죠?&lt;/li&gt;
+          &lt;li&gt;즉, id는 태그당 하나만 가질 수 있고, 클래스는 여러 태그에 넣어서 사용할 수 있습니다. 밑에 코드를 보면 자세히 이해가 갈 것입니다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/c45d2e1cd04143044a5514949f66e2dc.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;14-그룹-선택자&quot;&gt;1.4) 그룹 선택자&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;밑에 코드처럼, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; 태그와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;span&amp;gt;&lt;/code&gt; 태그를 묶어서 한 번에 속성을 변경할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/9fb6ed93f45b322ce6ec3921c9cb6037.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;15-가상-선택자&quot;&gt;1.5) 가상 선택자&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상 선택자는 여러개가 있기 때문에, 가상 선택자에 대해 알고 싶다면 밑에 버튼을 클릭해보세요.&lt;br /&gt;
+밑에 Codepen 예제를 넣어놨습니다. p 태그를 마우스로 가져다대면 p 태그의 배경색이 회색으로 변경하는 예제입니다.&lt;br /&gt;&lt;br /&gt;
+&lt;a href=&quot;https://ofcourse.kr/css-course/%EA%B0%80%EC%9E%A5-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%84%A0%ED%83%9D%EC%9E%90&quot; class=&quot;btn btn--primary&quot; target=&quot;_blank&quot;&gt;가상 선택자가 궁금하다면 클릭!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;qBpZJjZ&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/qBpZJjZ/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-div와-span-태그에-대해서&quot;&gt;2. div와 span 태그에 대해서&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;div와 span의 차이점은, block과 lnline이라는 차이점이 있습니다.&lt;br /&gt;
+block은 글자가 하나밖에 없더라도 가로영역이 100%가 다 잡혀집니다.&lt;br /&gt;
+기본으로 지정된 margin과 padding을 제외한다면 말이죠.&lt;br /&gt;
+하지만 inline은, 글자가 한 글자라면, 해당 글자에 대한 영역이 잡혀집니다.&lt;br /&gt;
+그리고 div는 margin을 사용할 수 있지만, inline은 margin을 사용할 수 없습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;YzYqJvx&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/YzYqJvx/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-css-속성에-관해&quot;&gt;3. CSS 속성에 관해&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;css의 속성은 너무나도 많습니다. 그렇기 때문에, 필요한 속성이 있다면 밑에 버튼을 클릭해서 보시면 될 것 같습니다. &lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/CSS/Using_CSS_custom_properties&quot; class=&quot;btn btn--primary&quot; target=&quot;_blank&quot;&gt;css 속성이 궁금하다면 클릭!&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 20 Mar 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/html_css/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000/html_css/0004/</guid>
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+        <category>head</category>
+        
+        <category>body</category>
+        
+        
+        <category>HTML_CSS</category>
+        
+      </item>
     
       <item>
         <title>[HTML/CSS] 3. CSS 기본 구조 (1)</title>
@@ -94,7 +240,7 @@ color는, 문자의 색상의 속성을 뜻하고 green은 아시다시피 초�
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 태그 안에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;link&amp;gt;&lt;/code&gt; 태그를 추가한다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;script src=&quot;https://gist.github.com//336f0da433d6f49789fda1d7dfc62158.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/336f0da433d6f49789fda1d7dfc62158.js&quot;&gt;&lt;/script&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -106,7 +252,7 @@ color는, 문자의 색상의 속성을 뜻하고 green은 아시다시피 초�
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;script src=&quot;https://gist.github.com//75ea5cf71f712758a443cae815df7d87.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://gist.github.com/Nerd-Lee/75ea5cf71f712758a443cae815df7d87.js&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;글이 길어지기 때문에, 2편으로 다시 돌아오겠습니다!&lt;/p&gt;
 
