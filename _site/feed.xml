@@ -5,9 +5,159 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Mar 2022 01:17:02 +0900</pubDate>
-    <lastBuildDate>Sun, 20 Mar 2022 01:17:02 +0900</lastBuildDate>
+    <pubDate>Mon, 21 Mar 2022 02:20:39 +0900</pubDate>
+    <lastBuildDate>Mon, 21 Mar 2022 02:20:39 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[HTML/CSS] 4. CSS Flex (1)</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0002/&quot;&gt;02. HTML의 기본 문법에 대해서&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0003/&quot;&gt;03. CSS 기본 구조 (1)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/html_css/0004/&quot;&gt;03. CSS 기본 구조 (2)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
+
+&lt;p&gt;CSS에서 중요한 Flex에 대한 첫 번째 공부 내용을 적어보도록 하겠습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;css-flex&quot;&gt;CSS Flex&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-flex--grid&quot;&gt;1. Flex &amp;amp; Grid?&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;flex&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1차원 정렬에 대한 속성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;grid&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2차원 정렬에 대한 속성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-flex에-사용되는-속성&quot;&gt;2. flex에 사용되는 속성&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;21-참고할-만한-링크&quot;&gt;2.1) 참고할 만한 링크&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&quot;&gt;CSS Tricks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://studiomeal.com/archives/197&quot;&gt;1분 코딩&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;22-display-속성에서-flex로-값을-지정&quot;&gt;2.2) display 속성에서 flex로 값을 지정&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;display 속성에서, flex로 사용하면 됩니다. 기본 정렬은 row로 설정됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;23-flex-direction&quot;&gt;2.3) flex-direction&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;flex-direction은 정렬되는 방향을 정하기 위한 속성입니다.&lt;br /&gt;
+row / column / row-reverse / column-reverse 이렇게 총 4가지의 정렬 값이 제공됩니다.
+    &lt;ul&gt;
+      &lt;li&gt;row : 가로 정렬 ( default )&lt;/li&gt;
+      &lt;li&gt;column: 세로 정렬&lt;/li&gt;
+      &lt;li&gt;row-reverse : 가로 역방향 정렬&lt;/li&gt;
+      &lt;li&gt;column-reverse: 세로 역방향 정렬&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;LYeZRqw&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/LYeZRqw/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;24-flex-wrap&quot;&gt;2.4) flex-wrap&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no-wrap &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; wrap &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; wrap-reverse로 값이 제공되며, default로는 nowrap으로 설정이 되어 있습니다.
+    &lt;ul&gt;
+      &lt;li&gt;no-wrap : 브라우저 영역에 벗어나도, 아이템을 밑으로 내려보내지 않습니다.&lt;/li&gt;
+      &lt;li&gt;wrap : 브라우저 영역을 벗어나게 되면 아이템을 밑으로 내려보냅니다.&lt;/li&gt;
+      &lt;li&gt;wrap-reverse : 아이템을 밑으로 내려보내지만, 거꾸로 정렬해서 표시합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;zYpBooV&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/zYpBooV/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;25-flex-flow&quot;&gt;2.5) flex-flow&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;flex-flow는, flex-direction과 flex-wrap을 한 번에 사용할 수 있는 축약형 속성입니다.&lt;br /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;예 ) flex-flow : column wrap; 이면, 세로로 정렬되고 영역을 벗어나면&lt;br /&gt; 아이템에 크기에 맞게 다른 영역에 채워줘! 라고 한 번에 명령을 내리게 됩니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;BaJzQJY&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
+  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/BaJzQJY/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
+&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;다음 내용은, 2편으로 넘어가도록 하겠습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 21 Mar 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/html_css/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000/html_css/0005/</guid>
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+        <category>head</category>
+        
+        <category>body</category>
+        
+        
+        <category>HTML_CSS</category>
+        
+      </item>
     
       <item>
         <title>[HTML/CSS] 3. CSS 기본 구조 (2)</title>

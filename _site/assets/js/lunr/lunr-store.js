@@ -100,4 +100,10 @@ var store = [{
         "tags": ["html","css","head","body"],
         "url": "/html_css/0004/",
         "teaser": null
+      },{
+        "title": "[HTML/CSS] 4. CSS Flex (1)",
+        "excerpt":"   🖥 HTML / CSS 이전 글 보기      01. HTML의 구조에 대해서   02. HTML의 기본 문법에 대해서   03. CSS 기본 구조 (1)   03. CSS 기본 구조 (2)     안녕하세요. Nerd Lee 입니다.   CSS에서 중요한 Flex에 대한 첫 번째 공부 내용을 적어보도록 하겠습니다.     CSS Flex     1. Flex &amp; Grid?      flex       1차원 정렬에 대한 속성      grid       2차원 정렬에 대한 속성     2. flex에 사용되는 속성      2.1) 참고할 만한 링크       CSS Tricks   1분 코딩      2.2) display 속성에서 flex로 값을 지정       display 속성에서, flex로 사용하면 됩니다. 기본 정렬은 row로 설정됩니다.      2.3) flex-direction       flex-direction은 정렬되는 방향을 정하기 위한 속성입니다.  row / column / row-reverse / column-reverse 이렇게 총 4가지의 정렬 값이 제공됩니다.            row : 가로 정렬 ( default )       column: 세로 정렬       row-reverse : 가로 역방향 정렬       column-reverse: 세로 역방향 정렬              See the Pen hello by nerd-lee (@nerd-lee) on CodePen.        2.4) flex-wrap       no-wrap | wrap | wrap-reverse로 값이 제공되며, default로는 nowrap으로 설정이 되어 있습니다.            no-wrap : 브라우저 영역에 벗어나도, 아이템을 밑으로 내려보내지 않습니다.       wrap : 브라우저 영역을 벗어나게 되면 아이템을 밑으로 내려보냅니다.       wrap-reverse : 아이템을 밑으로 내려보내지만, 거꾸로 정렬해서 표시합니다.              See the Pen hello by nerd-lee (@nerd-lee) on CodePen.        2.5) flex-flow       flex-flow는, flex-direction과 flex-wrap을 한 번에 사용할 수 있는 축약형 속성입니다.             예 ) flex-flow : column wrap; 이면, 세로로 정렬되고 영역을 벗어나면  아이템에 크기에 맞게 다른 영역에 채워줘! 라고 한 번에 명령을 내리게 됩니다.              See the Pen hello by nerd-lee (@nerd-lee) on CodePen.     다음 내용은, 2편으로 넘어가도록 하겠습니다.          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["HTML_CSS"],
+        "tags": ["html","css","head","body"],
+        "url": "/html_css/0005/",
+        "teaser": null
       }]
