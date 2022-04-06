@@ -1,0 +1,119 @@
+I"�<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.</p>
+
+<hr />
+
+<h3 id="1-정적-페이지--동적-페이지-">1. 정적 페이지 ? 동적 페이지 ?</h3>
+
+<ul>
+  <li>정적 페이지가 어떤 것이고, 동적 페이지가 어떤 것이냐
+1분마다 시간을 물어본다고 예를 들어보도록 하자.<br />
+그런데, 정적인 페이지는 시간이 변경이 되질 않는다.<br />
+하지만 동적인 페이지는 2시 50분이면, 2시 50분이라고 출력이 되고 1분 뒤에는 2시 51분이 출력되게 된다.<br />
+가장 큰 차이점은, <code class="language-plaintext highlighter-rouge">프로그래밍</code>을 할 수 있느냐 없느냐라는 것이다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-홈페이지-파일의-역할">2. 홈페이지 파일의 역할</h3>
+
+<ul>
+  <li>HTML
+    <ul>
+      <li>뼈대를 나타내는 파일이며, 홈페이지의 쌩얼이라고 생각하자.</li>
+    </ul>
+  </li>
+  <li>CSS
+    <ul>
+      <li>Casting Style Sheet의 약자로, 꾸미기 위한 파일이며, 홈페이지의 색조 화장품이라고 생각하자.</li>
+    </ul>
+  </li>
+  <li>Javascript
+    <ul>
+      <li>동작 기능을 만들 수 있는 파일이며, 예를 들어서, 홈페이지에서 버튼을 클릭하면 밥을 먹는다. 와 같이 사람으로 표현하자면 행동이라고 생각하자.</li>
+    </ul>
+  </li>
+  <li>HTML + CSS + Javascript = Front-end</li>
+  <li>Backend
+    <ul>
+      <li>Java, PHP, C# 등의 언어로 만들 수 있는 서버를 뜻하고 UI에 입력을 받아 DB에 데이터들을 처리하는 역할을 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-jsp">3. JSP</h3>
+
+<ul>
+  <li>webapp 폴더에, time.jsp 라는 파일을 하나 만들어주자.</li>
+  <li>jsp를 사용하기 위해서는, java용 api 뿐만 아니라, Web용 api가 필요하다.</li>
+  <li>Web용 api는, 톰캣 서버에서 제공을 해주는데, 톰캣 서버가 설치되어 있는 경로로 이동한 다음 <code class="language-plaintext highlighter-rouge">lib</code> 폴더로 들어가자.</li>
+  <li><code class="language-plaintext highlighter-rouge">lib</code> 폴더에 있는 <code class="language-plaintext highlighter-rouge">servlet-api.jar</code> 파일을 복사한 다음, <code class="language-plaintext highlighter-rouge">WEB-INF / lib</code> 폴더에 붙여넣기 해주자.</li>
+  <li>해당 프로젝트는 수동으로 만들었기 때문에, <code class="language-plaintext highlighter-rouge">servlet-api.jar</code> 파일을 연결해줘야 한다.</li>
+  <li>연결 방법은 다음과 같다.
+    <ul>
+      <li>해당 프로젝트를 오른쪽 마우스 클릭</li>
+      <li>Build Path -&gt; Configure Build Path 클릭</li>
+      <li>Libraries 메뉴로 이동</li>
+      <li>Add External JARs 클릭 후, 톰캣 경로에 있던 <code class="language-plaintext highlighter-rouge">servlet-api.jar</code> 더블클릭해서 연결</li>
+      <li>Apply 클릭하면, jsp에 &lt;%@ %&gt; 이 부분의 에러가 없어진다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="4-jsp-페이지에-java-사용해서-시간-넣기">4. JSP 페이지에 JAVA 사용해서, 시간 넣기</h3>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+	<span class="nt">&lt;h2&gt;</span>Nerd-Lee의 홈페이지 방문을 환영합니다.<span class="nt">&lt;/h2&gt;</span>
+	<span class="nt">&lt;p&gt;</span>지금 몇시야? 2시 50분!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위의 코드는 기본으로 만든 jsp 템플릿이다.<br />
+이제 java로 프로그래밍을 해서 현재 시간을 구해서, 2시 50분이 아닌 현재 시간을 넣어주면 끝난다.</p>
+
+<p>java로 프로그래밍을 할 때엔 <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code> 태그 안에서 하고, <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>에서 얻은 데이터 값을 출력할 때엔<br />
+<code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>로 받아오면 된다. 코드를 한 번 보도록 하자.</p>
+
+<hr />
+
+<h3 id="4">4.</h3>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
