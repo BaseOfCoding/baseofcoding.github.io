@@ -1,0 +1,70 @@
+I"�
+<hr />
+
+<p>안녕하세요. Nerd Lee 입니다.</p>
+
+<p>MacOS Homebrew 및 git bash 설치 방법에 대해서 알아보도록 하겠습니다.</p>
+
+<hr />
+
+<p>git bash를 설치하기 전에, Homebrew 라고 하는 오픈소스 패키지 매니저?
+패키지 관리 시스템을 설치해야 합니다.
+순서대로 하시다보면 git bash 설치는 금방금방 끝낼 수 있습니다!</p>
+
+<hr />
+<h2 id="1-homebrew-홈페이지-가기">1. Homebrew 홈페이지 가기</h2>
+<ul>
+  <li><a href="https://brew.sh/index_ko">홈브루 홈페이지 링크</a></li>
+</ul>
+
+<hr />
+
+<h2 id="2-homebrew-설치하기">2. Homebrew 설치하기</h2>
+
+<ul>
+  <li>mac os에 내장되어 있는 터미널에 해당 명령어를 붙여넣기 하면 설치 시작! 조금 오래 걸립니다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>설치 완료 후 버전을 확인해보세요.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>brew <span class="nt">-v</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>설치가 되어 있다면, Homebrew 3.x.x 이런 식으로 표시됩니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-git-bash-설치하기">3. Git bash 설치하기</h2>
+<p><a href="https://git-scm.com/download/mac">Git bash 홈페이지 링크</a></p>
+
+<ul>
+  <li>링크를 클릭하면, Homebrew로 설치하는 방법이 나오는데, 명령어는 다음과 같습니다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>brew <span class="nb">install </span>git
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>위의 명령어를 터미널에 붙여넣기 하면 git이 설치가 됩니다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

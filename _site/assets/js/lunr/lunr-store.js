@@ -106,4 +106,16 @@ var store = [{
         "tags": ["html","css","head","body"],
         "url": "/html_css/0005/",
         "teaser": null
+      },{
+        "title": "remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead. 해결방법",
+        "excerpt":"   Mac OS 컴퓨터를 포맷하고 난 뒤 스프링 프로젝트가 다 다운받아지고, github에 업로드 할려고 했는데 밑에와 같은 로그가 뜨면서 업로드에 실패했다고 한다.     1 remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.  이러한 오류를 발견했다. 아니 맥북을 몇년전에 사용했던 것도 아니고.. 한 3개월만에 새로운 마음으로 포맷을 한건데.. 3개월 전에는 이런식으로 안했는데 왜 이러지? 라고 하고 해결법을 찾는다.   Github push token 에러 해결 링크   위의 링크를 참고해서 문제를 해결했다.   아이디와 패스워드를 입력해서 로그인 하는 방식이 아닌, personal access token을 사용해서 push나 pull이 가능하도록 한 것 같다.   해결방법은 다음과 같다.   1. github 홈페이지에서 Settings 클릭   2. 메뉴 맨 밑에 있는 Developer settings 클릭   3. Personal access tokens 클릭   4. Generate new token 클릭   5. token을 설정한다.      5.1 ) Note는, 그냥 인증을 위한 것이기 때문에 auth 또는 아무렇게 이름을 입력한다.   5.2 ) repo, admin:repo_hook, gist, user, delete_repo를 클릭하고, Generate token을 클릭한다.   5.3 ) 그럼 토큰이 만들어졌을텐데, 창을 나가지말고 토큰 번호를 복사한다.   6. 터미널에서, user 정보를 입력하자.   1 2 $ git config --global user.name \"username\" $ git config --global user.email \"user@email.com\"      깃이 올라갈 때의 이름과, 깃허브의 이메일을 입력한다.   7. git push   1 2 $ Username for https://github.com : {아이디 입력} $ Password for https://github.com/id : {복사한 토큰 붙여넣기 또는 입력}      Username에서는, 자신의 아이디를 적고 Password는 token을 입력해야한다. macOS 같은 경우 비밀번호를 입력해도 보이지 않을텐데, 그냥 붙여넣기 하고 엔터를 눌러도 아무런 문제가 없다.   이렇게 하면 push를 해도 아무런 문제 없이 push가 잘 될 것이다.   이전 방식이 편했는데.. 이번 방식은 생각하지도 못해서 당황했다ㅠㅠ   모두 잘 해결이 되기를 바랍니다ㅠㅠ      이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!  ","categories": ["Error"],
+        "tags": ["git","github","remote","remote:Support for password authentication was removed on August 13","2021. Please use a personal access token instead.","terminal"],
+        "url": "/error/0004/",
+        "teaser": null
+      },{
+        "title": "MacOS Homebrew 및 git bash 설치 방법",
+        "excerpt":"  안녕하세요. Nerd Lee 입니다.   MacOS Homebrew 및 git bash 설치 방법에 대해서 알아보도록 하겠습니다.   git bash를 설치하기 전에, Homebrew 라고 하는 오픈소스 패키지 매니저? 패키지 관리 시스템을 설치해야 합니다. 순서대로 하시다보면 git bash 설치는 금방금방 끝낼 수 있습니다!    1. Homebrew 홈페이지 가기     홈브루 홈페이지 링크     2. Homebrew 설치하기      mac os에 내장되어 있는 터미널에 해당 명령어를 붙여넣기 하면 설치 시작! 조금 오래 걸립니다.   1 /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"      설치 완료 후 버전을 확인해보세요.   1 $ brew -v      설치가 되어 있다면, Homebrew 3.x.x 이런 식으로 표시됩니다.     3. Git bash 설치하기  Git bash 홈페이지 링크      링크를 클릭하면, Homebrew로 설치하는 방법이 나오는데, 명령어는 다음과 같습니다.   1 $ brew install git      위의 명령어를 터미널에 붙여넣기 하면 git이 설치가 됩니다.          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["Install"],
+        "tags": ["macos","homebrew","mac git bash 설치","mac homebrew 설치","홈브루"],
+        "url": "/install/0001/",
+        "teaser": null
       }]
