@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>JSP 만들어서 동적인 페이지로 구동하기 | 코딩의 기초는 Nerd Lee</title>
-<meta name="description" content="JSP 만들어서 동적인 페이지로 구동하기">
+<!-- begin _includes/seo.html --><title>스프링 JSON parse error: Cannot deserialize instance of int out of START_OBJECT token; nested exception | 코딩의 기초는 Nerd Lee</title>
+<meta name="description" content="스프링 JSON parse error: Cannot deserialize instance of int out of START_OBJECT token; nested exception">
 
 
   <meta name="author" content="Nerd Lee">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="코딩의 기초는 Nerd Lee">
-<meta property="og:title" content="JSP 만들어서 동적인 페이지로 구동하기">
-<meta property="og:url" content="http://localhost:4000/spring-boot/0005/">
+<meta property="og:title" content="스프링 JSON parse error: Cannot deserialize instance of int out of START_OBJECT token; nested exception">
+<meta property="og:url" content="http://localhost:4000/error/0005/">
 
 
-  <meta property="og:description" content="JSP 만들어서 동적인 페이지로 구동하기">
+  <meta property="og:description" content="스프링 JSON parse error: Cannot deserialize instance of int out of START_OBJECT token; nested exception">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/spring-boot/0005/">
+<link rel="canonical" href="http://localhost:4000/error/0005/">
 
 
 
@@ -203,7 +203,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#spring-boot" itemprop="item"><span itemprop="name">Spring boot</span></a>
+          <a href="/categories/#error" itemprop="item"><span itemprop="name">Error</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -211,7 +211,7 @@
     
       
       
-        <li class="current">JSP 만들어서 동적인 페이지로 구동하기</li>
+        <li class="current">스프링 JSON parse error: Cannot deserialize instance of `int` out of START_OBJECT token; nested exception</li>
       
     
   </ol>
@@ -225,7 +225,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="JSP 만들어서 동적인 페이지로 구동하기">
+    <meta itemprop="headline" content="스프링 JSON parse error: Cannot deserialize instance of int out of START_OBJECT token; nested exception">
     <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="2022-04-07T00:00:00+09:00">
     
@@ -234,7 +234,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/spring-boot/0005/" class="u-url" itemprop="url">JSP 만들어서 동적인 페이지로 구동하기
+            <a href="http://localhost:4000/error/0005/" class="u-url" itemprop="url">스프링 JSON parse error: Cannot deserialize instance of <code class="language-plaintext highlighter-rouge">int</code> out of START_OBJECT token; nested exception
 </a>
           </h1>
           
@@ -258,7 +258,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          최대 1 분 소요
         
       </span>
     
@@ -270,161 +270,52 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              
 
-<p>안녕하세요. Nerd-Lee입니다.<br />
-공부 내용은, 인프런 박매일님의
-<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.</p>
+            </nav>
+          </aside>
+        
+        <p><img src="/assets/img/etc/error.png" alt="" /></p>
 
 <hr />
-
-<h3 id="1-정적-페이지--동적-페이지-">1. 정적 페이지 ? 동적 페이지 ?</h3>
 
 <ul>
-  <li>정적 페이지가 어떤 것이고, 동적 페이지가 어떤 것이냐
-1분마다 시간을 물어본다고 예를 들어보도록 하자.<br />
-그런데, 정적인 페이지는 시간이 변경이 되질 않는다.<br />
-하지만 동적인 페이지는 2시 50분이면, 2시 50분이라고 출력이 되고 1분 뒤에는 2시 51분이 출력되게 된다.<br />
-가장 큰 차이점은, <code class="language-plaintext highlighter-rouge">프로그래밍</code>을 할 수 있느냐 없느냐라는 것이다.</li>
+  <li>입사한 지, 6일차.. 스프링으로 회사 코드 내에 테스트 게시판을 만들어서 진행하고 있다.<br />
+현재 삭제기능을 만들고 있는데….ㅠㅠ<br />
+왠지 모르겠으나, <code class="language-plaintext highlighter-rouge">@DeleteMapping</code> 어노테이션으로 하는데… 왜 405 error가 뜨는거냐!!<br />
+그래서, POST 방식으로 method를 변경하고, delete!!!<br />
+근데 밑에와 같은 에러를 뱉는다..<br /></li>
 </ul>
 
-<hr />
-
-<h3 id="2-홈페이지-파일의-역할">2. 홈페이지 파일의 역할</h3>
-
-<ul>
-  <li>HTML
-    <ul>
-      <li>뼈대를 나타내는 파일이며, 홈페이지의 쌩얼이라고 생각하자.</li>
-    </ul>
-  </li>
-  <li>CSS
-    <ul>
-      <li>Casting Style Sheet의 약자로, 꾸미기 위한 파일이며, 홈페이지의 색조 화장품이라고 생각하자.</li>
-    </ul>
-  </li>
-  <li>Javascript
-    <ul>
-      <li>동작 기능을 만들 수 있는 파일이며, 예를 들어서, 홈페이지에서 버튼을 클릭하면 밥을 먹는다. 와 같이 사람으로 표현하자면 행동이라고 생각하자.</li>
-    </ul>
-  </li>
-  <li>HTML + CSS + Javascript = Front-end</li>
-  <li>Backend
-    <ul>
-      <li>Java, PHP, C# 등의 언어로 만들 수 있는 서버를 뜻하고 UI에 입력을 받아 DB에 데이터들을 처리하는 역할을 한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="3-jsp">3. JSP</h3>
-
-<ul>
-  <li>webapp 폴더에, time.jsp 라는 파일을 하나 만들어주자.</li>
-  <li>jsp를 사용하기 위해서는, java용 api 뿐만 아니라, Web용 api가 필요하다.</li>
-  <li>Web용 api는, 톰캣 서버에서 제공을 해주는데, 톰캣 서버가 설치되어 있는 경로로 이동한 다음 <code class="language-plaintext highlighter-rouge">lib</code> 폴더로 들어가자.</li>
-  <li><code class="language-plaintext highlighter-rouge">lib</code> 폴더에 있는 <code class="language-plaintext highlighter-rouge">servlet-api.jar</code> 파일을 복사한 다음, <code class="language-plaintext highlighter-rouge">WEB-INF / lib</code> 폴더에 붙여넣기 해주자.</li>
-  <li>해당 프로젝트는 수동으로 만들었기 때문에, <code class="language-plaintext highlighter-rouge">servlet-api.jar</code> 파일을 연결해줘야 한다.</li>
-  <li>연결 방법은 다음과 같다.
-    <ul>
-      <li>해당 프로젝트를 오른쪽 마우스 클릭</li>
-      <li>Build Path -&gt; Configure Build Path 클릭</li>
-      <li>Libraries 메뉴로 이동</li>
-      <li>Add External JARs 클릭 후, 톰캣 경로에 있던 <code class="language-plaintext highlighter-rouge">servlet-api.jar</code> 더블클릭해서 연결</li>
-      <li>Apply 클릭하면, jsp에 &lt;%@ %&gt; 이 부분의 에러가 없어진다.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="4-jsp-페이지에-java-사용해서-시간-넣기">4. JSP 페이지에 JAVA 사용해서, 시간 넣기</h3>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
-	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;h2&gt;</span>Nerd-Lee의 홈페이지 방문을 환영합니다.<span class="nt">&lt;/h2&gt;</span>
-	<span class="nt">&lt;p&gt;</span>지금 몇시야? 2시 50분!<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>위의 코드는 기본으로 만든 jsp 템플릿이다.<br />
-이제 java로 프로그래밍을 해서 현재 시간을 구해서, 2시 50분이 아닌 현재 시간을 넣어주면 끝난다.</p>
-
-<p>java로 프로그래밍을 할 때엔 <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code> 태그 안에서 하고, <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>에서 얻은 데이터 값을 출력할 때엔<br />
-<code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>로 받아오면 된다. 코드를 한 번 보도록 하자.</p>
-
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"java.util.Date"</span><span class="nt">%&gt;</span>
-<span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
-	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
-<span class="nt">&lt;%</span>
-	<span class="nc">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
-<span class="nt">%&gt;</span>
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;h2&gt;</span>Nerd-Lee의 홈페이지 방문을 환영합니다.<span class="nt">&lt;/h2&gt;</span>
-	<span class="nt">&lt;p&gt;</span>지금 몇시야? <span class="nt">&lt;%=</span><span class="n">d</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="nt">%&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+</pre></td><td class="rouge-code"><pre>JSON parse error: Cannot deserialize instance of <span class="sb">`</span>int<span class="sb">`</span> out of START_OBJECT token<span class="p">;</span> nested exception is 
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of <span class="sb">`</span>int<span class="sb">`</span> out of START_OBJECT token
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <ul>
-  <li>위의 코드로 jsp를 만들어서 톰캣 서버를 실행해서, <code class="language-plaintext highlighter-rouge">localhost:port/time.jsp</code> 로 하면<br />
-새로고침을 할 때마다 시간이 바뀐 것을 확인할 수 있다. 이러한 것을 <code class="language-plaintext highlighter-rouge">동적인 페이지</code>라고 하는 것이다.</li>
-  <li>Tomcat server가 <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code> 와 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>를 해석한 것이라고 볼 수 있다.</li>
+  <li>
+    <p>그래서, error는 error고, JSON, id, int 어쩌구 저쩌구 써져있는 거 보니<br />
+id쪽에 문제가 있구나를 파악하고, 브라우저 개발자도구 network에 delete할 때 들어오는 데이터를 봤다.<br />
+음.. 역시나 문제가 있었구나. 이 놈의 자바스크립트..ㅠㅠ<br />
+스프링이랑 Typescript를 어떻게 사용할 방법이 없는 지를 알아봐야겠다.<br />
+자바스크립트 보다는, 타입스크립트로만 배웠던 난 타입스크립트가 편하다..</p>
+  </li>
+  <li>
+    <p>그래서, 받아온 id 데이터를 parseInt 함수를 사용해서, id 데이터로 변경했다.
+그랬더니 위와 같은 에러는 뜨지 않았지만, 되질 않는다. mybatis 쪽에서 뭔가 잘못 입력을 한것 같다..ㅠㅠ
+다시 에러를 고치러 가야겠다.. 에효ㅎㅎ</p>
+  </li>
 </ul>
 
 <hr />
-
-<p><br /></p>
 
 <div style="font-size:25px; text-align:center">
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
-
 </div>
 
         
@@ -442,19 +333,29 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#html" class="page__taxonomy-item p-category" rel="tag">html</a><span class="sep">, </span>
+      <a href="/tags/#cannot" class="page__taxonomy-item p-category" rel="tag">Cannot</a><span class="sep">, </span>
     
-      <a href="/tags/#jsp" class="page__taxonomy-item p-category" rel="tag">jsp</a><span class="sep">, </span>
+      <a href="/tags/#deserialize" class="page__taxonomy-item p-category" rel="tag">deserialize</a><span class="sep">, </span>
     
-      <a href="/tags/#spring-boot" class="page__taxonomy-item p-category" rel="tag">spring-boot</a><span class="sep">, </span>
+      <a href="/tags/#error" class="page__taxonomy-item p-category" rel="tag">error</a><span class="sep">, </span>
     
-      <a href="/tags/#study-%EA%B3%B5%EB%B6%80" class="page__taxonomy-item p-category" rel="tag">study 공부</a><span class="sep">, </span>
+      <a href="/tags/#exception" class="page__taxonomy-item p-category" rel="tag">exception</a><span class="sep">, </span>
     
-      <a href="/tags/#%EA%B3%B5%EB%B6%80" class="page__taxonomy-item p-category" rel="tag">공부</a><span class="sep">, </span>
+      <a href="/tags/#instance" class="page__taxonomy-item p-category" rel="tag">instance</a><span class="sep">, </span>
     
-      <a href="/tags/#%EB%8F%99%EC%A0%81-%ED%8E%98%EC%9D%B4%EC%A7%80" class="page__taxonomy-item p-category" rel="tag">동적 페이지</a><span class="sep">, </span>
+      <a href="/tags/#json" class="page__taxonomy-item p-category" rel="tag">JSON</a><span class="sep">, </span>
     
-      <a href="/tags/#%EC%A0%95%EC%A0%81-%ED%8E%98%EC%9D%B4%EC%A7%80" class="page__taxonomy-item p-category" rel="tag">정적 페이지</a>
+      <a href="/tags/#json-parse-error-cannot-deserialize-instance-of-int-out-of-start-object-token-nested-exception" class="page__taxonomy-item p-category" rel="tag">JSON parse error:Cannot deserialize instance of `int` out of START_OBJECT token; nested exception</a><span class="sep">, </span>
+    
+      <a href="/tags/#nested" class="page__taxonomy-item p-category" rel="tag">nested</a><span class="sep">, </span>
+    
+      <a href="/tags/#of" class="page__taxonomy-item p-category" rel="tag">of</a><span class="sep">, </span>
+    
+      <a href="/tags/#parse" class="page__taxonomy-item p-category" rel="tag">parse</a><span class="sep">, </span>
+    
+      <a href="/tags/#spring" class="page__taxonomy-item p-category" rel="tag">Spring</a><span class="sep">, </span>
+    
+      <a href="/tags/#start-object" class="page__taxonomy-item p-category" rel="tag">START_OBJECT</a>
     
     </span>
   </p>
@@ -471,7 +372,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#spring-boot" class="page__taxonomy-item p-category" rel="tag">Spring-Boot</a>
+      <a href="/categories/#error" class="page__taxonomy-item p-category" rel="tag">Error</a>
     
     </span>
   </p>
@@ -488,22 +389,23 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=JSP+%EB%A7%8C%EB%93%A4%EC%96%B4%EC%84%9C+%EB%8F%99%EC%A0%81%EC%9D%B8+%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A1%9C+%EA%B5%AC%EB%8F%99%ED%95%98%EA%B8%B0%20http%3A%2F%2Flocalhost%3A4000%2Fspring-boot%2F0005%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EC%8A%A4%ED%94%84%EB%A7%81+JSON+parse+error%3A+Cannot+deserialize+instance+of+%60int%60+out+of+START_OBJECT+token%3B+nested+exception%20http%3A%2F%2Flocalhost%3A4000%2Ferror%2F0005%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fspring-boot%2F0005%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Ferror%2F0005%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fspring-boot%2F0005%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Ferror%2F0005%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/error/0005/" class="pagination--pager" title="스프링 JSON parse error: Cannot deserialize instance of int out of START_OBJECT token; nested exception
+      <a href="/spring-boot/0004/" class="pagination--pager" title="Context 등록 후 index.html 요청하기
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/spring-boot/0005/" class="pagination--pager" title="JSP 만들어서 동적인 페이지로 구동하기
+">다음</a>
     
   </nav>
 
@@ -527,7 +429,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/error/0005/" rel="permalink">스프링 JSON parse error: Cannot deserialize instance of <code class="language-plaintext highlighter-rouge">int</code> out of START_OBJECT token; nested exception
+        <a href="/spring-boot/0005/" rel="permalink">JSP 만들어서 동적인 페이지로 구동하기
 </a>
       
     </h2>
@@ -552,7 +454,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          1 분 소요
         
       </span>
     
@@ -773,8 +675,8 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/spring-boot/0005/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/spring-boot/0005"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "http://localhost:4000/error/0005/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/error/0005"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');

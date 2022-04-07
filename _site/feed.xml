@@ -5,8 +5,8 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Apr 2022 00:58:40 +0900</pubDate>
-    <lastBuildDate>Thu, 07 Apr 2022 00:58:40 +0900</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2022 11:32:00 +0900</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2022 11:32:00 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -188,6 +188,81 @@
         
         
         <category>Spring-Boot</category>
+        
+      </item>
+    
+      <item>
+        <title>스프링 JSON parse error: Cannot deserialize instance of `int` out of START_OBJECT token; nested exception</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;입사한 지, 6일차.. 스프링으로 회사 코드 내에 테스트 게시판을 만들어서 진행하고 있다.&lt;br /&gt;
+현재 삭제기능을 만들고 있는데….ㅠㅠ&lt;br /&gt;
+왠지 모르겠으나, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@DeleteMapping&lt;/code&gt; 어노테이션으로 하는데… 왜 405 error가 뜨는거냐!!&lt;br /&gt;
+그래서, POST 방식으로 method를 변경하고, delete!!!&lt;br /&gt;
+근데 밑에와 같은 에러를 뱉는다..&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;JSON parse error: Cannot deserialize instance of &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;int&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; out of START_OBJECT token&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; nested exception is 
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;int&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; out of START_OBJECT token
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;그래서, error는 error고, JSON, id, int 어쩌구 저쩌구 써져있는 거 보니&lt;br /&gt;
+id쪽에 문제가 있구나를 파악하고, 브라우저 개발자도구 network에 delete할 때 들어오는 데이터를 봤다.&lt;br /&gt;
+음.. 역시나 문제가 있었구나. 이 놈의 자바스크립트..ㅠㅠ&lt;br /&gt;
+스프링이랑 Typescript를 어떻게 사용할 방법이 없는 지를 알아봐야겠다.&lt;br /&gt;
+자바스크립트 보다는, 타입스크립트로만 배웠던 난 타입스크립트가 편하다..&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;그래서, 받아온 id 데이터를 parseInt 함수를 사용해서, id 데이터로 변경했다.
+그랬더니 위와 같은 에러는 뜨지 않았지만, 되질 않는다. mybatis 쪽에서 뭔가 잘못 입력을 한것 같다..ㅠㅠ
+다시 에러를 고치러 가야겠다.. 에효ㅎㅎ&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/error/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000/error/0005/</guid>
+        
+        <category>Spring</category>
+        
+        <category>JSON parse error:Cannot deserialize instance of `int` out of START_OBJECT token; nested exception</category>
+        
+        <category>JSON</category>
+        
+        <category>parse</category>
+        
+        <category>error</category>
+        
+        <category>Cannot</category>
+        
+        <category>deserialize</category>
+        
+        <category>instance</category>
+        
+        <category>of</category>
+        
+        <category>START_OBJECT</category>
+        
+        <category>nested</category>
+        
+        <category>exception</category>
+        
+        
+        <category>Error</category>
         
       </item>
     
@@ -859,7 +934,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&apos;안녕하세요.&apos; + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'안녕하세요.' + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -878,7 +953,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;ul&gt;
       &lt;li&gt;
         &lt;p&gt;build.gradle 파일에서 dependencies 부분에, implementation을 추가하자.
- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation &apos;org.springframework.boot:spring-boot-devtools&apos;&lt;/code&gt;&lt;/p&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation 'org.springframework.boot:spring-boot-devtools'&lt;/code&gt;&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;추가를 했다면, 서버를 다시 실행해주고, html 파일을 변경하고 브라우저를 새로고침 해보자. 바뀌지 않는다. 하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build -&amp;gt; recomplie &quot;hello.html&lt;/code&gt; 을 클릭하면 바뀐다.
@@ -2841,7 +2916,7 @@ as 키워드로, 이 태그가 anchor 태그가 되었든, input 태그가 되�
       </item>
     
       <item>
-        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module &apos;styled-components&apos; or its corresponding type declarations. 오류 해결 방법</title>
+        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module 'styled-components' or its corresponding type declarations. 오류 해결 방법</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
@@ -2923,7 +2998,7 @@ devDependencies에 있는 버전을 수정해주셔야 합니다.&lt;/li&gt;
         
         <category>typescript용 에러</category>
         
-        <category>Cannot find module &apos;styled-components&apos; or its corresponding type declarations</category>
+        <category>Cannot find module 'styled-components' or its corresponding type declarations</category>
         
         
         <category>Error</category>
@@ -4068,10 +4143,10 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 4
 5
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Javascript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt;
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Typescript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -4246,7 +4321,7 @@ npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&
 &lt;p&gt;react.js를 설치할 수 있는 환경이 갖춰졌다는 가정하에 작성이 되었습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;이렇게 입력을 하게 되면 React.js 환경에서 Typescript를 사용할 수 있게 됩니다.&lt;/p&gt;
