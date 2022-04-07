@@ -5,9 +5,207 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Apr 2022 16:45:58 +0900</pubDate>
-    <lastBuildDate>Thu, 07 Apr 2022 16:45:58 +0900</lastBuildDate>
+    <pubDate>Fri, 08 Apr 2022 01:21:30 +0900</pubDate>
+    <lastBuildDate>Fri, 08 Apr 2022 01:21:30 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>JSP에서 비즈니스 로직 분리 공부</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/javaspring.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
+공부 내용은, 인프런 박매일님의
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[NarP Series]MVC 프레임워크는 내 손에[나프1탄]&lt;/code&gt; 을 참고하였습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-jsp만의-독특한-태그&quot;&gt;1. jsp만의 독특한 태그&lt;/h3&gt;
+
+&lt;h4 id=&quot;11---지시자--&quot;&gt;1.1 - 지시자 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%@ %&amp;gt;&lt;/code&gt;&lt;/h4&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;import=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java.util.Date&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;
+	pageEncoding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%@ %&amp;gt;&lt;/code&gt; 태그를 jsp에선 지시자라고 부른다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;12---스크립트릿--&quot;&gt;1.2 - 스크립트릿 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt;&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&amp;lt;%
+	Date d = new Date();
+%&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; 태그를 jsp에서 스크립트릿 이라고 부른다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;13---출력식--&quot;&gt;1.3 - 출력식 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%= %&amp;gt;&lt;/code&gt;&lt;/h4&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;지금 몇시야? &lt;span class=&quot;nt&quot;&gt;&amp;lt;%=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;%&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%= %&amp;gt;&lt;/code&gt; 태그를 jsp에서 출력식이라고 부른다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-view--jsp-&quot;&gt;2. VIEW ( jsp )&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프리젠테이션 로직이라고도 하고, 클라이언트가 서버에 요청을 할 때, 응답을 하면서 보내주는 것이 jsp (view) 다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;MVC 패턴이라고 불리는 것 중 V에 해당한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-비즈니스-로직-생성해보기&quot;&gt;3. 비즈니스 로직 생성해보기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;webapp에 sum.jsp 파일을 만들어보자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;예--110까지의-총합을-구해서-출력해보자&quot;&gt;예 ) 1~10까지의 총합을 구해서 출력해보자.&lt;/h5&gt;
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;
+	pageEncoding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 비즈니스 로직&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 프리젠테이션 로직 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Insert title here&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;border=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;1~10까지의 총합&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&amp;lt;%=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;util 패키지를 만들고, MyUtil 이란 클래스를 생성하자.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src / kr.web.util (package) / MyUtil.java&lt;/code&gt; 생성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;kr.web.util&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyUtil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;그런데, 이렇게 하고 톰캣 서버를 구동을 하면, 오류가 뜰 것이다.&lt;br /&gt;
+왜냐하면 &lt;a href=&quot;/spring-boot/0003/&quot;&gt;첫 번째 공부 정리 내역&lt;/a&gt;을 보면&lt;br /&gt;
+web에서 자바를 사용하기 위해서는, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;webapp / WEB-INF / classes&lt;/code&gt; 폴더에&lt;br /&gt;
+.class들이 생성된다고 정리가 되어있다. 그래서, bin이 아닌 classes로 설정을 해줘야 한다.&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;프로젝트 오른쪽 마우스 클릭 -&amp;gt; Build Path -&amp;gt; Configure Build Path 클릭&lt;/li&gt;
+  &lt;li&gt;Source -&amp;gt; Default output folder Browse 클릭&lt;/li&gt;
+  &lt;li&gt;webapp / WEB-INF / classes 폴더 선택 후, Apply and Close 클릭
+&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;이렇게 하면 오류없이 잘 작동이 되는 것을 확인할 수 있다.&lt;br /&gt;
+이렇게 해서 비즈니스 로직이 어떤것인지 알아봤고, 나눠서 구현해보았다.&lt;br /&gt;
+퇴근 후 공부 끝!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 08 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/spring-boot/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000/spring-boot/0007/</guid>
+        
+        <category>스프링부트</category>
+        
+        <category>박매일</category>
+        
+        <category>JSP</category>
+        
+        <category>비즈니스 로직</category>
+        
+        <category>비즈니스</category>
+        
+        <category>스프링 비즈니스</category>
+        
+        <category>MVC 비즈니스</category>
+        
+        <category>MVC business</category>
+        
+        
+        <category>Spring-Boot</category>
+        
+      </item>
     
       <item>
         <title>STS (Spring Tool Suite) 단축키 정리 끝판왕 ( + 추가중 )</title>
@@ -1039,7 +1237,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'안녕하세요.' + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&apos;안녕하세요.&apos; + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1058,7 +1256,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;ul&gt;
       &lt;li&gt;
         &lt;p&gt;build.gradle 파일에서 dependencies 부분에, implementation을 추가하자.
- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation 'org.springframework.boot:spring-boot-devtools'&lt;/code&gt;&lt;/p&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation &apos;org.springframework.boot:spring-boot-devtools&apos;&lt;/code&gt;&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;추가를 했다면, 서버를 다시 실행해주고, html 파일을 변경하고 브라우저를 새로고침 해보자. 바뀌지 않는다. 하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build -&amp;gt; recomplie &quot;hello.html&lt;/code&gt; 을 클릭하면 바뀐다.
@@ -3021,7 +3219,7 @@ as 키워드로, 이 태그가 anchor 태그가 되었든, input 태그가 되�
       </item>
     
       <item>
-        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module 'styled-components' or its corresponding type declarations. 오류 해결 방법</title>
+        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module &apos;styled-components&apos; or its corresponding type declarations. 오류 해결 방법</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
@@ -3103,7 +3301,7 @@ devDependencies에 있는 버전을 수정해주셔야 합니다.&lt;/li&gt;
         
         <category>typescript용 에러</category>
         
-        <category>Cannot find module 'styled-components' or its corresponding type declarations</category>
+        <category>Cannot find module &apos;styled-components&apos; or its corresponding type declarations</category>
         
         
         <category>Error</category>
@@ -4248,10 +4446,10 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 4
 5
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Javascript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt;
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Typescript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -4426,7 +4624,7 @@ npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/
 &lt;p&gt;react.js를 설치할 수 있는 환경이 갖춰졌다는 가정하에 작성이 되었습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;이렇게 입력을 하게 되면 React.js 환경에서 Typescript를 사용할 수 있게 됩니다.&lt;/p&gt;
