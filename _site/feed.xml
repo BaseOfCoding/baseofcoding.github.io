@@ -5,9 +5,162 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Apr 2022 14:19:14 +0900</pubDate>
-    <lastBuildDate>Fri, 08 Apr 2022 14:19:14 +0900</lastBuildDate>
+    <pubDate>Sat, 09 Apr 2022 23:17:02 +0900</pubDate>
+    <lastBuildDate>Sat, 09 Apr 2022 23:17:02 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>Servlet(서블릿)이란??</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/javaspring.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
+공부 내용은, 인프런 박매일님의
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[NarP Series]MVC 프레임워크는 내 손에[나프1탄]&lt;/code&gt; 을 참고하였습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-servlet이-뭐야&quot;&gt;1. Servlet이 뭐야??&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Servlet&lt;/code&gt;은 100% JAVA로 이루어져 있고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Server&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Let&lt;/code&gt;가 결합된 단어라고 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-파일을-만들어보자&quot;&gt;2. 파일을 만들어보자.&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src / kr.web.controller(package) / HelloSevlet.java&lt;/code&gt; 를 만들어보자.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HelloServlet.java&lt;/code&gt; 파일을 서블릿 형태로 만들어야&lt;br /&gt;
+톰캣서버가 구동이 가능해지기 때문에 서블릿 형태로 만들어보자.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServlet&lt;/code&gt; 이란 클래스를 상속받자. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;패키지명은 javax.servlet.http.HttpServlet&lt;/code&gt; 이다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Servlet&lt;/code&gt; 에서, Main 함수와 같은 제일 먼저 실행되는 메서드가 필요한 데&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;alt + shift + s&lt;/code&gt; 키를 눌러서, override/implements methods 라는 버튼을 클릭해서&lt;br /&gt;
+HttpServlet 클래스가 가진 메서드를 재정의 해야하는데&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service(HttpServletRequest, HttpServletResponse)&lt;/code&gt; 를 체크하고 OK 클릭!&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;이렇게 만들어진 것이, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Servlet&lt;/code&gt;의 골격이다. 이 다음, jsp에서 만들었던 것 처럼&lt;br /&gt;
+1~10까지의 총합을 서블릿으로 만들어보면 된다. 밑에 코드처럼 추가해보자.&lt;br /&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nc&quot;&gt;MyUtil&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;이제 해당 데이터를 클라이언트와 연결을 시켜서 요청을 받고 응답을 하면&lt;br /&gt;
+해당 값을 보낼 수 있도록 만들어야 한다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PrintWriter out = res.getWriter();&lt;/code&gt; 를 추가해주자.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;res.getWriter()&lt;/code&gt; 는 요청한 클라이언트와 연결시키는 IO를 만들어내는 메서드이다.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PrintWriter out&lt;/code&gt; 변수는 getWriter로 받아온, 출력스트림을 받아온다.&lt;br /&gt;
+그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;out&lt;/code&gt; 변수가 요청한 클라이언트와 연결되어 있는 하나의 빨대 역할을 하는것이다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;이제 HTML 코드를 하나 작성해서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;out&lt;/code&gt; 변수에게 넘겨서, 클라이언트로 보내면 된다.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;kr.web.controller&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.io.PrintWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;kr.web.util.MyUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// JavaEE -&amp;gt; Servlet&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloServlet&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HttpServlet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HttpServletResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServletException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;MyUtil&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		
+		&lt;span class=&quot;c1&quot;&gt;// 요청한 클라이언트에게 응답하기&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;PrintWriter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWriter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;body&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/body&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&amp;lt;html&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;최종 서블릿 예제 코드이다. 이제 서블릿에 대해서 보니깐, 현재 내가 회사에서 보고 있는 프로젝트가….ㅠㅠ&lt;br /&gt;
+어떻게 진행되고 있었던건지를 깨닫게 된다. 서블릿도 있고, jsp도 있고..난장판인데&lt;br /&gt;
+이걸 리팩토링하자니 아직 실력이 부족하고 물론 천천히 진행해도 상관은 없으나 막상 서블릿과 jsp의 차이를 알게되니..&lt;br /&gt;
+코드를 처음보면서도 이걸 왜 이렇게 만들었지? 라는 생각을 늘 품고 있었는데.. 에효.. 하나로 통일이 된게 아니였구나..를 깨닫게 된다.&lt;br /&gt;
+하하하하.. 나중에 리팩토링 하자. jsp로 깔끔하게ㅠㅠ&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;일단 오늘은 토요일이라 하루 쉴려고 했으나..&lt;br /&gt;
+그래도 공부 하나 정도는 듣고 자는 게 좋을 것 같다는 생각에 글을 작성해본다.&lt;br /&gt;
+내일은 더 많은 공부를 할 예정이다. 일단 영어도 시작했으니깐&lt;br /&gt;
+영어부터 공부를 해보고 프로그래밍 공부를 시작하자..ㅠㅠ 화이팅!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 09 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/spring-boot/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000/spring-boot/0008/</guid>
+        
+        <category>스프링부트</category>
+        
+        <category>박매일</category>
+        
+        <category>JSP</category>
+        
+        <category>서블릿</category>
+        
+        <category>Servlet</category>
+        
+        <category>Java</category>
+        
+        
+        <category>Spring-Boot</category>
+        
+      </item>
     
       <item>
         <title>JSP에서 비즈니스 로직 분리 공부</title>
@@ -1237,7 +1390,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'안녕하세요.' + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&apos;안녕하세요.&apos; + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1256,7 +1409,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;ul&gt;
       &lt;li&gt;
         &lt;p&gt;build.gradle 파일에서 dependencies 부분에, implementation을 추가하자.
- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation 'org.springframework.boot:spring-boot-devtools'&lt;/code&gt;&lt;/p&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation &apos;org.springframework.boot:spring-boot-devtools&apos;&lt;/code&gt;&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;추가를 했다면, 서버를 다시 실행해주고, html 파일을 변경하고 브라우저를 새로고침 해보자. 바뀌지 않는다. 하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build -&amp;gt; recomplie &quot;hello.html&lt;/code&gt; 을 클릭하면 바뀐다.
@@ -3219,7 +3372,7 @@ as 키워드로, 이 태그가 anchor 태그가 되었든, input 태그가 되�
       </item>
     
       <item>
-        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module 'styled-components' or its corresponding type declarations. 오류 해결 방법</title>
+        <title>타입스크립트로 styled-components 설치 할 때 Cannot find module &apos;styled-components&apos; or its corresponding type declarations. 오류 해결 방법</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
@@ -3301,7 +3454,7 @@ devDependencies에 있는 버전을 수정해주셔야 합니다.&lt;/li&gt;
         
         <category>typescript용 에러</category>
         
-        <category>Cannot find module 'styled-components' or its corresponding type declarations</category>
+        <category>Cannot find module &apos;styled-components&apos; or its corresponding type declarations</category>
         
         
         <category>Error</category>
@@ -4446,10 +4599,10 @@ AWS_SECRET_KEY : 어쩌구 저쩌구
 4
 5
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Javascript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt;
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; Typescript &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -4624,7 +4777,7 @@ npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/
 &lt;p&gt;react.js를 설치할 수 있는 환경이 갖춰졌다는 가정하에 작성이 되었습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;'프로젝트 이름'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;npx create-react-app &lt;span class=&quot;s1&quot;&gt;&apos;프로젝트 이름&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; typescript
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;이렇게 입력을 하게 되면 React.js 환경에서 Typescript를 사용할 수 있게 됩니다.&lt;/p&gt;
