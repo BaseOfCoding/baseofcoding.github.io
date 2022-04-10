@@ -190,4 +190,16 @@ var store = [{
         "tags": ["WebServlet","어노테이션","서블릿 어노테이션","Annotation","jsp","mvc"],
         "url": "/spring-boot/0010/",
         "teaser": null
+      },{
+        "title": "Do you already have another mysqld server running on port: 3306 ? 에러 해결 방법",
+        "excerpt":"        이 오류는, 3306이란 포트를 어떤 곳에서 사용하고 있다는 내용이다.  현재 공부중인 것은 MySQL을 사용하는데 MariaDB가 이미 설치가 되어 있는 상태에서  MySQL을 사용하려고 하니깐 생긴 에러다.      MariaDB를 삭제하면 쉽게 해결하지만, MariaDB를 삭제하지 않고 사용할 수 있는 방법이 있다.    일단, 윈도우 하단에 검색하는 곳에 서비스라고 입력을 하자. 그리고 MariaDB를 찾아서 일시중지 또는 중지를 시켜주면 완료된다.    에러 해결 끝!!       이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!  ","categories": ["Error"],
+        "tags": ["Do you already have another mysqld server running on port 3306 ?","error","spring","mySQL","MySQL","데이터베이스"],
+        "url": "/error/0006/",
+        "teaser": null
+      },{
+        "title": "MySQL Table 만들기",
+        "excerpt":"   안녕하세요. Nerd-Lee입니다.  공부 내용은, 인프런 박매일님의 [NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.     1. sql 파일 만들기      src 폴더 내에, kr.web.db라는 패키지 파일을 만든다.   패키지 내에, member.sql 파일을 만들어준다.   참고로, sql 파일은, Eclipse에서  Data Source Explorer / Database Connections 에 데이터베이스가 연결이 되어 있어야 사용이 가능하다.     2. MySQL 실행하기      cmd 또는 powershell로, 해당 db 폴더로 이동을 해서 startup.bat or ./ startup 을 입력하자.   그럼 실행이 잘된다. 만약 Do you already have another mysqld server running on port: 3306 ? 이런 에러가 발생한다면  에러 해결 방법 을 클릭해서, 해결해보자.   그리고, 이클립스에서 Database Connections 에 있는 db를 더블클릭하면, 연결이 된다.   member.sql 로 넘어가서, Name에, 해당 DB를 연결해주고, 테이블도 연결해주면, 연결상태로 변경된다.     3. 회원 테이블 생성하기      member.sql에 회원 테이블을 생성하는 쿼리를 작성하자   1 2 3 4 5 6 7 8 9 create table member( \tnumber int primary key auto_increment, \tid varchar(20) not null, \tpassword varchar(20) not null, \tname varchar(30) not null, \tage int not null, \temail varchar(30) not null, \tphone varchar(30) not null )      쿼리 부분을 드래그해서, 오른쪽 마우스를 클릭  Execute Selected Text를 클릭하면, 드래그 한 부분만 쿼리가 실행되고 테이블이 생성된다.     4. 회원 테이블에 값 추가하기   1 2 insert into member(id,password,name,age,email,phone) values('id입력','비밀번호 입력','이름 입력',나이입력,'이메일','전화번호 입력');     쿼리 실행 후, select * from member; 쿼리 실행해서, 데이터가 잘 들어갔는 지 확인     5. 회원 테이블에 입력 된 값 수정하기      만약 나이를 수정하고 싶다면??   1 update member set age=나이입력 where id='입력되어 있는 아이디';     6. 테이블에 등록되어 있는 값 삭제하기   1 delete from member where id='입력되어 있는 아이디';          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["Spring-Boot"],
+        "tags": ["MySQL","eclipse","jsp","mvc","spring","spring boot","스프링"],
+        "url": "/spring-boot/0011/",
+        "teaser": null
       }]
