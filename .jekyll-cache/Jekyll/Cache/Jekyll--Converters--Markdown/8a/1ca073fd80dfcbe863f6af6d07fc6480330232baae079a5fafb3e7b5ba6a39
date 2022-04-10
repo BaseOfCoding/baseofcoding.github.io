@@ -1,0 +1,72 @@
+I"D<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.</p>
+
+<hr />
+
+<h3 id="1-servlet을-사용하기-위해서는-servlet-mapping-작업을-거쳐야한다">1. Servlet을 사용하기 위해서는 servlet-mapping 작업을 거쳐야한다.</h3>
+
+<ul>
+  <li>지금 만들어진대로 만약 경로를 지정한다면<br />
+`http://localhost:port/web/WEB-INF/classes/kr.web.controller.HelloServlet 이란 경로로<br />
+클라이언트가 접근을 해야되는 것인가? 어차피 하지도 못한다.<br />
+할 수 있더라도 보안성이 취약해지기 때문에 servlet-mapping 작업을 해서 간단한 경로로 만들어줘야 한다.<br /></li>
+  <li>그럼 <code class="language-plaintext highlighter-rouge">servlet-mapping</code> 작업은 어디서 해야 할까? web.xml에 해야한다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;servlet-mapping&gt;</code> 태그를 추가하고, 그 안에 <code class="language-plaintext highlighter-rouge">&lt;url-pattern&gt;</code> 태그를 추가한 다음 그 태그 안에 /hs.do를 입력한다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;servlet&gt;</code> 태그를 추가하고, <code class="language-plaintext highlighter-rouge">&lt;servlet-class&gt;</code> 태그에, 패키지 네임.클래스 이름을 입력하자.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;servlet&gt;</code> 태그와 <code class="language-plaintext highlighter-rouge">&lt;servlet-mapping&gt;</code> 태그에, <code class="language-plaintext highlighter-rouge">&lt;servlet-name&gt;</code> 태그를 추가해서<br />
+서블릿 클래스와 매핑을 연결해줘야 한다. 보통 클래스 이름으로 맞춘다고 한다.</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;web-app</span> <span class="na">version=</span><span class="s">"3.1"</span>
+	<span class="na">xmlns=</span><span class="s">"http://xmlns.jcp.org/xml/ns/javaee"</span>
+	<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+	<span class="na">xsi:schemaLocation=</span><span class="s">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span><span class="nt">&gt;</span>
+
+	<span class="nt">&lt;servlet&gt;</span>
+		<span class="nt">&lt;servlet-name&gt;</span>HelloServlet<span class="nt">&lt;/servlet-name&gt;</span>
+		<span class="nt">&lt;servlet-class&gt;</span>kr.web.controller.HelloServlet<span class="nt">&lt;/servlet-class&gt;</span>
+	<span class="nt">&lt;/servlet&gt;</span>
+
+	<span class="nt">&lt;servlet-mapping&gt;</span>
+		<span class="nt">&lt;servlet-name&gt;</span>HelloServlet<span class="nt">&lt;/servlet-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/hs.do<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/servlet-mapping&gt;</span>
+
+<span class="nt">&lt;/web-app&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>톰캣 서버를 실행하고, <code class="language-plaintext highlighter-rouge">localhost:포트번호/hs.do</code> 를 입력하면, HelloServlet 클래스가 실행이 된다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

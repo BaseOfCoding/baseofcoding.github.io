@@ -1,0 +1,71 @@
+I"Q<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.</p>
+
+<hr />
+
+<h3 id="1-webservlet이란">1. @WebServlet이란?</h3>
+
+<ul>
+  <li>web.xml에 계속 그럼 태그를 생성하고 매핑을 해줘야 하는가? 아니다.</li>
+  <li>JAVA에서는 @WebServlet이란, 어노테이션을 제공해서 해당 어노테이션안에<br />
+경로를 입력하면 클라이언트에서, 해당 경로를 입력할 때 알아서 톰캣서버가 찾아서 실행해주게 된다.</li>
+  <li>주의할 점으로는, web.xml 파일과 중복된 값이 있으면 충돌이 일어나기 때문에 한 곳에서만 사용해야 된다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/hs.do"</span><span class="o">)</span>		<span class="c1">// &lt;- 이 부분 중요.</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">res</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// TODO Auto-generated method stub</span>
+		<span class="nc">MyUtil</span> <span class="n">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyUtil</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">my</span><span class="o">.</span><span class="na">sum</span><span class="o">();</span>
+		
+		<span class="c1">// 요청한 클라이언트에게 응답하기</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>Servlet은, MVC에서, Controller 역할을 하게 된다.<br /></li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

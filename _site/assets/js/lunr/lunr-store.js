@@ -178,4 +178,16 @@ var store = [{
         "tags": ["스프링부트","박매일","JSP","서블릿","Servlet","Java"],
         "url": "/spring-boot/0008/",
         "teaser": null
+      },{
+        "title": "Servlet 실행하기",
+        "excerpt":"   안녕하세요. Nerd-Lee입니다.  공부 내용은, 인프런 박매일님의 [NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.     1. Servlet을 사용하기 위해서는 servlet-mapping 작업을 거쳐야한다.      지금 만들어진대로 만약 경로를 지정한다면  `http://localhost:port/web/WEB-INF/classes/kr.web.controller.HelloServlet 이란 경로로  클라이언트가 접근을 해야되는 것인가? 어차피 하지도 못한다.  할 수 있더라도 보안성이 취약해지기 때문에 servlet-mapping 작업을 해서 간단한 경로로 만들어줘야 한다.    그럼 servlet-mapping 작업은 어디서 해야 할까? web.xml에 해야한다.    &lt;servlet-mapping&gt; 태그를 추가하고, 그 안에 &lt;url-pattern&gt; 태그를 추가한 다음 그 태그 안에 /hs.do를 입력한다.    &lt;servlet&gt; 태그를 추가하고, &lt;servlet-class&gt; 태그에, 패키지 네임.클래스 이름을 입력하자.    &lt;servlet&gt; 태그와 &lt;servlet-mapping&gt; 태그에, &lt;servlet-name&gt; 태그를 추가해서  서블릿 클래스와 매핑을 연결해줘야 한다. 보통 클래스 이름으로 맞춘다고 한다.   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt; &lt;web-app version=\"3.1\" \txmlns=\"http://xmlns.jcp.org/xml/ns/javaee\" \txmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \txsi:schemaLocation=\"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd\"&gt;  \t&lt;servlet&gt; \t\t&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt; \t\t&lt;servlet-class&gt;kr.web.controller.HelloServlet&lt;/servlet-class&gt; \t&lt;/servlet&gt;  \t&lt;servlet-mapping&gt; \t\t&lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt; \t\t&lt;url-pattern&gt;/hs.do&lt;/url-pattern&gt; \t&lt;/servlet-mapping&gt;  &lt;/web-app&gt;      톰캣 서버를 실행하고, localhost:포트번호/hs.do 를 입력하면  HelloServlet 클래스가 실행이 되면서 1~10까지의 합산 값이 출력된다.          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["Spring-Boot"],
+        "tags": ["서블릿","서블릿 실행하기","Spring","JSP","JAVA","Servlet"],
+        "url": "/spring-boot/0009/",
+        "teaser": null
+      },{
+        "title": "@WebServlet 사용하기",
+        "excerpt":"   안녕하세요. Nerd-Lee입니다.  공부 내용은, 인프런 박매일님의 [NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.     1. @WebServlet이란?      web.xml에 계속 그럼 태그를 생성하고 매핑을 해줘야 하는가? 아니다.   JAVA에서는 @WebServlet이란, 어노테이션을 제공해서 해당 어노테이션안에  경로를 입력하면 클라이언트에서, 해당 경로를 입력할 때 알아서 톰캣서버가 찾아서 실행해주게 된다.   주의할 점으로는, web.xml 파일과 중복된 값이 있으면 충돌이 일어나기 때문에 한 곳에서만 사용해야 된다.   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 @WebServlet(\"/hs.do\")\t\t// &lt;- 이 부분 중요. public class HelloServlet extends HttpServlet {  \t@Override \tprotected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException { \t\t// TODO Auto-generated method stub \t\tMyUtil my = new MyUtil(); \t\tint sum = my.sum(); \t\t \t\t// 요청한 클라이언트에게 응답하기 \t\tPrintWriter out = res.getWriter(); \t\t \t\tout.println(\"&lt;html&gt;\"); \t\tout.println(\"&lt;body&gt;\"); \t\tout.println(sum); \t\tout.println(\"&lt;/body&gt;\"); \t\tout.println(\"&lt;/html&gt;\"); \t} }      Servlet은, MVC에서, Controller 역할을 하게 된다.           이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["Spring-Boot"],
+        "tags": ["WebServlet","어노테이션","서블릿 어노테이션","Annotation","jsp","mvc"],
+        "url": "/spring-boot/0010/",
+        "teaser": null
       }]
