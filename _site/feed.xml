@@ -5,8 +5,8 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Apr 2022 01:28:09 +0900</pubDate>
-    <lastBuildDate>Mon, 11 Apr 2022 01:28:09 +0900</lastBuildDate>
+    <pubDate>Mon, 11 Apr 2022 01:50:48 +0900</pubDate>
+    <lastBuildDate>Mon, 11 Apr 2022 01:50:48 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -1588,7 +1588,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
 &lt;h3 id=&quot;1-프로젝트-생성&quot;&gt;1. 프로젝트 생성&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;start.spring.io&quot;&gt;spring boot start page&lt;/a&gt; 가기&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://start.spring.io&quot;&gt;spring boot start page&lt;/a&gt; 가기&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;스프링 부트는 스프링 프로젝트를 쉽게 만들 수 있게 한다.&lt;/p&gt;
@@ -1654,7 +1654,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;thymeleaf 라는 템플릿 엔진을 이용해서, View를 만들어 준다. &lt;a href=&quot;thymeleaf.org&quot;&gt;thymeleaf 홈페이지&lt;/a&gt;에 들어가면 thymeleaf에 대한 내용들을 자세히 볼 수 있다.&lt;/p&gt;
+    &lt;p&gt;thymeleaf 라는 템플릿 엔진을 이용해서, View를 만들어 준다. &lt;a href=&quot;https://www.thymeleaf.org&quot;&gt;thymeleaf 홈페이지&lt;/a&gt;에 들어가면 thymeleaf에 대한 내용들을 자세히 볼 수 있다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;thymeleaf의 장﹒단점
     &lt;ul&gt;
@@ -1671,7 +1671,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Spring을 잘 모르겠다면, &lt;a href=&quot;spring.io&quot;&gt;홈페이지&lt;/a&gt;에 들어가서 guides를 살펴보는 것을 권장한다.&lt;/p&gt;
+    &lt;p&gt;Spring을 잘 모르겠다면, &lt;a href=&quot;https://spring.io&quot;&gt;홈페이지&lt;/a&gt;에 들어가서 guides를 살펴보는 것을 권장한다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;기본구조 코드
     &lt;ul&gt;
