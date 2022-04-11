@@ -1,0 +1,33 @@
+I"�<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.</p>
+
+<hr />
+
+<h3 id="1-프로젝트-만들기">1. 프로젝트 만들기</h3>
+
+<ul>
+  <li>프로젝트는, Dynamic web project로 생성.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-servlet">2. Servlet</h3>
+
+<ul>
+  <li>보통 MVC란, Model, View, Controller를 나눠서 작업하는 디자인패턴을 얘기하지만<br />
+<code class="language-plaintext highlighter-rouge">Servlet</code>은 안에 비지니스 로직과 프리젠테이션 로직을 한꺼번에 하게 된다. 불편하지만 이것이 시초였다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
