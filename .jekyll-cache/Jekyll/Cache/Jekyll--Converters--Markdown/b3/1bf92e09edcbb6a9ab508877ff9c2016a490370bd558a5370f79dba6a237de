@@ -1,0 +1,111 @@
+I"�<p><img src="/assets/img/etc/bootstrap.png" alt="" /></p>
+
+<ul>
+  <li>안녕하세요. ‘Nerd-Lee’ 입니다.<br />
+이번엔, 부트스트랩의 컨테이너에 대해서 알아보도록 하겠습니다.</li>
+</ul>
+
+<p><a href="https://www.w3schools.com/bootstrap4/bootstrap_containers.asp">참고 페이지 W3 Schools 링크</a></p>
+
+<hr />
+
+<h3 id="1-container">1. Container?</h3>
+
+<ul>
+  <li>부트스트랩에서, <code class="language-plaintext highlighter-rouge">Container</code>는 내부 콘텐츠를 채우는 데 사용되고, 두가지로 나뉩니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">.container</code> 와 <code class="language-plaintext highlighter-rouge">.container-fluid</code>가 있고, 이 두 가지의 차이점은 다음 사진과 같습니다.<br />
+<img src="/images/2022-04-11/001.PNG" alt="" /></li>
+  <li><code class="language-plaintext highlighter-rouge">.container</code> 는, 반응형 고정 너비 컨테이너를 제공하지만<br />
+<code class="language-plaintext highlighter-rouge">.container-fluid</code> 는 전체 viewport의 넓이에 해당하는 컨테이너를 제공합니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-contrainer의-반응형-크기">2. .Contrainer의 반응형 크기</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Extra-small &lt; 576px</th>
+      <th>Small &gt;= 576px</th>
+      <th>Medium &gt;= 768px</th>
+      <th>Large &gt;= 992px</th>
+      <th>Extra-large &gt;= 1200px</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>max-width</td>
+      <td>100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">container</code>는 반응형이다. 홈페이지의 크기에 따라<br />
+컨테이너의 최대 넓이가 알아서 설정이 되어 있는데<br />
+브라우저의 넓이가 1200px보다 크거나 같다면, 최대 넓이는 1140px로 고정되어 있고<br />
+브라우저의 넓이가 992px보다 크거나 같고, 1200px 보다 작으면, 960px<br />
+브라우저의 넓이가 768px보다 크거나 같고, 992px보다 작으면, 720px<br />
+브라우저의 넓이가 576px보다 크거나 같고, 768px보다 작으면, 540px<br />
+브라우저의 넓이가 576px보다 작으면, 100%의 넓이를 가지게 됩니다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>My First Bootstrap Page<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;p&gt;</span>This is some text.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<ul>
+  <li>Codepen으로 Container가 어떻게 되어 있는 지 볼 수 있도록 예제를 넣어놨습니다.</li>
+</ul>
+
+<p data-height="300" data-theme-id="0" data-slug-hash="vYprbqM" data-default-tab="html,result" data-user="nerd-lee" class="codepen split-output">
+  See the Pen <a href="https://codepen.io/nerd-lee/pen/vYprbqM/">hello</a> by nerd-lee (<a href="https://codepen.io/nerd-lee">@nerd-lee</a>) on <a href="https://codepen.io">CodePen</a>.
+</p>
+<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<hr />
+
+<h3 id="3-fluid-container">3. Fluid Container</h3>
+
+<ul>
+  <li>위에서도 설명했지만, <code class="language-plaintext highlighter-rouge">.container-fluid</code> 는 항상 화면 전체 넓이를 가집니다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>My First Bootstrap Page<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;p&gt;</span>This is some text.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p data-height="300" data-theme-id="0" data-slug-hash="LYeraYX" data-default-tab="html,result" data-user="nerd-lee" class="codepen split-output">
+  See the Pen <a href="https://codepen.io/nerd-lee/pen/LYeraYX/">hello</a> by nerd-lee (<a href="https://codepen.io/nerd-lee">@nerd-lee</a>) on <a href="https://codepen.io">CodePen</a>.
+</p>
+<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+<hr />
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
