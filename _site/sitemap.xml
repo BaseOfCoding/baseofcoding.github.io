@@ -3,6 +3,21 @@
 
  
  <url>
+   <loc>http://localhost:4000/study/0002/</loc>
+   
+     <lastmod>2022-04-12T00:00:00+09:00</lastmod>
+   
+   
+     <changefreq>hourly</changefreq>
+   
+   
+     <priority>1.0</priority>
+   
+ </url>
+ 
+
+ 
+ <url>
    <loc>http://localhost:4000/organize/0001/</loc>
    
      <lastmod>2022-04-12T00:00:00+09:00</lastmod>
