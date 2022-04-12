@@ -1,0 +1,55 @@
+I"�<p><img src="/assets/img/etc/bootstrap.png" alt="" /></p>
+
+<ul>
+  <li>안녕하세요. ‘Nerd-Lee’ 입니다.<br />
+스프링부트 리눅스 서버에 배포하는 법과 MySQL 설치하는 방법에 대해서 정리해봤습니다.<br />
+완벽하진 않지만, 배운 내용이나 터득한 방법에 대해서 한 번 정리해봤으니 도움이 되시기를 바랍니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="1-filezlila--putty-설치">1. FileZlila &amp; Putty 설치</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">FlieZilla</code>와 <code class="language-plaintext highlighter-rouge">Putty</code>를 설치해서, 리눅스 서버를 쉽게 구동할 수 있다.</li>
+  <li><a href="https://filezilla-project.org/download.php?type=client">FileZilla 다운로드 링크</a> , <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">Putty 다운로드 링크</a></li>
+  <li>그리고, ip주소, 포트번호, 서버 사용자 이름, 패스워드를 입력해서 실행하면 된다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-mysql-설치하기">2. MySQL 설치하기</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">putty</code>로 MySQL을 명령어를 입력해서, 설치 및 설정을 하면 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo apt update</code> 라는 명령어를 입력해서 ubuntu 패키지 정보들을 업데이트한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo apt install mysql-server</code> 명령어를 입력하면, mysql이 설치가 된다.</li>
+  <li>MySQL이 잘 설치되었는 지 확인하기 위해서, <code class="language-plaintext highlighter-rouge">dpkg -l | grep mysql-server</code> 를 입력하자.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ii  mysql-server  5.7.37-0ubuntu0.18.04.1  all  MySQL database server <span class="o">(</span>metapackage depending on the latest version<span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이런식으로 뜬다면, 설치가 성공한 것이다.</p>
+
+<ul>
+  <li>MySQL가 실행이 되고 있는 지 확인하기 위해서는, netstat 이라는 것을 이용해서 확인해야 하는데<br />
+<code class="language-plaintext highlighter-rouge">sudo netstat -tap | grep mysql</code> 명령어를 입력하자.<br />
+만약 <code class="language-plaintext highlighter-rouge">netstat: command not found</code> 에러가 발생하면 아래의 명령어를 입력하자.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">sudo apt install net-tools</code> 명령어를 입력해서, netstat을 설치하면 된다.</li>
+  <li>그리고 다시 시도하면, 실행중인 지 확인이 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">cd /etc/mysql/mysql.conf.d</code> 폴더로 이동</li>
+  <li><code class="language-plaintext highlighter-rouge">sudo vi mysqld.cnf</code> 를 입력해서 <code class="language-plaintext highlighter-rouge">bind-address</code> 부분에, 127.0.0.1을 0.0.0.0으로 변경하자.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

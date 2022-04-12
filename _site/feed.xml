@@ -5,9 +5,658 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Apr 2022 13:34:34 +0900</pubDate>
-    <lastBuildDate>Tue, 12 Apr 2022 13:34:34 +0900</lastBuildDate>
+    <pubDate>Tue, 12 Apr 2022 18:30:43 +0900</pubDate>
+    <lastBuildDate>Tue, 12 Apr 2022 18:30:43 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>스프링부트 Linux 서버에 배포 및 MySQL 설치하기</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/bootstrap.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;안녕하세요. ‘Nerd-Lee’ 입니다.&lt;br /&gt;
+스프링부트 리눅스 서버에 배포하는 법과 MySQL 설치하는 방법에 대해서 정리해봤습니다.&lt;br /&gt;
+완벽하진 않지만, 배운 내용이나 터득한 방법에 대해서 한 번 정리해봤으니 도움이 되시기를 바랍니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-filezlila--putty-설치&quot;&gt;1. FileZlila &amp;amp; Putty 설치&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FlieZilla&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Putty&lt;/code&gt;를 설치해서, 리눅스 서버를 쉽게 구동할 수 있다.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://filezilla-project.org/download.php?type=client&quot;&gt;FileZilla 다운로드 링크&lt;/a&gt; , &lt;a href=&quot;https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html&quot;&gt;Putty 다운로드 링크&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;그리고, ip주소, 포트번호, 서버 사용자 이름, 패스워드를 입력해서 실행하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-mysql-설치하기&quot;&gt;2. MySQL 설치하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;putty&lt;/code&gt;로 MySQL을 명령어를 입력해서, 설치 및 설정을 하면 된다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt update&lt;/code&gt; 라는 명령어를 입력해서 ubuntu 패키지 정보들을 업데이트한다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install mysql-server&lt;/code&gt; 명령어를 입력하면, mysql이 설치가 된다.&lt;/li&gt;
+  &lt;li&gt;MySQL이 잘 설치되었는 지 확인하기 위해서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dpkg -l | grep mysql-server&lt;/code&gt; 를 입력하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;ii  mysql-server  5.7.37-0ubuntu0.18.04.1  all  MySQL database server &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;metapackage depending on the latest version&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이런식으로 뜬다면, 설치가 성공한 것이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MySQL가 실행이 되고 있는 지 확인하기 위해서는, netstat 이라는 것을 이용해서 확인해야 하는데&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo netstat -tap | grep mysql&lt;/code&gt; 명령어를 입력하자.&lt;br /&gt;
+만약 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;netstat: command not found&lt;/code&gt; 에러가 발생하면 아래의 명령어를 입력하자.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install net-tools&lt;/code&gt; 명령어를 입력해서, netstat을 설치하면 된다.&lt;/li&gt;
+  &lt;li&gt;그리고 다시 시도하면, 실행중인 지 확인이 된다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd /etc/mysql/mysql.conf.d&lt;/code&gt; 폴더로 이동&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo vi mysqld.cnf&lt;/code&gt; 를 입력해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bind-address&lt;/code&gt; 부분에, 127.0.0.1 ip를 0.0.0.0으로 변경하자&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo mysql&lt;/code&gt; 을 입력해서, MySQL을 실행하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'계정이름'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identified&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;외부&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;접속&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;계정이름과&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;비밀번호를&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;설정하자&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;grant&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;privileges&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'계정이름'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;grant&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;해당&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;계정이름에&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;권한을&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부여하자&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 다음은 내가 한 부분이 아닌 상사가 한 부분이기 때문에, 만약 aws를 사용하는 개발자라면
+&lt;a href=&quot;https://mirae-kim.tistory.com/73&quot;&gt;이 링크&lt;/a&gt;를 참고하는 것이 좋다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-java-설치하기&quot;&gt;3. JAVA 설치하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;오늘 출근하고 그냥 파일질라를 이용해서, JAVA를 지워서 처음 환경 그대로 다시 시도를 해보려고 했으나..&lt;br /&gt;
+큰 오류를 발생할 줄은 몰랐다. putty에서, 삭제에 대한 명령어를 사용해서 삭제를 했어야했는데.. 에효..&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt; 을 입력해도, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'java' command not found&lt;/code&gt; 와 같은 로그만 뜨고..&lt;br /&gt;
+그래서, 어쩔 수 없이 일단 sudo 명령어를 이용해서 삭제를 먼저 실행했다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get remove openjdk-8-jre
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get remove openjdk-8-jdk
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;그리고, 다시 java 8 버전을 설치를 해봤으나.. 소용이 없었다.. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $JAVA_HOME&lt;/code&gt; 을 입력하면 경로는 뜨지만&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt;을 입력했을 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'java' command not found&lt;/code&gt; 가 뜨면 의미가 없어보인다.&lt;br /&gt;
+그럼 11버전으로 사용해야지ㅎㅎ 만약 8버전을 사용할 예정이라면, 11을 8로 바꾸면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openjdk-11-jdk
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openjdk-11-jre
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이후, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt; 이나, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javac -version&lt;/code&gt; 명령어를 입력하면 자바의 버전이 뜰 것이다.&lt;br /&gt;
+만약 안뜬다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo reboot now&lt;/code&gt;를 입력해서, 서버를 한 번 꺼주고&lt;br /&gt;
+다시 파일질라와 putty로 서버에 접속을 해보자.&lt;/li&gt;
+  &lt;li&gt;java 환경변수 설정을 해줘야한다. 환경변수 설정은 다음과 같다.&lt;br /&gt;
+보통 자바가 설치된 경로는 /usr/lib/jvm 폴더에 설치가 되어있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano /etc/profile
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;위의 명령어를 입력하면, 다음과 같은 텍스트들이 출력된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;BASH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BASH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/bin/sh&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# The file bash.bashrc already sets the default PS1.&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# PS1='\h:\w\$ '&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; /etc/bash.bashrc &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; /etc/bash.bashrc
+    &lt;span class=&quot;k&quot;&gt;fi
+  else
+    if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eq&lt;/span&gt; 0 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'# '&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else
+      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'$ '&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi
+  fi
+fi
+
+if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /etc/profile.d &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; /etc/profile.d/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.sh&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi
+  done
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;unset &lt;/span&gt;i
+&lt;span class=&quot;k&quot;&gt;fi
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TMOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;324000
+&lt;span class=&quot;nv&quot;&gt;HISTFILESIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;그럼 제일 마지막에 다음과 같은 문장을 추가해주자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/lib/jvm/java-11-openjdk-amd64 // 만약 8 버전이면, 11대신 8입력
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin/:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CLASS_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/lib:&lt;span class=&quot;nv&quot;&gt;$CLASS_PATH&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이렇게 문장을 추가해줬다면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + O&lt;/code&gt; 를 입력해주고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enter&lt;/code&gt; 키 입력해서 저장해주고&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + X&lt;/code&gt; 키를 눌러서 밖으로 빠져나오자.&lt;/li&gt;
+  &lt;li&gt;그리고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source /etc/profile&lt;/code&gt; 을 입력해서, 추가된 문장을 적용시키고&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo reboot now&lt;/code&gt; 명령어를 입력해서 서버를 끄고, 다시 프로그램으로 접속을 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $JAVA_HOME&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$JAVA_HOME/bin/javac -version&lt;/code&gt;을 입력해서&lt;br /&gt;
+환경변수가 제대로 설정이 잘 되었는 지 확인하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;4-tomcat-설치&quot;&gt;4. Tomcat 설치&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;나 같은 경우는, putty를 이용해서 tomcat을 설치하지 않고&lt;br /&gt;설치된 tomcat 8.5.5 버전을 Filezilla를 이용해서, 복사했다.&lt;/li&gt;
+  &lt;li&gt;설치를 해도 방법은 비슷하다. 경로만 알고 있도록 하자.&lt;/li&gt;
+  &lt;li&gt;설치는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt-get install tomcat&lt;/code&gt; 이란 명령어이다.&lt;/li&gt;
+  &lt;li&gt;톰캣 버전을 확인하는 방법은, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ${톰캣 경로}/bin&lt;/code&gt;로&lt;br /&gt;
+톰캣 설치된 경로에 있는 bin 폴더를 참고하고 있도록 하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./version.sh&lt;/code&gt; 를 입력해서 실행하면 되는데..&lt;/li&gt;
+  &lt;li&gt;Permission Error가 뜨는 경우가 있다. 그럴 땐, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chmod +x version.sh&lt;/code&gt; 를 입력해서&lt;br /&gt;
+해당 파일을 실행할 수 있는 접근 권한을 허용시키고 다시 실행하자.&lt;/li&gt;
+  &lt;li&gt;실행이 잘 되었다면, 톰캣 서버 버전과 OS 이름, 버전 등등 여러가지가 출력되는 것을 확인할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;5-톰캣서버-포트번호-설정&quot;&gt;5. 톰캣서버 포트번호 설정&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;톰캣서버가 깔려있는 경로로 이동하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conf&lt;/code&gt; 폴더가 있는데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conf&lt;/code&gt; 폴더로 이동한다.&lt;/li&gt;
+  &lt;li&gt;그 안에 server.xml 파일을 열어본다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ apache-tomcat-8.5.5/conf $ vi server.xml
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-vim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;?xml &lt;span class=&quot;k&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;?&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+  Licensed &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; the Apache Software Foundation &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ASF&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; under one &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;more&lt;/span&gt;
+  contributor license agreements&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;  See the NOTICE &lt;span class=&quot;k&quot;&gt;file&lt;/span&gt; distributed with
+  this work &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; additional information regarding copyright ownership&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+  The ASF licenses this &lt;span class=&quot;k&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; You under the Apache License&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; Version &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;s2&quot;&gt;&quot;License&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;; you may not use this &lt;span class=&quot;k&quot;&gt;file&lt;/span&gt; except &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; compliance with
+  the License&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;  You may obtain &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;copy&lt;/span&gt; of the License at
+
+      http&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;www&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;apache&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;org&lt;span class=&quot;sr&quot;&gt;/licenses/&lt;/span&gt;LICENSE&lt;span class=&quot;m&quot;&gt;-2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+
+  Unless required by applicable law &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; agreed &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; writing&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; software
+  distributed under the License &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; distributed &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; an &lt;span class=&quot;s2&quot;&gt;&quot;AS IS&quot;&lt;/span&gt; BASIS&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; either express &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; implied&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+  See the License &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; the specific &lt;span class=&quot;k&quot;&gt;language&lt;/span&gt; governing permissions &lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt;
+  limitations under the License&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Note&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  A &lt;span class=&quot;s2&quot;&gt;&quot;Server&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; not itself &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Container&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;so&lt;/span&gt; you may not
+     &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt; subcomponents such &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Valves&quot;&lt;/span&gt; at this level&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+     Documentation at &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/server&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+ &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Server port&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8105&quot;&lt;/span&gt; shutdown&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SHUTDOWN&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Listener className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.startup.VersionLoggerListener&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Security listener&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; Documentation at &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/listeners&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Listener className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.security.SecurityListener&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;APR library loader&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; Documentation at &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;apr&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Listener className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.core.AprLifecycleListener&quot;&lt;/span&gt; SSLEngine&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;on&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Prevent memory leaks due &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; use of particular java/javax APIs&lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Listener className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.core.JreMemoryLeakPreventionListener&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Listener className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.mbeans.GlobalResourcesLifecycleListener&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Listener className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.core.ThreadLocalLeakPreventionListener&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Global JNDI resources
+       Documentation at &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;jndi&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;resources&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;howto&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+  &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;GlobalNamingResources&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Editable user database that can also be used by
+         UserDatabaseRealm &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; authenticate users
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Resource name&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;UserDatabase&quot;&lt;/span&gt; auth&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Container&quot;&lt;/span&gt;
+              &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.UserDatabase&quot;&lt;/span&gt;
+              description&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;User database that can be updated and saved&quot;&lt;/span&gt;
+              factory&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.users.MemoryUserDatabaseFactory&quot;&lt;/span&gt;
+              pathname&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;conf/tomcat-users.xml&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/GlobalNamingResources&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; A &lt;span class=&quot;s2&quot;&gt;&quot;Service&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; collection of one &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Connectors&quot;&lt;/span&gt; that share
+       &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; single &lt;span class=&quot;s2&quot;&gt;&quot;Container&quot;&lt;/span&gt; Note&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;  A &lt;span class=&quot;s2&quot;&gt;&quot;Service&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; not itself &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Container&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;so&lt;/span&gt; you may not &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt; subcomponents such &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Valves&quot;&lt;/span&gt; at this level&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+       Documentation at &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/service&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+   &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Service name&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Catalina&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;The connectors can use &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; shared executor&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; you can &lt;span class=&quot;nb&quot;&gt;define&lt;/span&gt; one &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;more&lt;/span&gt; named thread pools&lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Executor name&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tomcatThreadPool&quot;&lt;/span&gt; namePrefix&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;catalina-exec-&quot;&lt;/span&gt;
+        maxThreads&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;150&quot;&lt;/span&gt; minSpareThreads&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;4&quot;&lt;/span&gt;/&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; A &lt;span class=&quot;s2&quot;&gt;&quot;Connector&quot;&lt;/span&gt; represents an endpoint by which requests are received
+         &lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt; responses are returned&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; Documentation at &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+         Java HTTP Connector&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/http&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+         Java AJP  Connector&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/ajp&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+         APR &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;HTTP&lt;span class=&quot;sr&quot;&gt;/AJP) Connector: /&lt;/span&gt;docs/apr&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+         Define &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; non&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;SSL&lt;span class=&quot;sr&quot;&gt;/TLS HTTP/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; Connector &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; port &lt;span class=&quot;m&quot;&gt;8080&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+    ★★★ 이 부분 중요
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Connector port&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;포트번호&quot;&lt;/span&gt; protocol&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;HTTP/1.1&quot;&lt;/span&gt;
+               connectionTimeout&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;20000&quot;&lt;/span&gt;
+               redirectPort&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;리디렉트 포트번호&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; A &lt;span class=&quot;s2&quot;&gt;&quot;Connector&quot;&lt;/span&gt; using the shared thread pool&lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Connector executor&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tomcatThreadPool&quot;&lt;/span&gt;
+               port&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8080&quot;&lt;/span&gt; protocol&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;HTTP/1.1&quot;&lt;/span&gt;
+               connectionTimeout&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;20000&quot;&lt;/span&gt;
+               redirectPort&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8443&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Define &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; SSL&lt;span class=&quot;sr&quot;&gt;/TLS HTTP/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; Connector &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; port &lt;span class=&quot;m&quot;&gt;8443&lt;/span&gt;
+         This connector uses the NIO implementation with the JSSE engine&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; When
+         using the JSSE engine&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; the JSSE configuration attributes must be used&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Connector port&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8443&quot;&lt;/span&gt; protocol&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.coyote.http11.Http11NioProtocol&quot;&lt;/span&gt;
+               maxThreads&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;150&quot;&lt;/span&gt; SSLEnabled&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;SSLHostConfig&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Certificate certificateKeystoreFile&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;conf/localhost-rsa.jks&quot;&lt;/span&gt;
+                         &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;RSA&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/SSLHostConfig&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Connector&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Define &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; SSL&lt;span class=&quot;sr&quot;&gt;/TLS HTTP/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; Connector &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; port &lt;span class=&quot;m&quot;&gt;8443&lt;/span&gt; with HTTP/&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+         This connector uses the APR/native implementation&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; When using the
+         APR/native implementation &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; the OpenSSL engine with NIO &lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt; NIO2 then
+         the OpenSSL configuration attributes must be used&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Connector port&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8443&quot;&lt;/span&gt; protocol&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.coyote.http11.Http11AprProtocol&quot;&lt;/span&gt;
+               maxThreads&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;150&quot;&lt;/span&gt; SSLEnabled&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;UpgradeProtocol className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.coyote.http2.Http2Protocol&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;SSLHostConfig&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Certificate certificateKeyFile&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;conf/localhost-rsa-key.pem&quot;&lt;/span&gt;
+                         certificateFile&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;conf/localhost-rsa-cert.pem&quot;&lt;/span&gt;
+                         certificateChainFile&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;conf/localhost-rsa-chain.pem&quot;&lt;/span&gt;
+                         &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;RSA&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/SSLHostConfig&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Connector&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Define an AJP &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; Connector &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; port &lt;span class=&quot;m&quot;&gt;8009&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Connector port&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8009&quot;&lt;/span&gt; protocol&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;AJP/1.3&quot;&lt;/span&gt; redirectPort&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;8443&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; An Engine represents the entry point &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;within Catalina&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; that processes
+         every request&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;  The Engine implementation &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; Tomcat stand alone
+         analyzes the HTTP headers included with the request&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt; passes them
+         &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; the appropriate Host &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;virtual host&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;
+         Documentation at &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/engine&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; You should &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; jvmRoute &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; support load&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;balancing via AJP ie &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Engine name&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Catalina&quot;&lt;/span&gt; defaultHost&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt; jvmRoute&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jvm1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Engine name&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Catalina&quot;&lt;/span&gt; defaultHost&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;For clustering&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; please take &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; look at documentation at&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;cluster&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;howto&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;simple how &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/cluster&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;reference documentation&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Cluster className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.ha.tcp.SimpleTcpCluster&quot;&lt;/span&gt;/&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Use the LockOutRealm &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; prevent attempts &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; guess user passwords
+           via &lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; brute&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;force attack &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Realm className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.realm.LockOutRealm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; This Realm uses the UserDatabase configured &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; the global JNDI
+             resources under the &lt;span class=&quot;nb&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UserDatabase&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;  Any edits
+             that are performed against this UserDatabase are immediately
+             available &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; use by the Realm&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Realm className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.realm.UserDatabaseRealm&quot;&lt;/span&gt;
+               resourceName&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;UserDatabase&quot;&lt;/span&gt;/&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Realm&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Host name&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;  appBase&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;webapps&quot;&lt;/span&gt;
+            unpackWARs&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt; autoDeploy&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; SingleSignOn valve&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; share authentication between web applications
+             Documentation at&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/valve&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Valve className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.authenticator.SingleSignOn&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;!--&lt;/span&gt; Access &lt;span class=&quot;nb&quot;&gt;log&lt;/span&gt; processes &lt;span class=&quot;k&quot;&gt;all&lt;/span&gt; example&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+             Documentation at&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/docs/&lt;/span&gt;config/valve&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;html
+             Note&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; The pattern used &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; equivalent &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; using pattern&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;common&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;--&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Valve className&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;org.apache.catalina.valves.AccessLogValve&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;logs&quot;&lt;/span&gt;
+               prefix&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;localhost_access_log&quot;&lt;/span&gt; suffix&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.txt&quot;&lt;/span&gt;
+               pattern&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%h %l %u %t &amp;amp;quot;%r&amp;amp;quot; %s %b&quot;&lt;/span&gt; /&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Host&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Engine&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Service&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;/Server&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;★★★ 이 부분 중요!! 라고 되어 있는 부분에, 해당 서버에 접근할 수 있도록 설정한 포트번호를 입력하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;6-톰캣서버-실행하기&quot;&gt;6. 톰캣서버 실행하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tomcat server를 실행하기 위해선, 윗 부분에서, version.sh를 실행하던 폴더로 이동하면&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;startup.sh&lt;/code&gt;가 있고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shutdown.sh&lt;/code&gt; 파일이 있는데 두 파일은, 실행과 종료 파일이다.&lt;br /&gt;
+실행하는 방법은 다음과 같다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tomcat/bin &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./startup.sh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tomcat/bin &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./shutdown.sh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이렇게 입력하면, 톰캣서버가 실행이 된다.&lt;br /&gt;
+만약에 또 Permission 관련 에러가 발생하면 위에 적어놓은 방법처럼, chmod 명령어로 접근 권한을 허용해주면 된다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;startup.sh&lt;/code&gt; 파일을 실행하고 브라우저에, ip번호와 server.xml에 설정해놓은 포트번호를 입력하면 실행이 된다.&lt;/li&gt;
+  &lt;li&gt;만약 안된다면, tomcat 경로에 있는 logs라는 폴더로 이동해서, catalina.out 파일을 열어보자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;...apache-tomcat-8.5.5/logs/vi catalina.out
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;...apache-tomcat-8.5.5/logs/tail &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; catalina.out
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;첫 번째 명령어는 모든 로그를 다 볼 수 있고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift + G&lt;/code&gt; 키를 누르면, 제일 아래로 내려갈 수 있다.&lt;/li&gt;
+  &lt;li&gt;두 번째 명령어는 실시간으로 로그를 확인할 수 있다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;로그를 확인해서, 어떤 부분이 잘못됐는 지 확인하고, 다시 ./startup.sh를 입력하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;7-applicationyml-파일-수정하기&quot;&gt;7. application.yml 파일 수정하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;만약 database 에러가 났다면, application.yml을 수정해야 하는데&lt;br /&gt;
+이 부분은 다시 STS에서 수정하고 빌드를 해도 되지만 만약 ROOT 폴더에 있는 파일을 수정하고 싶은 거라면?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;apache-tomcat-8.5.5 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;webapps/ROOT/WEB-INF/classes
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;명령어를 입력하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; 라고 입력을 해보면, application.yml 또는 application.properties 파일이 있을 것이다.&lt;/li&gt;
+  &lt;li&gt;그 부분에서, DB 주소를 입력하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./shutdown.sh&lt;/code&gt; 를 입력해서 톰캣서버를 종료하고 다시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./startup.sh&lt;/code&gt; 명령어로 톰캣서버를 실행하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해당 작업을 하면서 알게 된 부분들과, Database Dump 부분은 내일 다시 적어보도록 할 것이다. 나처럼 헤맸던 사람들이라면 도움이 되었길 바랄 뿐이다. 이 내용으로 도움이 될 지는 의문이지만ㅠㅠ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;도움을 받았던 글&lt;br /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://jiwontip.tistory.com/45?category=367314&quot;&gt;스프링 프로젝트 AWS 배포 3탄&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://mirae-kim.tistory.com/73&quot;&gt;[AWS] AWS EC2에 mysql 설치하기 (ubuntu)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://cookinghoil.tistory.com/94&quot;&gt;Linux - 톰캣 로그 확인하기&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 12 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/organize/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/organize/0001/</guid>
+        
+        <category>Linux</category>
+        
+        <category>SpringBoot</category>
+        
+        <category>스프링부트</category>
+        
+        <category>리눅스서버</category>
+        
+        <category>스프링부트 배포</category>
+        
+        <category>MySQL</category>
+        
+        
+        <category>Organize</category>
+        
+      </item>
     
       <item>
         <title>[Servlet] 01. Servlet과 Model로 회원관리 만들기</title>
@@ -4329,87 +4978,6 @@ devDependencies에 있는 버전을 수정해주셔야 합니다.&lt;/li&gt;
         <category>typescript용 에러</category>
         
         <category>Cannot find module 'styled-components' or its corresponding type declarations</category>
-        
-        
-        <category>Error</category>
-        
-      </item>
-    
-      <item>
-        <title>Vercel process.env.CI = true 오류 해결 방법</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
-
-&lt;p&gt;이번 글은 Vercel을 이용해서 홈페이지를 배포할 때 빌드 중에 process.env.CI=true 라는 에러를 볼 때&lt;/p&gt;
-
-&lt;p&gt;해결할 수 있는 방법에 대해서 알려드리도록 하겠습니다!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;--vercel-processenvci--true-오류-해결-방법에-대해-알아보자--&quot;&gt;- Vercel process.env.CI = true 오류 해결 방법에 대해 알아보자! -&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-홈으로-돌아와-해당-프로젝트를-클릭&quot;&gt;1. 홈으로 돌아와 해당 프로젝트를 클릭&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;프로젝트 홈에서, 메뉴에 Settings 클릭하기&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2022-03-09-0002/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-03-09%20%EC%98%A4%ED%9B%84%201.58.50.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;맨 위에 보이는 메뉴 중에, Settings를 클릭해주세요.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;2-environment-variables-클릭하기&quot;&gt;2. Environment Variables 클릭하기&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Settings에 있는 소메뉴 중 Environment Variables가 있습니다. 그걸 클릭해주세요.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2022-03-09-0002/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-03-09%20%EC%98%A4%ED%9B%84%202.02.12.png&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;3-name에는-ci-value에는-false를-입력-후-add-클릭&quot;&gt;3. NAME에는 CI, VALUE에는 false를 입력 후 Add 클릭&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;NAME 부분엔 CI를 입력하고, VALUE 부분엔 false를 입력하고 추가해줍니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2022-03-09-0002/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202022-03-09%20%EC%98%A4%ED%9B%84%202.04.21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;4-그리고-다시-상단에-보이는-메뉴-중-deployments를-클릭해서-redeploy를-하자&quot;&gt;4. 그리고 다시 상단에 보이는 메뉴 중, Deployments를 클릭해서 Redeploy를 하자!&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;상단에 Deployments라는 메뉴가 있습니다. 빌드가 실패 된 것을 클릭하면
-&lt;br /&gt;Redeploy 버튼을 클릭할 수 있습니다. 그걸 클릭해서 재 빌드하면 됩니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
-이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
-다음 글로 찾아오겠습니다!
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 10 Mar 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/error/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/error/0002/</guid>
-        
-        <category>vercel</category>
-        
-        <category>Vercel</category>
-        
-        <category>process.env.CI</category>
-        
-        <category>CI오류</category>
-        
-        <category>CIError</category>
         
         
         <category>Error</category>
