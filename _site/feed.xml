@@ -5,9 +5,134 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Apr 2022 15:32:07 +0900</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2022 15:32:07 +0900</lastBuildDate>
+    <pubDate>Thu, 14 Apr 2022 00:25:33 +0900</pubDate>
+    <lastBuildDate>Thu, 14 Apr 2022 00:25:33 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[Servlet] 03. 요청(HttpServletRequest)과 응답(HttpServletResponse) 이해하기</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
+공부 내용은, 인프런 박매일님의
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[NarP Series]MVC 프레임워크는 내 손에[나프1탄]&lt;/code&gt; 을 참고하였습니다.&lt;br /&gt;
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고&lt;br /&gt;
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.&lt;br /&gt;
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-controller-역할에서의-코드를-보고-실행하는-로직-생각해보기&quot;&gt;1. Controller 역할에서의 코드를 보고, 실행하는 로직 생각해보기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;jsp에, form 태그에 action 속성에는 calc.do 라고 맵핑이 되어 있다.&lt;/li&gt;
+  &lt;li&gt;submit 버튼을 클릭하면, input의 name으로 되어 있는 값들이 변수가 되어 해당 값들을 calc.do에 넘겨주게(요청) 된다.&lt;br /&gt;
+이 때 넘어가는 정보를 요청정보라고 한다. 요청정보는 하나의 패킷으로 전송된다. 패킷은, header와 body로 이루어져있다.&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;header에 들어있는 값(예)
+    &lt;ul&gt;
+      &lt;li&gt;ip정보 : 127.87.35.1&lt;/li&gt;
+      &lt;li&gt;port정보 : 9000&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;body에 들어있는 값
+    &lt;ul&gt;
+      &lt;li&gt;su1 = 1&lt;/li&gt;
+      &lt;li&gt;su2 = 100&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;톰캣은 header와 body 정보를 먼저 받아야한다. 그러기 위해서는 2개의 객체를 만들게 된다.&lt;br /&gt;
+그 객체가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServletRequest(요청객체)&lt;/code&gt; 와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServletResponse(응답객체)&lt;/code&gt; 객체이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-httpservletrequest란&quot;&gt;2. HttpServletRequest란?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WAS(tomcat 서버)가 패킷을 받으면, 생성하게 되는 2개의 객체 중 하나로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;요청객체&lt;/code&gt;이다.&lt;/li&gt;
+  &lt;li&gt;클라이언트가 요청을 하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServletRequest&lt;/code&gt;는 header와 body를 저장하게 된다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServletRequest&lt;/code&gt; 형 변수가 service라는 메서드 안에 매개변수로 되어 있고&lt;br /&gt;
+해당 변수에서 getParameter라는 함수에, body의 키값을 입력하면 값을 받아오게 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-httpservletresponse란&quot;&gt;3. HttpServletResponse란?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WAS(tomcat 서버)가 패킷을 받으면, 생성하게 되는 2개의 객체 중 하나로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;응답객체&lt;/code&gt;이다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServletResponse&lt;/code&gt;는 패킷에서 body가 아닌 header 정보를 가지게 된다.&lt;br /&gt;
+그래야 요청받은 값을 프로그래밍해서, 클라이언트에게 응답해줄 수 있기 때문이다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpServletResponse&lt;/code&gt; 형 변수가 service 메서드 안에 매개변수로 되어 있고&lt;br /&gt;
+해당 변수에서 getWriter라는 함수에는 클라이언트의 정보가 담겨있고&lt;br /&gt;
+그 정보를 PrintWriter형 변수에 대입하게 되면 빨대 역할을 하게 된다.&lt;br /&gt;
+그 빨대에, println 함수로, html이나 값을 넣어서 클라이언트에게 응답하게 되는 것이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;4-get과-post-방식의-차이점&quot;&gt;4. GET과 POST 방식의 차이점&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;html 또는 jsp에서, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;form&amp;gt;&lt;/code&gt; 태그는 기본적으로, GET 방식을 사용한다.&lt;br /&gt;
+그런데, 숫자를 입력하고, calc.do로 넘어가게 되면&lt;br /&gt;
+url에 /calc.do?su1=1&amp;amp;su2=100 이라고 값이 보여버리게 된다.&lt;br /&gt;
+하지만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;form method=&quot;post&quot;&amp;gt;&lt;/code&gt; 라고 post 방식으로 변경하면, url에 보여지지 않는다.&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;GET 방식의 특징
+    &lt;ul&gt;
+      &lt;li&gt;보안에 취약하다.&lt;/li&gt;
+      &lt;li&gt;데이터의 한계가 온다. url을 이용해서 서버로 넘기기 때문이다.&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;POST 방식
+    &lt;ul&gt;
+      &lt;li&gt;packet에 쌓아서 넘기기 때문에, 보안성이 좋다.&lt;/li&gt;
+      &lt;li&gt;또한 데이터의 한계도 없고 용량제한도 없다.&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;보통 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;form&lt;/code&gt; 태그를 사용한다면, POST 방식으로 사용하는 것이 좋다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음 공부 내용은, GET과 POST 요청 이해하기이다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/study/0003/</link>
+        <guid isPermaLink="true">http://localhost:4000/study/0003/</guid>
+        
+        <category>Servlet</category>
+        
+        <category>서블릿</category>
+        
+        <category>JAVA</category>
+        
+        <category>servlet</category>
+        
+        <category>비지니스 로직</category>
+        
+        <category>프리젠테이션 로직</category>
+        
+        <category>HttpServlet</category>
+        
+        <category>Request</category>
+        
+        <category>Response</category>
+        
+        
+        <category>Study</category>
+        
+      </item>
     
       <item>
         <title>Ajax FormData 사용할 때 Illegal invocation 에러 해결 방법</title>
@@ -101,7 +226,7 @@ Resolved [org.springframework.web.HttpMediaTypeNotSupportedException:&lt;br /&gt
         
         <category>Spring Error</category>
         
-        <category>Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported</category>
+        <category>Content type &apos;application/x-www-form-urlencoded;charset=UTF-8&apos; not supported</category>
         
         
         <category>Error</category>
@@ -488,8 +613,8 @@ total : 5050 이란 값이 나오게 된다.&lt;/li&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'계정이름'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identified&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'패스워드'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;외부&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;접속&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;계정이름과&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;비밀번호를&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;설정하자&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;grant&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;privileges&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'계정이름'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;grant&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;해당&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;계정이름에&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;권한을&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부여하자&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;계정이름&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;%&apos;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identified&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;패스워드&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;외부&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;접속&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;계정이름과&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;비밀번호를&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;설정하자&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;grant&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;privileges&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;계정이름&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;%&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;grant&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;해당&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;계정이름에&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;권한을&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부여하자&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
@@ -504,7 +629,7 @@ total : 5050 이란 값이 나오게 된다.&lt;/li&gt;
 &lt;ul&gt;
   &lt;li&gt;오늘 출근하고 그냥 파일질라를 이용해서, JAVA를 지워서 처음 환경 그대로 다시 시도를 해보려고 했으나..&lt;br /&gt;
 큰 오류를 발생할 줄은 몰랐다. putty에서, 삭제에 대한 명령어를 사용해서 삭제를 했어야했는데.. 에효..&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt; 을 입력해도, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'java' command not found&lt;/code&gt; 와 같은 로그만 뜨고..&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt; 을 입력해도, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&apos;java&apos; command not found&lt;/code&gt; 와 같은 로그만 뜨고..&lt;br /&gt;
 그래서, 어쩔 수 없이 일단 sudo 명령어를 이용해서 삭제를 먼저 실행했다.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -516,7 +641,7 @@ total : 5050 이란 값이 나오게 된다.&lt;/li&gt;
 
 &lt;ul&gt;
   &lt;li&gt;그리고, 다시 java 8 버전을 설치를 해봤으나.. 소용이 없었다.. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $JAVA_HOME&lt;/code&gt; 을 입력하면 경로는 뜨지만&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt;을 입력했을 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'java' command not found&lt;/code&gt; 가 뜨면 의미가 없어보인다.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java -version&lt;/code&gt;을 입력했을 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&apos;java&apos; command not found&lt;/code&gt; 가 뜨면 의미가 없어보인다.&lt;br /&gt;
 그럼 11버전으로 사용해야지ㅎㅎ 만약 8버전을 사용할 예정이라면, 11을 8로 바꾸면 된다.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -577,15 +702,15 @@ total : 5050 이란 값이 나오게 된다.&lt;/li&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
   if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;BASH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BASH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/bin/sh&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
     &lt;span class=&quot;c&quot;&gt;# The file bash.bashrc already sets the default PS1.&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# PS1='\h:\w\$ '&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# PS1=&apos;\h:\w\$ &apos;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; /etc/bash.bashrc &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
       &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; /etc/bash.bashrc
     &lt;span class=&quot;k&quot;&gt;fi
   else
     if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eq&lt;/span&gt; 0 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
-      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'# '&lt;/span&gt;
+      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;# &apos;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;else
-      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'$ '&lt;/span&gt;
+      &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;$ &apos;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;fi
   fi
 fi
@@ -1471,7 +1596,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;insert&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'id입력'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'비밀번호 입력'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'이름 입력'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;나이입력&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'이메일'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'전화번호 입력'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;id입력&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;비밀번호 입력&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;이름 입력&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;나이입력&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;이메일&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;전화번호 입력&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ul&gt;
   &lt;li&gt;쿼리 실행 후, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;select * from member;&lt;/code&gt; 쿼리 실행해서, 데이터가 잘 들어갔는 지 확인&lt;/li&gt;
@@ -1486,7 +1611,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;update&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;나이입력&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'입력되어 있는 아이디'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;update&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;나이입력&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;입력되어 있는 아이디&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -1494,7 +1619,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;h3 id=&quot;6-테이블에-등록되어-있는-값-삭제하기&quot;&gt;6. 테이블에 등록되어 있는 값 삭제하기&lt;/h3&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'입력되어 있는 아이디'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;입력되어 있는 아이디&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -3342,7 +3467,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'안녕하세요.' + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&apos;안녕하세요.&apos; + ${data} &quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;안녕하세요. 손님&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -3361,7 +3486,7 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
     &lt;ul&gt;
       &lt;li&gt;
         &lt;p&gt;build.gradle 파일에서 dependencies 부분에, implementation을 추가하자.
- &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation 'org.springframework.boot:spring-boot-devtools'&lt;/code&gt;&lt;/p&gt;
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;implementation &apos;org.springframework.boot:spring-boot-devtools&apos;&lt;/code&gt;&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;추가를 했다면, 서버를 다시 실행해주고, html 파일을 변경하고 브라우저를 새로고침 해보자. 바뀌지 않는다. 하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build -&amp;gt; recomplie &quot;hello.html&lt;/code&gt; 을 클릭하면 바뀐다.
@@ -4692,100 +4817,6 @@ Framework To Use : react-router-dom, react-query, styled-components … 등등&l
         
         
         <category>project</category>
-        
-      </item>
-    
-      <item>
-        <title>[Next.js] 2. url 구조에 대해서 알아봅시다.</title>
-        <description>&lt;p class=&quot;notice--danger&quot;&gt;작업 환경 : Mac OS 🧑🏻‍💻
-언어 : Typescript&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/etc/nextjs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;🖥 Next.js 관련 지난 글 보기&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/nextjs/0001/&quot;&gt;01. Next.js 프로젝트 생성 및 실행 방법&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
-
-&lt;p&gt;이번 글은 next.js의 url 구조에 대해서 알아보겠습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;nextjs-url-구조&quot;&gt;NEXT.JS url 구조&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;1-reactjs의-url-생성-방법&quot;&gt;1. react.js의 url 생성 방법&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;react.js의 url path 지정 방법&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;react.js는, react-router-dom을 설치하고 BrowserRouter로 감싸고, Switch 컴포넌트를 감싼 뒤, Route 컴포넌트를 이용해서, 각 컴포넌트(페이지)를 자식으로 둬야 합니다. 밑에 코드처럼 말이죠.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/fc43c1b727ea2848127fa4953bffecdd.js&quot;&gt;&lt;/script&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;2-nextjs는-더-쉽다&quot;&gt;2. next.js는 더 쉽다!&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;next.js의 url path 지정 방법&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/nextjs/0001/#3-프로젝트-실행해보기&quot;&gt;이전 글&lt;/a&gt;에서 보시면 아시겠지만 pages 폴더가 있습니다. 그 폴더의 파일 이름이 url 주소가 됩니다. 하지만, 프레임워크인 만큼 next.js만의 룰이 있는데요. _app.tsx와 index.tsx 만큼은 가지고 있어야 합니다. index.tsx가 localhost:3000/ 이기 때문입니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;예 ) 만약에 localhost:3000/test 를 만들고 싶다면?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/72e9e9f4aa1f68fade9c487143e2e871.js&quot;&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;예 ) localhost:3000/coin/price를 만들고 싶다면?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/9983cad3312b1f35f60649df706a2879.js&quot;&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이렇게 파일 구조를 가지게 되면, 쉽게 url 구조를 만들 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
-이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
-다음 글로 찾아오겠습니다!
-
-&lt;/div&gt;
-</description>
-        <pubDate>Sat, 12 Mar 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/nextjs/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/nextjs/0002/</guid>
-        
-        <category>next.js</category>
-        
-        <category>typescript</category>
-        
-        <category>nextjs</category>
-        
-        <category>reactjs</category>
-        
-        <category>vercel</category>
-        
-        <category>url</category>
-        
-        
-        <category>NextJS</category>
         
       </item>
     
