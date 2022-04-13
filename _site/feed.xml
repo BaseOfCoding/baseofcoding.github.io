@@ -5,9 +5,67 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Apr 2022 15:20:01 +0900</pubDate>
-    <lastBuildDate>Wed, 13 Apr 2022 15:20:01 +0900</lastBuildDate>
+    <pubDate>Wed, 13 Apr 2022 15:32:07 +0900</pubDate>
+    <lastBuildDate>Wed, 13 Apr 2022 15:32:07 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>Ajax FormData 사용할 때 Illegal invocation 에러 해결 방법</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ajax로 통신을 할 때, FormData형의 데이터를 넘길 때, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Illegal invocation&lt;/code&gt; 이란 값이 나올 수 있다.&lt;br /&gt;
+Ajax에, 옵션값을 두개 추가하면 된다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;processData : false&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;서버로 보내지는 data는 “application/x-www-form-urlencoded”에 맞는 쿼리 문자열로 처리 및 변환된 형태라고 한다.
+        &lt;ul&gt;
+          &lt;li&gt;DOMDocument 또는 처리되지 않은 데이터를 보낼 때에는, 이 옵션값을 false로 지정해야한다고 한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;contentType: false&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;default 값은, “application/x-www-form-urlencoded; charset=UTF-8” 라고 한다.&lt;/li&gt;
+      &lt;li&gt;“multipart/form-data” 로 전송이 되게 옵션값을 false로 지정해야 한다고 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;도움이 된 글
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://bravesuccess.tistory.com/274&quot;&gt;Ajax formData 사용 시 Illegal invocation 해결 방법&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 13 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/error/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000/error/0008/</guid>
+        
+        <category>Ajax</category>
+        
+        <category>FormData</category>
+        
+        <category>Illegal invocation</category>
+        
+        <category>Ajax FormData</category>
+        
+        
+        <category>Error</category>
+        
+      </item>
     
       <item>
         <title>HttpMediaTypeNotSupportedException 에러 해결 방법</title>
@@ -4725,119 +4783,6 @@ Framework To Use : react-router-dom, react-query, styled-components … 등등&l
         <category>vercel</category>
         
         <category>url</category>
-        
-        
-        <category>NextJS</category>
-        
-      </item>
-    
-      <item>
-        <title>[Next.js] 1. Intro</title>
-        <description>&lt;p class=&quot;notice--danger&quot;&gt;작업 환경 : Mac OS 🧑🏻‍💻&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/etc/nextjs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;🖥 Next.js 관련 모든 글 보기&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/nextjs/0001/&quot;&gt;01. Next.js 프로젝트 생성 및 실행 방법&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/nextjs/0002/&quot;&gt;02. Next.js url 구조에 대해서 알아봅시다.&lt;/a&gt;
-&lt;!-- - [02. Styled-Components 확장해서 사용하기](/styled-components/0002/) --&gt;
-&lt;!-- - [03. Styled-Components에서 as와 attrs란?](/styled-components/0003/) --&gt;
-&lt;!-- - [04. Styled-Components 애니메이션과 Pseudo Selector](/styled-components/0004/) --&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
-
-&lt;p&gt;이번 글은 next.js를 설치하는 방법과 실행하는 방법에 대해서 글을 적어보겠습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;nextjs-intro&quot;&gt;NEXT.JS Intro&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;1-nextjs-란&quot;&gt;1. Next.js 란?&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Next.js는 node.js를 기반으로 구축된 오픈 소스 웹 개발 프레임워크로써, 서버 측 렌더링 및 정적 웹사이트 생성과 같은 React 기반 웹 애플리케이션 기능을 가능하게 한다. 라고, 위키백과는 설명하고 있습니다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;쉽게 말해서, React 또한 SSR ( Server Side Rendering ) 방식으로 설계되어 있어 SSR이 가능은 하지만, 구현하기가 굉장히 번거롭기 때문에 그래서 나온 것이 Next.js 프레임워크다. 라고 말할 수 있습니다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;2-프로젝트-생성하기&quot;&gt;2. 프로젝트 생성하기&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;React.js를 설치하는 것과 비슷합니다. 터미널을 열고 명령어를 입력합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/e9cb1449ee5b833dbbff09eeb96d3584.js&quot;&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;바탕화면에 설치하시려면, cd desktop을 입력해서, desktop에 위치하게 한 다음 자바스크립트 환경을 하시려면 2번째 명령어를, 타입스크립트는 3번째 명령어를 입력하시면 됩니다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;입력한 뒤에 y를 입력하고, 해당 앱의 이름을 입력하시면 됩니다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;3-프로젝트-실행해보기&quot;&gt;3. 프로젝트 실행해보기&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;vs code로, 해당 폴더를 열어보시면 다음과 같은 폴더구조를 가지고 있습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;[ TypeScript ]&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/cd56d0130617524cf8fb90058bfe54b8.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;[ JavaScript ]&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/3a801c5405c0e517a631295e97fb58d1.js&quot;&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;vs code terminal( Command (⌘) + J )을 실행해서 명령어를 입력한 뒤 실행해봅시다!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;‘npm run dev’를 입력하면 실행이 됩니다. 하지만 react 처럼 브라우저를 열어주진 않습니다. &lt;br /&gt;
-하지만 ready - started .. url : http://localhost:3000 이 보이실 것입니다.&lt;br /&gt;
-그 링크를 command + 클릭 또는 브라우저에 http://localhost:3000을 입력하시면 실행이 됩니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script src=&quot;https://gist.github.com/Nerd-Lee/255867496d55a8bfe728013eca6235c2.js&quot;&gt;&lt;/script&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
-이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
-다음 글로 찾아오겠습니다!
-
-&lt;/div&gt;
-</description>
-        <pubDate>Sat, 12 Mar 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/nextjs/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/nextjs/0001/</guid>
-        
-        <category>next.js</category>
-        
-        <category>typescript</category>
-        
-        <category>nextjs</category>
-        
-        <category>reactjs</category>
-        
-        <category>vercel</category>
         
         
         <category>NextJS</category>

@@ -232,4 +232,10 @@ var store = [{
         "tags": ["HttpMediaTypeNotSupportedException","Spring","Spring Error","Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported"],
         "url": "/error/0007/",
         "teaser": null
+      },{
+        "title": "Ajax FormData 사용할 때 Illegal invocation 에러 해결 방법",
+        "excerpt":"        Ajax로 통신을 할 때, FormData형의 데이터를 넘길 때, Illegal invocation 이란 값이 나올 수 있다.  Ajax에, 옵션값을 두개 추가하면 된다.   processData : false            서버로 보내지는 data는 “application/x-www-form-urlencoded”에 맞는 쿼리 문자열로 처리 및 변환된 형태라고 한다.                    DOMDocument 또는 처리되지 않은 데이터를 보낼 때에는, 이 옵션값을 false로 지정해야한다고 한다.                           contentType: false            default 값은, “application/x-www-form-urlencoded; charset=UTF-8” 라고 한다.       “multipart/form-data” 로 전송이 되게 옵션값을 false로 지정해야 한다고 한다.              이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!      도움이 된 글            Ajax formData 사용 시 Illegal invocation 해결 방법          ","categories": ["Error"],
+        "tags": ["Ajax","FormData","Illegal invocation","Ajax FormData"],
+        "url": "/error/0008/",
+        "teaser": null
       }]
