@@ -197,7 +197,7 @@ var store = [{
         "url": "/bootstrap/0001/",
         "teaser": null
       },{
-        "title": "Do you already have another mysqld server running on port: 3306 ? 에러 해결 방법",
+        "title": "Do you already have another mysqld server running on port 3306 에러 해결 방법",
         "excerpt":"        이 오류는, 3306이란 포트를 어떤 곳에서 사용하고 있다는 내용이다.  현재 공부중인 것은 MySQL을 사용하는데 MariaDB가 이미 설치가 되어 있는 상태에서  MySQL을 사용하려고 하니깐 생긴 에러다.      MariaDB를 삭제하면 쉽게 해결하지만, MariaDB를 삭제하지 않고 사용할 수 있는 방법이 있다.    일단, 윈도우 하단에 검색하는 곳에 서비스라고 입력을 하자. 그리고 MariaDB를 찾아서 일시중지 또는 중지를 시켜주면 완료된다.    에러 해결 끝!!       이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!  ","categories": ["Error"],
         "tags": ["Do you already have another mysqld server running on port 3306 ?","error","spring","mySQL","MySQL","데이터베이스"],
         "url": "/error/0006/",
@@ -237,6 +237,12 @@ var store = [{
         "excerpt":"        Ajax로 통신을 할 때, FormData형의 데이터를 넘길 때, Illegal invocation 이란 값이 나올 수 있다.  Ajax에, 옵션값을 두개 추가하면 된다.   processData : false            서버로 보내지는 data는 “application/x-www-form-urlencoded”에 맞는 쿼리 문자열로 처리 및 변환된 형태라고 한다.                    DOMDocument 또는 처리되지 않은 데이터를 보낼 때에는, 이 옵션값을 false로 지정해야한다고 한다.                           contentType: false            default 값은, “application/x-www-form-urlencoded; charset=UTF-8” 라고 한다.       “multipart/form-data” 로 전송이 되게 옵션값을 false로 지정해야 한다고 한다.              이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!      도움이 된 글            Ajax formData 사용 시 Illegal invocation 해결 방법          ","categories": ["Error"],
         "tags": ["Ajax","FormData","Illegal invocation","Ajax FormData"],
         "url": "/error/0008/",
+        "teaser": null
+      },{
+        "title": "[Jasper] 01. Jasper란 무엇인가?",
+        "excerpt":"      안녕하세요. ‘Nerd-Lee’ 입니다.  이번엔, Jaspersoft Studio가 어떤 것인지에 대해서 알아보도록 하겠습니다.     1. Jaspersoft Studio      Jaspersoft Studio란, Eclipse 기반의 리포팅 도구이고 iReport Designer라는 Eclipse의 플러그인을 독립형 애플리케이션인 Jaspersoft Studio로 새로 작성된 프로그램입니다.    특징은, 독립형 방식으로 사용할 수 있고, JasperReport Server와도 연동이 가능하다고 합니다.    기능으로는 WYSIWYG(위지위그) 방식 리포트 UI 디자인과 데이터 소스 연결을 통한 차트와 보고서를 생성할 수 있고, HTML, PPT, DOC, XLS, PDF 등의 다양한 방식으로 내보내기가 가능합니다.    여기서 WYSIWYG란, What You See Is What You Get의 약자로 보이는대로 표현이 가능하다라는 말과 같습니다. 말 그대로, 사용자 입장에서는 복잡한 코드를 작성해서 만드는 것이 아니라, 코드들을 몰라도, 눈에 보이는 대로 작성을 할 수 있습니다.    하나의 예로, 안녕하세요. 라는 내용을 블로그에서 적는데 사용자는 &lt;p&gt;안녕하세요.&lt;/p&gt; 라고 직접 적지 않는 것이라고 생각하면 됩니다.     2. Jaspersoft Studio 설치 방법      기본적으로, Jaspersoft Studio를 실행하기 위해서는 JDK가 설치가 되어 있어야 합니다. 명령 프롬프트창(cmd)을 열고 java -version을 실행해서 설치된 JDK 버전을 확인합니다.  만약 JAVA가 설치가 되지 않았다면, 설치를 해주시고 Jaspersoft Studio를 설치하셔야 합니다.    Jaspersoft studio 홈페이지를 클릭하시고, 우측에 Download Now 버튼 클릭 후  Jaspersoft Studio Download 버튼을 클릭한 다음, 자신의 OS 환경에 맞는 파일을 설치하면 됩니다.    로그인이나 회원가입을 요청하면, 오른쪽 하단에 있는 No Thanks를 클릭하시면 됩니다.    설치방법은, 설치하시는 방법 그대로, next랑 finish 버튼만 눌러주시면 됩니다.          이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["Jasper"],
+        "tags": ["Jasper","자스퍼","Jasper Studio","WYSIWYG","위지위그"],
+        "url": "/jasper/0001/",
         "teaser": null
       },{
         "title": "[Servlet] 03. 요청(HttpServletRequest)과 응답(HttpServletResponse) 이해하기",
