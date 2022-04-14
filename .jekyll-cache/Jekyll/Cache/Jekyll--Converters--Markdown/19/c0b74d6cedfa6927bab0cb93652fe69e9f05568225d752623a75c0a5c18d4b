@@ -1,0 +1,35 @@
+I"@<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<hr />
+
+<h3 id="1-servlet에서-controller와-model의-동작원리">1. Servlet에서 Controller와 Model의 동작원리</h3>
+
+<ul>
+  <li>Servlet에서, Controller는 <code class="language-plaintext highlighter-rouge">Servlet</code>으로, Model은 <code class="language-plaintext highlighter-rouge">Java class</code> 파일로 만든다.<br /></li>
+  <li>모델은 데이터베이스를 연동하는 DAO를 만든다.<br /></li>
+  <li>JDBC로, DAO와 DB를 연결한다.<br /></li>
+  <li>DAO에는, method들이 있을 것이고 생성,삭제,업데이트,추가와 같은 기능을 하는 메서드들이 있을 것이다.<br /></li>
+  <li>Client가 요청을 Controller에게 하면, Controller가 Model(DAO) 에게, 해당 요청에 맞는 메서드를 실행하고<br />
+Model(DAO)에서, DB에 접근해서, 요청에 맞는 쿼리문을 실행하고, 그 값을 Controller에게 전달한다.<br />
+하지만 <code class="language-plaintext highlighter-rouge">Servlet</code>에서, Controller는 View의 역할도 하기 때문에, 상당히 까다롭지만, 요청에 맞는 View를 실행시켜준다.</li>
+</ul>
+
+<hr />
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
