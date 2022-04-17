@@ -3,10 +3,10 @@
   <channel>
     <title>코딩의 기초는 Nerd Lee</title>
     <description>코딩을 말하다</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Apr 2022 23:44:16 +0900</pubDate>
-    <lastBuildDate>Sun, 17 Apr 2022 23:44:16 +0900</lastBuildDate>
+    <link>http://localhost:4000/blog/</link>
+    <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 18 Apr 2022 00:05:27 +0900</pubDate>
+    <lastBuildDate>Mon, 18 Apr 2022 00:05:27 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -157,8 +157,8 @@ insert success! 라는 내용이 출력되면, sql 파일로 쿼리를 실행해
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 17 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0008/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0008/</guid>
+        <link>http://localhost:4000/blog/study/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0008/</guid>
         
         <category>Servlet</category>
         
@@ -313,8 +313,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Fri, 15 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0007/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0007/</guid>
+        <link>http://localhost:4000/blog/study/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0007/</guid>
         
         <category>Servlet</category>
         
@@ -576,8 +576,8 @@ Spring이라면 더 편하게 했을텐데ㅠㅠ하지만 Spring까진 많은 �
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0006/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0006/</guid>
+        <link>http://localhost:4000/blog/study/0006/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0006/</guid>
         
         <category>Servlet</category>
         
@@ -769,8 +769,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0005/</guid>
+        <link>http://localhost:4000/blog/study/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0005/</guid>
         
         <category>Servlet</category>
         
@@ -857,8 +857,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0004/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0004/</guid>
+        <link>http://localhost:4000/blog/study/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0004/</guid>
         
         <category>Servlet</category>
         
@@ -980,8 +980,8 @@ url에 /calc.do?su1=1&amp;amp;su2=100 이라고 값이 보여버리게 된다.&l
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0003/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0003/</guid>
+        <link>http://localhost:4000/blog/study/0003/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0003/</guid>
         
         <category>Servlet</category>
         
@@ -1051,8 +1051,8 @@ url에 /calc.do?su1=1&amp;amp;su2=100 이라고 값이 보여버리게 된다.&l
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/jasper/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/jasper/0001/</guid>
+        <link>http://localhost:4000/blog/jasper/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/jasper/0001/</guid>
         
         <category>Jasper</category>
         
@@ -1111,8 +1111,8 @@ Ajax에, 옵션값을 두개 추가하면 된다.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 13 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/error/0008/</link>
-        <guid isPermaLink="true">http://localhost:4000/error/0008/</guid>
+        <link>http://localhost:4000/blog/error/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/error/0008/</guid>
         
         <category>Ajax</category>
         
@@ -1152,8 +1152,8 @@ Resolved [org.springframework.web.HttpMediaTypeNotSupportedException:&lt;br /&gt
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 13 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/error/0007/</link>
-        <guid isPermaLink="true">http://localhost:4000/error/0007/</guid>
+        <link>http://localhost:4000/blog/error/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/error/0007/</guid>
         
         <category>HttpMediaTypeNotSupportedException</category>
         
@@ -1478,8 +1478,8 @@ total : 5050 이란 값이 나오게 된다.&lt;/li&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 12 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0002/</guid>
+        <link>http://localhost:4000/blog/study/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0002/</guid>
         
         <category>Servlet</category>
         
@@ -2127,8 +2127,8 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 12 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/organize/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/organize/0001/</guid>
+        <link>http://localhost:4000/blog/organize/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/organize/0001/</guid>
         
         <category>Linux</category>
         
@@ -2440,8 +2440,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/study/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/study/0001/</guid>
+        <link>http://localhost:4000/blog/study/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/study/0001/</guid>
         
         <category>Servlet</category>
         
@@ -2568,8 +2568,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0011/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0011/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0011/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0011/</guid>
         
         <category>MySQL</category>
         
@@ -2614,8 +2614,8 @@ MySQL을 사용하려고 하니깐 생긴 에러다.&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/error/0006/</link>
-        <guid isPermaLink="true">http://localhost:4000/error/0006/</guid>
+        <link>http://localhost:4000/blog/error/0006/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/error/0006/</guid>
         
         <category>Do you already have another mysqld server running on port 3306</category>
         
@@ -2811,8 +2811,8 @@ MySQL을 사용하려고 하니깐 생긴 에러다.&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/bootstrap/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/bootstrap/0001/</guid>
+        <link>http://localhost:4000/blog/bootstrap/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/bootstrap/0001/</guid>
         
         <category>부트스트랩</category>
         
@@ -2905,8 +2905,8 @@ MySQL을 사용하려고 하니깐 생긴 에러다.&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0010/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0010/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0010/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0010/</guid>
         
         <category>WebServlet</category>
         
@@ -3001,8 +3001,8 @@ HelloServlet 클래스가 실행이 되면서 1~10까지의 합산 값이 출력
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0009/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0009/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0009/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0009/</guid>
         
         <category>서블릿</category>
         
@@ -3154,8 +3154,8 @@ HttpServlet 클래스가 가진 메서드를 재정의 해야하는데&lt;br /&g
 &lt;/div&gt;
 </description>
         <pubDate>Sat, 09 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0008/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0008/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0008/</guid>
         
         <category>스프링부트</category>
         
@@ -3348,8 +3348,8 @@ web에서 자바를 사용하기 위해서는, &lt;code class=&quot;language-pla
 &lt;/div&gt;
 </description>
         <pubDate>Fri, 08 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0007/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0007/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0007/</guid>
         
         <category>스프링부트</category>
         
@@ -3457,8 +3457,8 @@ js나 jsp 파일에서는 동작이 되질 않기 때문에&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0006/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0006/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0006/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0006/</guid>
         
         <category>sts</category>
         
@@ -3637,8 +3637,8 @@ js나 jsp 파일에서는 동작이 되질 않기 때문에&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0005/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0005/</guid>
         
         <category>jsp</category>
         
@@ -3702,8 +3702,8 @@ id쪽에 문제가 있구나를 파악하고, 브라우저 개발자도구 netwo
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/error/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/error/0005/</guid>
+        <link>http://localhost:4000/blog/error/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/error/0005/</guid>
         
         <category>Spring</category>
         
@@ -3835,8 +3835,8 @@ Servers 폴더에 있는 server.xml 에서, 150번째 줄에 있는&lt;/p&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0004/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0004/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0004/</guid>
         
         <category>context</category>
         
@@ -3946,8 +3946,8 @@ Web이라는 프로젝트를 만든다.
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0003/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0003/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0003/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0003/</guid>
         
         <category>웹 애플리케이션</category>
         
@@ -4199,8 +4199,8 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0002/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0002/</guid>
         
         <category>회사 첫 출근</category>
         
@@ -4478,8 +4478,8 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
 
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring-boot/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring-boot/0001/</guid>
+        <link>http://localhost:4000/blog/spring-boot/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0001/</guid>
         
         <category>JPA</category>
         
@@ -4631,8 +4631,8 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/install/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/install/0002/</guid>
+        <link>http://localhost:4000/blog/install/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/install/0002/</guid>
         
         <category>macos</category>
         
@@ -4723,8 +4723,8 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/install/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/install/0001/</guid>
+        <link>http://localhost:4000/blog/install/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/install/0001/</guid>
         
         <category>macos</category>
         
@@ -4817,8 +4817,8 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/error/0004/</link>
-        <guid isPermaLink="true">http://localhost:4000/error/0004/</guid>
+        <link>http://localhost:4000/blog/error/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/error/0004/</guid>
         
         <category>git</category>
         
@@ -4971,8 +4971,8 @@ row / column / row-reverse / column-reverse 이렇게 총 4가지의 정렬 값�
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 21 Mar 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/html_css/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/html_css/0005/</guid>
+        <link>http://localhost:4000/blog/html_css/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/html_css/0005/</guid>
         
         <category>html</category>
         
