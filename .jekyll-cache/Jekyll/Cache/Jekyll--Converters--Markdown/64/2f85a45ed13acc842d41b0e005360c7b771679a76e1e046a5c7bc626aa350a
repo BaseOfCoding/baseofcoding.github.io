@@ -1,0 +1,135 @@
+I"�"<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<hr />
+
+<h3 id="1-회원-저장-메서드-생성">1. 회원 저장 메서드 생성</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">memberInsert</code> 라는 이름을 가진 메서드를 만들고, 매개변수를 <code class="language-plaintext highlighter-rouge">MemberVO</code> 클래스의 변수를 이용해서<br />
+받아온 값을 저장해주면 된다. 일일히 변수에 대한 데이터값을 파라미터로 받지 않고 말이다.<br /></li>
+  <li>그럼 받아온 값을, <code class="language-plaintext highlighter-rouge">insert</code> 쿼리로 데이터베이스에 저장하면 된다.<br /></li>
+  <li>메서드 안에 <code class="language-plaintext highlighter-rouge">String SQL = "insert into member(id, pass, name, age, email, phone) values(?,?,?,?,?,?)";</code> 라는 쿼리문을 만들어준다.<br /></li>
+  <li>쿼리문에서, <code class="language-plaintext highlighter-rouge">?</code>를 파라미터라고 한다.<br /></li>
+  <li>getConnect 함수를 호출해서, 데이터베이스를 연결할 수 있게 Connection 객체를 만들어주고<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">PreparedStatement</code> 형 변수를 이용해서, SQL 문장을 전송할 수 있는 객체를 생성해서, 미리 컴파일을 시킨다.<br /></li>
+  <li>미리 컴파일을 시키는 이유는 속도가 빠르기 때문이다.<br /></li>
+  <li>이제 <code class="language-plaintext highlighter-rouge">?</code> 로 된 쿼리 파라미터에 값만 추가해주고, 데이터베이스에 전송시키면 된다.</li>
+  <li>코드는 다음과 같다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kt">int</span> <span class="nf">memberInsert</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 1. ? (파라미터 ) 순서는 1 2 3 4 5 6 으로, 0번이 아닌 1번으로 시작한다.</span>
+		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"insert into member(id, password, name, age, email, phone) values(?,?,?,?,?,?)"</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+		<span class="c1">// 2. Connection 객체 만들기</span>
+		<span class="n">getConnect</span><span class="o">();</span>
+		
+		<span class="c1">// 3. SQL 문장을 전송하는 객체 생성하기</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>		<span class="c1">// 미리 컴파일을 시킨다. ( 속도가 빠르다. )</span>
+			
+			<span class="c1">// 4. 파라미터에 값 추가하기</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
+			
+			<span class="c1">// 5. 전송</span>
+			<span class="n">success</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>		<span class="c1">// executeUpdate는, 0 or 1이 반환되는데. 반환 값이 0이면 전송이 실패된것이고 1이면 전송이 잘 된 것으로 처리가 된다.</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">success</span><span class="o">;</span>
+	<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h3 id="2-controller에서-회원저장-메서드-실행하기">2. Controller에서, 회원저장 메서드 실행하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="c1">// Model과 연동하기</span>
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberInsert</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// 가입 성공시</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"insert success!"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="c1">// 가입 실패시 예외객체를 만들어서 WAS(톰캣서버) 에게 던진다.</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not insert!"</span><span class="o">);</span>
+		<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h3 id="3-mysql-실행하기">3. MySQL 실행하기</h3>
+
+<ul>
+  <li>이전 공부내용에서, MySQL 실행하듯이 실행하고 서버를 실행해서 데이터들을 입력하고 가입버튼을 클릭해보자.<br />
+insert success! 라는 내용이 출력되면, sql 파일로 쿼리를 실행해서 데이터가 잘 들어갔는 지 확인하자. 난 잘됐다.<br /></li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET

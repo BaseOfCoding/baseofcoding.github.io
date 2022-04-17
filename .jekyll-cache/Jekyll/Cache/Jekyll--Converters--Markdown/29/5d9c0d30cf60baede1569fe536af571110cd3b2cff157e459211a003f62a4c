@@ -1,4 +1,4 @@
-I"�<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+I"(<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -87,6 +87,34 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
   <li>user와 password는 데이터베이스를 만들 때 생성한 이름과 암호를 변수에 넣어주면 되고<br />
 주소는 다음과 같이 찾을 수 있다.<br /></li>
   <li><code class="language-plaintext highlighter-rouge">Data Source Explorer</code> - <code class="language-plaintext highlighter-rouge">SQL 데이터베이스 오른쪽 마우스 클릭</code> - <code class="language-plaintext highlighter-rouge">Properties</code> - <code class="language-plaintext highlighter-rouge">Driver Properties</code> 를 누르면, URL이 나온다.</li>
+  <li>해당 URL을 복사해서, 변수에 저장한다.</li>
+  <li>그리고, DB회사에서 제공해주는 driver를 다운받거나, 전자정부 프레임워크를 사용한다면<br />
+<code class="language-plaintext highlighter-rouge">maven</code> - <code class="language-plaintext highlighter-rouge">repository</code> - <code class="language-plaintext highlighter-rouge">mysql</code> - <code class="language-plaintext highlighter-rouge">mysql-connector-java</code> - <code class="language-plaintext highlighter-rouge">원하는 버전</code> 에서<br />
+<code class="language-plaintext highlighter-rouge">mysql-connector-java-version</code>을 <code class="language-plaintext highlighter-rouge">WEB-INF</code> - <code class="language-plaintext highlighter-rouge">lib</code> 폴더에 복사해주면 된다.</li>
+  <li>그 다음, Driver를 로딩해줘야 한다. MySQL은 <code class="language-plaintext highlighter-rouge">com.mysql.jdbc.Driver</code> 이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">Class.forName("com.mysql.jdbc.Driver")</code> 을 try catch 문을 이용해, Driver 클래스를 찾고<br />
+<code class="language-plaintext highlighter-rouge">DriverManager.getConnection(URL, user, password);</code> 를 해주면 되는데, getConnection은, 데이터베이스 연결정보들을 반환한다.<br />
+그게 바로 Connection 클래스형태로 반환을 하기 때문에, conn이란 변수에 반환된 값을 대입하면 된다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-데이터베이스-driver란">3. 데이터베이스 Driver란?</h3>
+
+<ul>
+  <li>대표적인 데이터베이스로, <code class="language-plaintext highlighter-rouge">MySQL</code>, <code class="language-plaintext highlighter-rouge">ORACLE</code>, <code class="language-plaintext highlighter-rouge">MS-SQL</code>이 있다.<br />
+그런데 만약 이 회사들이 사용하는 API가 다르다면 어떻게 될까?<br />
+<code class="language-plaintext highlighter-rouge">MySQL</code>로 만들어진 프로젝트에서 갑자기 <code class="language-plaintext highlighter-rouge">MS-SQL</code>로 바뀐다..? 그럼 하나하나 다시 전부 바꿔줘야하는가? 그건 아니다.<br />
+그래서 각자 프로그램에서 제공하는 것이 Driver다.<br />
+자바에서 제공하는 interface를 가지고, 각 DB 회사들은 자신들만의 클래스를 만든다.<br />
+그럼 해당 회사들이 그 클래스들을 제공하도록 하는 것이 바로 <code class="language-plaintext highlighter-rouge">Driver</code>가 된다.<br />
+그래서 자바 개발자들은, JDBC(java.sql)만 알면 되고, 각 회사에 맞는 <code class="language-plaintext highlighter-rouge">Driver</code>만 있으면 사용이 가능해진다.</li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>연결이 되는 지 안되는 지는 다음 강의에서, insert 쿼리를 만들면서 확인을 해볼 것이다.</li>
 </ul>
 
 <hr />
