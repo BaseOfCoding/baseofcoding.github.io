@@ -3,11 +3,217 @@
   <channel>
     <title>코딩의 기초는 Nerd Lee</title>
     <description>코딩을 말하다</description>
-    <link>http://localhost:4000/blog/</link>
-    <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Apr 2022 00:05:27 +0900</pubDate>
-    <lastBuildDate>Mon, 18 Apr 2022 00:05:27 +0900</lastBuildDate>
+    <link>http://localhost:4000//</link>
+    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 18 Apr 2022 23:16:57 +0900</pubDate>
+    <lastBuildDate>Mon, 18 Apr 2022 23:16:57 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
+    
+      <item>
+        <title>[Servlet] 09. 회원리스트 가져오기(묶고(VO)-담고(List))</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
+공부 내용은, 인프런 박매일님의
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[NarP Series]MVC 프레임워크는 내 손에[나프1탄]&lt;/code&gt; 을 참고하였습니다.&lt;br /&gt;
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고&lt;br /&gt;
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.&lt;br /&gt;
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt;
+
+&lt;p&gt;진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-unique-key-만들기&quot;&gt;1. unique key 만들기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기존 회원테이블에 id를 unique key로 만들어서, 아이디가 중복이 될 경우 테이블에 추가를 못하게 만든다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;
+&lt;span class=&quot;c1&quot;&gt;-- 테이블 삭제하기&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;drop&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;-- 테이블 생성&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auto_increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;phone&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;unique&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-memberlistcontroller-및-dao-메서드-구현하기&quot;&gt;2. MemberListController 및 DAO 메서드 구현하기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;member 테이블에 저장되어 있는 데이터들을 가져와서 출력해주는 서블릿을 하나 만든다.&lt;/li&gt;
+  &lt;li&gt;이름은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MemberListController&lt;/code&gt; 다.&lt;/li&gt;
+  &lt;li&gt;MemberDAO에서 전체 회원리스트를 가져오는 메서드를 구현한다.&lt;/li&gt;
+  &lt;li&gt;이번 select 쿼리는 executeUpdate가 아닌 executeQuery 라는 메서드로, 실행을 시킨다.&lt;br /&gt;
+실행을 하면, 반환값은 ResultSet이기 때문에, 위에 만들어준 ResultSet 형 변수 rs로 대입시킨다.&lt;/li&gt;
+  &lt;li&gt;그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rs.next()&lt;/code&gt; 라는 함수를 이용해서, 값을 받아올 수 있을 때까지 받아온다.&lt;/li&gt;
+  &lt;li&gt;그 다음, ArrayList를 만들어서, 값을 저장하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 전체 회원 리스트 가져오기&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MemberVO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;memberGetList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SQL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;select * from member&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		
+		&lt;span class=&quot;c1&quot;&gt;// 데이터베이스 연결&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;getConnect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		
+		&lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MemberVO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MemberVO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+		
+		&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prepareStatement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SQL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			
+			&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;executeQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			
+			&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;phone&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;MemberVO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MemberVO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;phone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;dbClose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;c1&quot;&gt;// 데이터베이스 연결 해제&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dbClose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 18 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000//study/0009/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0009/</guid>
+        
+        <category>Servlet</category>
+        
+        <category>서블릿</category>
+        
+        <category>JAVA</category>
+        
+        <category>servlet</category>
+        
+        <category>비지니스 로직</category>
+        
+        <category>프리젠테이션 로직</category>
+        
+        <category>회원가입</category>
+        
+        <category>서블릿 회원가입</category>
+        
+        
+        <category>Study</category>
+        
+      </item>
     
       <item>
         <title>[Servlet] 08. 회원가입 구현하기</title>
@@ -157,8 +363,8 @@ insert success! 라는 내용이 출력되면, sql 파일로 쿼리를 실행해
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 17 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0008/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0008/</guid>
+        <link>http://localhost:4000//study/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0008/</guid>
         
         <category>Servlet</category>
         
@@ -313,8 +519,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Fri, 15 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0007/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0007/</guid>
+        <link>http://localhost:4000//study/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0007/</guid>
         
         <category>Servlet</category>
         
@@ -576,8 +782,8 @@ Spring이라면 더 편하게 했을텐데ㅠㅠ하지만 Spring까진 많은 �
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0006/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0006/</guid>
+        <link>http://localhost:4000//study/0006/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0006/</guid>
         
         <category>Servlet</category>
         
@@ -769,8 +975,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0005/</guid>
+        <link>http://localhost:4000//study/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0005/</guid>
         
         <category>Servlet</category>
         
@@ -857,8 +1063,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0004/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0004/</guid>
+        <link>http://localhost:4000//study/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0004/</guid>
         
         <category>Servlet</category>
         
@@ -980,8 +1186,8 @@ url에 /calc.do?su1=1&amp;amp;su2=100 이라고 값이 보여버리게 된다.&l
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0003/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0003/</guid>
+        <link>http://localhost:4000//study/0003/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0003/</guid>
         
         <category>Servlet</category>
         
@@ -1051,8 +1257,8 @@ url에 /calc.do?su1=1&amp;amp;su2=100 이라고 값이 보여버리게 된다.&l
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 14 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/jasper/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/jasper/0001/</guid>
+        <link>http://localhost:4000//jasper/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000//jasper/0001/</guid>
         
         <category>Jasper</category>
         
@@ -1111,8 +1317,8 @@ Ajax에, 옵션값을 두개 추가하면 된다.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 13 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/error/0008/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/error/0008/</guid>
+        <link>http://localhost:4000//error/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000//error/0008/</guid>
         
         <category>Ajax</category>
         
@@ -1152,8 +1358,8 @@ Resolved [org.springframework.web.HttpMediaTypeNotSupportedException:&lt;br /&gt
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 13 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/error/0007/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/error/0007/</guid>
+        <link>http://localhost:4000//error/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000//error/0007/</guid>
         
         <category>HttpMediaTypeNotSupportedException</category>
         
@@ -1478,8 +1684,8 @@ total : 5050 이란 값이 나오게 된다.&lt;/li&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 12 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0002/</guid>
+        <link>http://localhost:4000//study/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0002/</guid>
         
         <category>Servlet</category>
         
@@ -2127,8 +2333,8 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 12 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/organize/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/organize/0001/</guid>
+        <link>http://localhost:4000//organize/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000//organize/0001/</guid>
         
         <category>Linux</category>
         
@@ -2440,8 +2646,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/study/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/study/0001/</guid>
+        <link>http://localhost:4000//study/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0001/</guid>
         
         <category>Servlet</category>
         
@@ -2568,8 +2774,8 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0011/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0011/</guid>
+        <link>http://localhost:4000//spring-boot/0011/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0011/</guid>
         
         <category>MySQL</category>
         
@@ -2614,8 +2820,8 @@ MySQL을 사용하려고 하니깐 생긴 에러다.&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/error/0006/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/error/0006/</guid>
+        <link>http://localhost:4000//error/0006/</link>
+        <guid isPermaLink="true">http://localhost:4000//error/0006/</guid>
         
         <category>Do you already have another mysqld server running on port 3306</category>
         
@@ -2811,8 +3017,8 @@ MySQL을 사용하려고 하니깐 생긴 에러다.&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/bootstrap/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/bootstrap/0001/</guid>
+        <link>http://localhost:4000//bootstrap/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000//bootstrap/0001/</guid>
         
         <category>부트스트랩</category>
         
@@ -2905,8 +3111,8 @@ MySQL을 사용하려고 하니깐 생긴 에러다.&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0010/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0010/</guid>
+        <link>http://localhost:4000//spring-boot/0010/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0010/</guid>
         
         <category>WebServlet</category>
         
@@ -3001,8 +3207,8 @@ HelloServlet 클래스가 실행이 되면서 1~10까지의 합산 값이 출력
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 10 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0009/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0009/</guid>
+        <link>http://localhost:4000//spring-boot/0009/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0009/</guid>
         
         <category>서블릿</category>
         
@@ -3154,8 +3360,8 @@ HttpServlet 클래스가 가진 메서드를 재정의 해야하는데&lt;br /&g
 &lt;/div&gt;
 </description>
         <pubDate>Sat, 09 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0008/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0008/</guid>
+        <link>http://localhost:4000//spring-boot/0008/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0008/</guid>
         
         <category>스프링부트</category>
         
@@ -3348,8 +3554,8 @@ web에서 자바를 사용하기 위해서는, &lt;code class=&quot;language-pla
 &lt;/div&gt;
 </description>
         <pubDate>Fri, 08 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0007/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0007/</guid>
+        <link>http://localhost:4000//spring-boot/0007/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0007/</guid>
         
         <category>스프링부트</category>
         
@@ -3457,8 +3663,8 @@ js나 jsp 파일에서는 동작이 되질 않기 때문에&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0006/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0006/</guid>
+        <link>http://localhost:4000//spring-boot/0006/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0006/</guid>
         
         <category>sts</category>
         
@@ -3637,8 +3843,8 @@ js나 jsp 파일에서는 동작이 되질 않기 때문에&lt;br /&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0005/</guid>
+        <link>http://localhost:4000//spring-boot/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0005/</guid>
         
         <category>jsp</category>
         
@@ -3702,8 +3908,8 @@ id쪽에 문제가 있구나를 파악하고, 브라우저 개발자도구 netwo
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/error/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/error/0005/</guid>
+        <link>http://localhost:4000//error/0005/</link>
+        <guid isPermaLink="true">http://localhost:4000//error/0005/</guid>
         
         <category>Spring</category>
         
@@ -3835,8 +4041,8 @@ Servers 폴더에 있는 server.xml 에서, 150번째 줄에 있는&lt;/p&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0004/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0004/</guid>
+        <link>http://localhost:4000//spring-boot/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0004/</guid>
         
         <category>context</category>
         
@@ -3946,8 +4152,8 @@ Web이라는 프로젝트를 만든다.
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0003/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0003/</guid>
+        <link>http://localhost:4000//spring-boot/0003/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0003/</guid>
         
         <category>웹 애플리케이션</category>
         
@@ -4199,8 +4405,8 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0002/</guid>
+        <link>http://localhost:4000//spring-boot/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0002/</guid>
         
         <category>회사 첫 출근</category>
         
@@ -4478,8 +4684,8 @@ Spring MVC 패턴에 대한 내용들과, mybatis에 관련되서 궁금했던 �
 
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/spring-boot/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/spring-boot/0001/</guid>
+        <link>http://localhost:4000//spring-boot/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000//spring-boot/0001/</guid>
         
         <category>JPA</category>
         
@@ -4631,8 +4837,8 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/install/0002/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/install/0002/</guid>
+        <link>http://localhost:4000//install/0002/</link>
+        <guid isPermaLink="true">http://localhost:4000//install/0002/</guid>
         
         <category>macos</category>
         
@@ -4723,8 +4929,8 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/install/0001/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/install/0001/</guid>
+        <link>http://localhost:4000//install/0001/</link>
+        <guid isPermaLink="true">http://localhost:4000//install/0001/</guid>
         
         <category>macos</category>
         
@@ -4817,8 +5023,8 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/error/0004/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/error/0004/</guid>
+        <link>http://localhost:4000//error/0004/</link>
+        <guid isPermaLink="true">http://localhost:4000//error/0004/</guid>
         
         <category>git</category>
         
@@ -4834,156 +5040,6 @@ ZSH_THEME&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&q
         
         
         <category>Error</category>
-        
-      </item>
-    
-      <item>
-        <title>[HTML/CSS] 4. CSS Flex (1)</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/html_css.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;🖥 HTML / CSS 이전 글 보기&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/html_css/0001/&quot;&gt;01. HTML의 구조에 대해서&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/html_css/0002/&quot;&gt;02. HTML의 기본 문법에 대해서&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/html_css/0003/&quot;&gt;03. CSS 기본 구조 (1)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/html_css/0004/&quot;&gt;03. CSS 기본 구조 (2)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;안녕하세요. Nerd Lee 입니다.&lt;/p&gt;
-
-&lt;p&gt;CSS에서 중요한 Flex에 대한 첫 번째 공부 내용을 적어보도록 하겠습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;css-flex&quot;&gt;CSS Flex&lt;/h1&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;1-flex--grid&quot;&gt;1. Flex &amp;amp; Grid?&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;flex&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1차원 정렬에 대한 속성&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;grid&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;2차원 정렬에 대한 속성&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;2-flex에-사용되는-속성&quot;&gt;2. flex에 사용되는 속성&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;h4 id=&quot;21-참고할-만한-링크&quot;&gt;2.1) 참고할 만한 링크&lt;/h4&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&quot;&gt;CSS Tricks&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://studiomeal.com/archives/197&quot;&gt;1분 코딩&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;h4 id=&quot;22-display-속성에서-flex로-값을-지정&quot;&gt;2.2) display 속성에서 flex로 값을 지정&lt;/h4&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;display 속성에서, flex로 사용하면 됩니다. 기본 정렬은 row로 설정됩니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;h4 id=&quot;23-flex-direction&quot;&gt;2.3) flex-direction&lt;/h4&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;flex-direction은 정렬되는 방향을 정하기 위한 속성입니다.&lt;br /&gt;
-row / column / row-reverse / column-reverse 이렇게 총 4가지의 정렬 값이 제공됩니다.
-    &lt;ul&gt;
-      &lt;li&gt;row : 가로 정렬 ( default )&lt;/li&gt;
-      &lt;li&gt;column: 세로 정렬&lt;/li&gt;
-      &lt;li&gt;row-reverse : 가로 역방향 정렬&lt;/li&gt;
-      &lt;li&gt;column-reverse: 세로 역방향 정렬&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;LYeZRqw&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
-  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/LYeZRqw/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/p&gt;
-&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;h4 id=&quot;24-flex-wrap&quot;&gt;2.4) flex-wrap&lt;/h4&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;no-wrap &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; wrap &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; wrap-reverse로 값이 제공되며, default로는 nowrap으로 설정이 되어 있습니다.
-    &lt;ul&gt;
-      &lt;li&gt;no-wrap : 브라우저 영역에 벗어나도, 아이템을 밑으로 내려보내지 않습니다.&lt;/li&gt;
-      &lt;li&gt;wrap : 브라우저 영역을 벗어나게 되면 아이템을 밑으로 내려보냅니다.&lt;/li&gt;
-      &lt;li&gt;wrap-reverse : 아이템을 밑으로 내려보내지만, 거꾸로 정렬해서 표시합니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;zYpBooV&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
-  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/zYpBooV/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/p&gt;
-&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;h4 id=&quot;25-flex-flow&quot;&gt;2.5) flex-flow&lt;/h4&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;flex-flow는, flex-direction과 flex-wrap을 한 번에 사용할 수 있는 축약형 속성입니다.&lt;br /&gt;
-    &lt;ul&gt;
-      &lt;li&gt;예 ) flex-flow : column wrap; 이면, 세로로 정렬되고 영역을 벗어나면&lt;br /&gt; 아이템에 크기에 맞게 다른 영역에 채워줘! 라고 한 번에 명령을 내리게 됩니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p data-height=&quot;300&quot; data-theme-id=&quot;0&quot; data-slug-hash=&quot;BaJzQJY&quot; data-default-tab=&quot;html,result&quot; data-user=&quot;nerd-lee&quot; class=&quot;codepen split-output&quot;&gt;
-  See the Pen &lt;a href=&quot;https://codepen.io/nerd-lee/pen/BaJzQJY/&quot;&gt;hello&lt;/a&gt; by nerd-lee (&lt;a href=&quot;https://codepen.io/nerd-lee&quot;&gt;@nerd-lee&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.
-&lt;/p&gt;
-&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;다음 내용은, 2편으로 넘어가도록 하겠습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
-이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
-다음 글로 찾아오겠습니다!
-
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 21 Mar 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/html_css/0005/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/html_css/0005/</guid>
-        
-        <category>html</category>
-        
-        <category>css</category>
-        
-        <category>head</category>
-        
-        <category>body</category>
-        
-        
-        <category>HTML_CSS</category>
         
       </item>
     
