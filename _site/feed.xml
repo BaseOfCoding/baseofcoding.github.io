@@ -5,8 +5,8 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Apr 2022 23:16:57 +0900</pubDate>
-    <lastBuildDate>Mon, 18 Apr 2022 23:16:57 +0900</lastBuildDate>
+    <pubDate>Mon, 18 Apr 2022 23:55:17 +0900</pubDate>
+    <lastBuildDate>Mon, 18 Apr 2022 23:55:17 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -206,9 +206,13 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
         
         <category>프리젠테이션 로직</category>
         
-        <category>회원가입</category>
+        <category>회원리스트 가져오기</category>
         
-        <category>서블릿 회원가입</category>
+        <category>vo</category>
+        
+        <category>list</category>
+        
+        <category>arraylist</category>
         
         
         <category>Study</category>
