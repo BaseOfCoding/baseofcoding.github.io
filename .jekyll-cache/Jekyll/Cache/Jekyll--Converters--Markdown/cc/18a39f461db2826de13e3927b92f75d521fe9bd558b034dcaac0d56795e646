@@ -1,4 +1,4 @@
-I"<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"�<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 프로그래머들은 귀찮은 걸 굉장히 싫어합니다. 그래서 단축키 몇 개 정도만 알아도 마우스에 손을 가져 갈 일이 없어지는데요.<br />
@@ -68,6 +68,15 @@ Window 환경에서 작업중이기 때문에, Window 환경에 맞는 단축키
   <li><code class="language-plaintext highlighter-rouge">Ctrl + /</code> 이것도 물론 사용은 가능하지만, 자바 한정이다.<br />
 js나 jsp 파일에서는 동작이 되질 않기 때문에<br />
 <code class="language-plaintext highlighter-rouge">Ctrl + Shift + C</code> 키를 사용하는 것이 좋다.</li>
+</ul>
+
+<hr />
+
+<h3 id="9-메소드-호출-한-곳-찾기--ctrl--alt--h-">9. 메소드 호출 한 곳 찾기 ( Ctrl + Alt + H )</h3>
+
+<ul>
+  <li>메소드 이름에 커서를 맞추고, <code class="language-plaintext highlighter-rouge">Ctrl + Alt + H</code> 를 입력하면<br />
+Open call Hierarchy 창이 열리면서, 호출한 부분들을 찾아준다.</li>
 </ul>
 
 <hr />

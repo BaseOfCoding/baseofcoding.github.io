@@ -1,0 +1,33 @@
+I"�<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
+
+<hr />
+
+<h3 id="1-테이블에-아이디를-a태그로-감싸주기">1. 테이블에 아이디를 a태그로 감싸주기</h3>
+
+<ul>
+  <li>상세보기 페이지로 넘어갈 수 있는 anchor 태그를 id 컬럼에 감싸준다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;a href='/memberContent.do'&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/a&gt;&lt;/td&gt;"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>
+:ET
