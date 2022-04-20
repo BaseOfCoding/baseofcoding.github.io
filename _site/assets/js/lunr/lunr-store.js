@@ -310,4 +310,10 @@ var store = [{
         "tags": ["Servlet","서블릿","JAVA","servlet","비지니스 로직","프리젠테이션 로직","회원정보 수정하기"],
         "url": "/study/0013/",
         "teaser": null
+      },{
+        "title": "[Servlet] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )",
+        "excerpt":"   안녕하세요. Nerd-Lee입니다.  공부 내용은, 인프런 박매일님의 [NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.  MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고  나중에는 Spring Framework를 사용하는 방식의 강의입니다.  MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.   진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.     1. MVC01에 대한 내용   1.1. Controller     MVC 1단계는, View는 없고, Model과 Controller로만 이루어져 있다.    현재 서블릿으로 만든 프로젝트를 보면, Controller 소스 파일이 많다는 것을 느낄 수 있다.  /memberList.do, /memberInsert.do, /memberContent.do, /memberDelete.do, /memberUpdate.do 라는 url을 클라이언트가 요청을 하면 각 서블릿에 가서, 서블릿에서 view까지 처리를 하기 때문에, 많아질 수 밖에 없어진다.    그래서 Controller 갯수를 하나로 만들어서 처리를 할 수 있다.   1.2. Model(Java)     Model은, VO와 DAO 로 나눈다. DAO 는 JDBC를 이용해서 데이터베이스에 접근한 다음  쿼리에 맞는 데이터를 가지고 와서 컨트롤러에서, DAO를 호출해서 해당 값을 클라이언트에 응답해주는 형태이다.   JDBC는, JAVA + SQL 이기 때문에, SQL을 수정하려 해도, JAVA 코드를 수정해야 해서, 유지보수가 굉장히 까다로워진다.  그래서, MyBatis나, JPA를 사용하게 되는데, 이 강의는 MyBatis 프레임워크를 사용하게 된다.     2. Redirect 기법이란?      예를 들어, 보험회사에 김대리와 나과장이 있고, 타 부서인 조대리가 있다.  여기서 김대리와 나과장은 Controller 역할을 조대리는 Model 역할을 맡는다.     그런데, 고객(client) 한명이 교통사고를 당해, 김대리쪽에 전화를 걸었다고 치자.     하지만, 김대리는 교통사고에 대한 업무를 맡는 사람이 아니고 교통사고 업무는 나과장이 담당이라면?     그 때 김대리는 고객에게 설명한 후에, 나과장에게 전화를 돌릴 것이다. 이걸 Redirect 라고 부른다.     그럼 나과장은 자신의 담당업무이기 때문에 요청을 받았으면, 응답을 할 것이다.            이 글이 도움이 되셨다면 댓글 부탁드립니다^^  다음 글로 찾아오겠습니다!   ","categories": ["Study"],
+        "tags": ["Servlet","서블릿","JAVA","servlet","비지니스 로직","프리젠테이션 로직","MVC","MVC1단계","Redirect","redirect"],
+        "url": "/study/0014/",
+        "teaser": null
       }]
