@@ -5,12 +5,297 @@
     <description>코딩을 말하다</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 21 Apr 2022 00:08:09 +0900</pubDate>
-    <lastBuildDate>Thu, 21 Apr 2022 00:08:09 +0900</lastBuildDate>
+    <pubDate>Thu, 21 Apr 2022 23:57:52 +0900</pubDate>
+    <lastBuildDate>Thu, 21 Apr 2022 23:57:52 +0900</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
-        <title>[Servlet] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )</title>
+        <title>[MVC SPRING] 15. MVC02(JSP 구성요소 알아보기)</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
+공부 내용은, 인프런 박매일님의
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[NarP Series]MVC 프레임워크는 내 손에[나프1탄]&lt;/code&gt; 을 참고하였습니다.&lt;br /&gt;
+MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서&lt;br /&gt;
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-mvc02-프로젝트-만들기&quot;&gt;1. MVC02 프로젝트 만들기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MVC02라는 프로젝트를 Dynamic Web Project로 생성한 후에 root는 MVC02로 설정하여 만든다.&lt;/li&gt;
+  &lt;li&gt;WAS와 Context(연결)을 해줘야 한다. Servers -&amp;gt; Tomcat server 오른쪽 클릭하고, Add and Remove를 클릭&lt;br /&gt;
+MVC02를 Add 해주면 완료.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-프로젝트-셋팅&quot;&gt;2. 프로젝트 셋팅&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MVC01에 사용했던 mysql-connector를 MVC02 프로젝트로 복사-붙혀넣기 한다.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;MVC01에 사용한 db와 model 패키지도 복사-붙혀넣기해서 src 폴더에 넣어주자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-jsp란&quot;&gt;3. JSP란?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;JSP는, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Java Server Page&lt;/code&gt;의 약자이다. 서블릿도 물론 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Server + let&lt;/code&gt; 을 붙인 단어로 100% 자바 웹 프로그래밍이지만&lt;br /&gt;
+JSP와 Servlet의 차이는, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Servlet은 Controller&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JSP는 View&lt;/code&gt; 역할을 담당한다는 것이다.&lt;/li&gt;
+  &lt;li&gt;그럼 간단하게, JSP 파일을 만들어보자. WebContent 폴더를 오른쪽 마우스로 클릭해서, new -&amp;gt; JSP File을 클릭하자.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;그리고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test01.jsp&lt;/code&gt; 파일을 만든다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;4-jsp-구성요소-파헤치기&quot;&gt;4. JSP 구성요소 파헤치기&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4-1. 아래와 같은 형태는 jsp에서, 지시자라고 부르게 된다. 지시자는 스크립트적인 요소(프로그래밍적인 요소) 이다.&lt;br /&gt;
+지시자는 3가지 형태로 사용할 수 있다. 첫 번째는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page 지시자&lt;/code&gt;이다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page 지시자&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; 안에, page라고 적혀있다.&lt;br /&gt;
+두번째는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include 지시자&lt;/code&gt; 이다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt;안에, include가 적혀있다.&lt;br /&gt;
+세번째는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;taglib 지시자&lt;/code&gt; 이다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt;안에, taglib가 적혀있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;
+    pageEncoding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4-2. JSP로 간단하게, 1~?? 까지 더했을 때 총합을 구하는 웹 프로그램을 만들어보자.&lt;br /&gt;
+이 부분은 Spring-Boot 카테고리에도 적어놨던 부분이다.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; 사이에, 코드를 작성할 수 있다. 이렇게 코드를 작성할 수 있는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스크립트릿&lt;/code&gt; 이라고 부른다.&lt;br /&gt;
+아래의 코드를 살펴보자. 아래 코드는 1~10까지의 합을 구하는 코드이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;
+    pageEncoding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4-3. 그럼 이제 sum의 값을 출력시켜줘야 하는데, 출력을 할 수 있는 방법은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%=sum %&amp;gt;&lt;/code&gt; 이렇게 만들어줘야&lt;br /&gt;
+스크립트릿에서 만들어준 코드를 return 받아서 출력할 수가 있고, 이와 같은 형식을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;출력식&lt;/code&gt; 이라고 부른다.&lt;br /&gt;
+아래 코드를 살펴보도록 하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;
+    pageEncoding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Insert title here&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+1~10까지의 총합= &lt;span class=&quot;nt&quot;&gt;&amp;lt;%=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;서블릿과 jsp의 차이는, 서블릿은 html 코드를 따로따로 입력해줘야 하기 때문에&lt;br /&gt;
+태그수가 적으면 상관이 없으나 많아지면 유지보수도 어려워지고 복잡해진다는 큰 단점이 있다.&lt;br /&gt;
+하지만, JSP는 HTML 태그도 같이 사용할 수 있기 때문에, 디자인적 요소로도 서블릿보다는 간편하다는 장점이 있다.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;4-4. 그럼 이젠, 1부터 시작이 아니라, ?? ~ ?? 까지의 숫자를 입력한 합을 출력하는 방식을 만들어보도록 하자.&lt;br /&gt;
+함수를 만들기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt;&lt;/code&gt;가 아닌, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%! %&amp;gt;&lt;/code&gt; 선언문으로 만들어줘야 함수를 사용할 수가 있다.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%! %&amp;gt;&lt;/code&gt;는 JSP에서 선언문이라고 부른다. 아래의 코드를 보도록 하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%!&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;    
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;위는, 두 개의 수를 가지고 와서, 계산을 한 다음 값을 반환하는 함수이다. 그럼 출력을 해보도록 하자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;%-- 지시자 --%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;
+	pageEncoding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;%-- 선언문 --%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%!&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;%-- 스크립트릿 --%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Insert title here&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;border=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;1~100까지의 총합&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;c&quot;&gt;&amp;lt;%-- 출력식 --%&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&amp;lt;%=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;55~350까지의 총합&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&amp;lt;%=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;350&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;그럼 테이블 형태로, 5050과 59940이라는 결과값이 출력이 잘 되는 것을 확인할 수 있다.&lt;br /&gt;
+마지막으로, JSP는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;% %&amp;gt; (지시자)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%= %&amp;gt; (출력식)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%! %&amp;gt; (선언문)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;%-- --%&amp;gt; (JSP 주석)&lt;/code&gt; 으로 구성되어 있다.&lt;br /&gt;
+기억하도록 하자!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
+다음 글로 찾아오겠습니다!
+
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 21 Apr 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000//study/0015/</link>
+        <guid isPermaLink="true">http://localhost:4000//study/0015/</guid>
+        
+        <category>MVC</category>
+        
+        <category>spring</category>
+        
+        <category>스프링</category>
+        
+        <category>spring boot</category>
+        
+        <category>JSP</category>
+        
+        <category>Servlet</category>
+        
+        <category>JSP 구성요소</category>
+        
+        
+        <category>Study</category>
+        
+      </item>
+    
+      <item>
+        <title>[MVC SPRING] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -96,7 +381,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 13. 회원정보 수정하기</title>
+        <title>[MVC SPRING] 13. 회원정보 수정하기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -442,7 +727,7 @@ form 태그 안에 있으면 value의 값을 같이 넘겨줄 수 있게 된다.
       </item>
     
       <item>
-        <title>[Servlet] 12. 회원상세보기 구현</title>
+        <title>[MVC SPRING] 12. 회원상세보기 구현</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -744,7 +1029,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 11. 회원삭제하기(QueryString)</title>
+        <title>[MVC SPRING] 11. 회원삭제하기(QueryString)</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -1024,7 +1309,7 @@ DAO로 넘겨서 DB 쿼리를 실행하면 된다.&lt;/li&gt;
       </item>
     
       <item>
-        <title>[Servlet] 10. 회원리스트 보기</title>
+        <title>[MVC SPRING] 10. 회원리스트 보기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -1299,7 +1584,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 09. 회원리스트 가져오기(묶고(VO)-담고(List))</title>
+        <title>[MVC SPRING] 09. 회원리스트 가져오기(묶고(VO)-담고(List))</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -1509,7 +1794,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 08. 회원가입 구현하기</title>
+        <title>[MVC SPRING] 08. 회원가입 구현하기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -1681,7 +1966,7 @@ insert success! 라는 내용이 출력되면, sql 파일로 쿼리를 실행해
       </item>
     
       <item>
-        <title>[Servlet] 07. 한글처리와 JDBC(DAO)</title>
+        <title>[MVC SPRING] 07. 한글처리와 JDBC(DAO)</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -1841,7 +2126,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 06. 회원관리 UI 및 파라미터 수집(VO) 하기</title>
+        <title>[MVC SPRING] 06. 회원관리 UI 및 파라미터 수집(VO) 하기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -2100,7 +2385,7 @@ Spring이라면 더 편하게 했을텐데ㅠㅠ하지만 Spring까진 많은 �
       </item>
     
       <item>
-        <title>[Servlet] 05. Controller에서 Model 분리하기</title>
+        <title>[MVC SPRING] 05. Controller에서 Model 분리하기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -2295,7 +2580,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 04. GET과 POST 요청 이해하기</title>
+        <title>[MVC SPRING] 04. GET과 POST 요청 이해하기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -2381,7 +2666,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.&lt;/p&gt
       </item>
     
       <item>
-        <title>[Servlet] 03. 요청(HttpServletRequest)과 응답(HttpServletResponse) 이해하기</title>
+        <title>[MVC SPRING] 03. 요청(HttpServletRequest)과 응답(HttpServletResponse) 이해하기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -2668,7 +2953,7 @@ Resolved [org.springframework.web.HttpMediaTypeNotSupportedException:&lt;br /&gt
       </item>
     
       <item>
-        <title>[Servlet] 02. Controller의 역할</title>
+        <title>[MVC SPRING] 02. Controller의 역할</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -3647,7 +3932,7 @@ if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&q
       </item>
     
       <item>
-        <title>[Servlet] 01. Servlet과 Model로 회원관리 만들기</title>
+        <title>[MVC SPRING] 01. Servlet과 Model로 회원관리 만들기</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/java.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
@@ -5357,123 +5642,6 @@ Servers 폴더에 있는 server.xml 에서, 150번째 줄에 있는&lt;/p&gt;
         <category>톰캣 서버</category>
         
         <category>톰캣 서버 컨텍스트 등록</category>
-        
-        
-        <category>Spring-Boot</category>
-        
-      </item>
-    
-      <item>
-        <title>Web Application 디렉터리 구조 공부</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/etc/javaspring.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;안녕하세요. Nerd-Lee입니다.&lt;br /&gt;
-공부 내용은, 인프런 박매일님의
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[NarP Series]MVC 프레임워크는 내 손에[나프1탄]&lt;/code&gt; 을 참고하였습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;WAS ( Web Application Server ) 가 알 수 있는 구조는 다음과 같이 만들 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이클립스 환경에서, Java Project를 생성한다.
-Web이라는 프로젝트를 만든다.
-프로젝트를 만들면, src라는 폴더와 bin 폴더가 생긴다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Web Application 기본 디렉터리 구조&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt; 프로젝트 폴더 이름 ( root project folder )
- -- src
- -- webapp
- 	-- WEB-INF
-       -- lib
-       -- classes 
-       -- web.xml
- -- bin
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;1-web&quot;&gt;1. WEB&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이 프로젝트 이름이 꼭 WEB이 아니여도 되지만, 그냥 최상위 프로젝트 폴더를 뜻한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2-src--bin&quot;&gt;2. src / bin&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Java Project로 만들면 기본으로 생성이 되는 폴더들이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3-webapp&quot;&gt;3. webapp&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Web Application을 만들 때, 기본으로 가지고 있어야 하는 상위 구조 폴더이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;4-web-inf&quot;&gt;4. WEB-INF&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;WEB-INF 폴더는, webapp 폴더의 하위 폴더로 웹 브라우저에서 직접 접근할 수 없고 웹 컨테이너 ( 톰캣 서버 ) 가 대신 접근하고 결과물만을 웹 브라우저에게 전달할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;5-lib&quot;&gt;5. lib&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;WEB-INF 폴더의 하위 폴더로 api ( .jar ) 를 가지고 있는 폴더이다. 그리고 lib 폴더는 꼭 없어도 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;6-classes&quot;&gt;6. classes&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;WEB-INF 폴더의 하위 폴더로 자바 환경에서는 bin 폴더에 .class 파일들이 생성이 되지만, 웹 환경으로 변경이 되면, classes 폴더에 .class 파일들이 생성이 되게 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;7-webxml&quot;&gt;7. web.xml&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;WEB-INF 폴더에 있어야하는 파일이자, 배치 서술자 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(deploy Descritor)&lt;/code&gt; 라고 불린다. 클래스들이 어느 폴더에 위치해 있는 지를 서술해주는 파일이다. 약자로는 DD 파일이라고도 불린다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div style=&quot;font-size:25px; text-align:center&quot;&gt;
-이 글이 도움이 되셨다면 댓글 부탁드립니다^^&lt;br /&gt;
-다음 글로 찾아오겠습니다!
-
-&lt;/div&gt;
-</description>
-        <pubDate>Wed, 06 Apr 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000//spring-boot/0003/</link>
-        <guid isPermaLink="true">http://localhost:4000//spring-boot/0003/</guid>
-        
-        <category>웹 애플리케이션</category>
-        
-        <category>jsp</category>
-        
-        <category>mysql</category>
-        
-        <category>공부</category>
-        
-        <category>디렉토리</category>
-        
-        <category>열심히 하자</category>
-        
-        <category>web application</category>
-        
-        <category>프로그래밍 공부</category>
-        
-        <category>directory</category>
         
         
         <category>Spring-Boot</category>
