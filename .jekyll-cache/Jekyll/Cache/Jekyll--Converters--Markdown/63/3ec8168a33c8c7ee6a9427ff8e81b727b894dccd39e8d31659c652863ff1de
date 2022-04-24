@@ -1,4 +1,4 @@
-I"#<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+I"� <p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -11,29 +11,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 
 <h3 id="1-controller에서-계산하는-부분을-model로-빼보기">1. Controller에서, 계산하는 부분을 Model로 빼보기</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-</pre></td><td class="rouge-code"><pre><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/calc.do"</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/calc.do"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
 
@@ -55,24 +33,14 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"total : "</span> <span class="o">+</span> <span class="n">sum</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>주석이 되어있는 부분을 모델로 빼서 변경을 해보자.</li>
   <li>model 패키지에, MyCalc 라는 java 클래스 파일을 만든다.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCalc</span> <span class="o">{</span>
 	
 	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span> <span class="n">su1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">su2</span><span class="o">)</span> <span class="o">{</span>
 		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -82,45 +50,13 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>이제 기존 서블릿 클래스에, MyCalc를 생성하고 sum 함수를 실행해서 변수에 넣어주고, 응답해주면 끝.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-</pre></td><td class="rouge-code"><pre><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/calc.do"</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/calc.do"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalcController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
 
@@ -152,7 +88,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"total : "</span> <span class="o">+</span> <span class="n">sum</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <hr />
 

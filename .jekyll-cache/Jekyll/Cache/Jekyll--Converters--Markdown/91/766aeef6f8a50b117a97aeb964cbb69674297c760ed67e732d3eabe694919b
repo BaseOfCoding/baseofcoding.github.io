@@ -1,5 +1,4 @@
-I"�
-<hr />
+I"�<hr />
 
 <p>안녕하세요. Nerd Lee 입니다.</p>
 
@@ -23,17 +22,15 @@
   <li>mac os에 내장되어 있는 터미널에 해당 명령어를 붙여넣기 하면 설치 시작! 조금 오래 걸립니다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
 
 <ul>
   <li>설치 완료 후 버전을 확인해보세요.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>brew <span class="nt">-v</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nt">-v</span>
+</code></pre></div></div>
 
 <ul>
   <li>설치가 되어 있다면, Homebrew 3.x.x 이런 식으로 표시됩니다.</li>
@@ -48,9 +45,8 @@
   <li>링크를 클릭하면, Homebrew로 설치하는 방법이 나오는데, 명령어는 다음과 같습니다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>brew <span class="nb">install </span>git
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>git
+</code></pre></div></div>
 
 <ul>
   <li>위의 명령어를 터미널에 붙여넣기 하면 git이 설치가 됩니다.</li>

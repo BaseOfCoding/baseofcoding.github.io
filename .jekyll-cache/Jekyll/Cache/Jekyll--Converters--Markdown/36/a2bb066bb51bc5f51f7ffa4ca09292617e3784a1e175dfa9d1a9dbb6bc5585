@@ -1,4 +1,4 @@
-I"�<p><img src="/assets/img/etc/error.png" alt="" /></p>
+I"<p><img src="/assets/img/etc/error.png" alt="" /></p>
 
 <hr />
 
@@ -10,11 +10,9 @@
 근데 밑에와 같은 에러를 뱉는다..<br /></li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre>JSON parse error: Cannot deserialize instance of <span class="sb">`</span>int<span class="sb">`</span> out of START_OBJECT token<span class="p">;</span> nested exception is 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JSON parse error: Cannot deserialize instance of <span class="sb">`</span>int<span class="sb">`</span> out of START_OBJECT token<span class="p">;</span> nested exception is 
 com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of <span class="sb">`</span>int<span class="sb">`</span> out of START_OBJECT token
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>

@@ -1,4 +1,4 @@
-I"E<p><img src="/assets/img/etc/error.png" alt="" /></p>
+I"�	<p><img src="/assets/img/etc/error.png" alt="" /></p>
 
 <p>안녕하세요. Nerd Lee 입니다.</p>
 
@@ -23,17 +23,12 @@
 devDependencies에 있는 버전을 수정해주셔야 합니다.</li>
 </ul>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="err">...</span><span class="p">,</span><span class="w">
     </span><span class="err">styled-components:</span><span class="w"> </span><span class="s2">"version"</span><span class="p">,</span><span class="w">
     </span><span class="err">@types/styled-components:</span><span class="w"> </span><span class="s2">"version"</span><span class="w">
   </span><span class="p">}</span><span class="err">,</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+</span></code></pre></div></div>
 
 <ul>
   <li>에러가 나는 이유는 두 버전의 값이 같지 않기 때문입니다.<br />
@@ -53,9 +48,8 @@ devDependencies에 있는 버전을 수정해주셔야 합니다.</li>
   </li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>npm i
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i
+</code></pre></div></div>
 
 <ul>
   <li>그럼 package.json에 있는 dependencies에 있는 패키지들을 전부 설치하게 됩니다.<br />

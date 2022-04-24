@@ -1,4 +1,4 @@
-I"�!<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"? <p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -27,11 +27,9 @@ HttpServlet 클래스가 가진 메서드를 재정의 해야하는데<br />
 <code class="language-plaintext highlighter-rouge">service(HttpServletRequest, HttpServletResponse)</code> 를 체크하고 OK 클릭!<br /></li>
   <li>이렇게 만들어진 것이, <code class="language-plaintext highlighter-rouge">Servlet</code>의 골격이다. 이 다음, jsp에서 만들었던 것 처럼<br />
 1~10까지의 총합을 서블릿으로 만들어보면 된다. 밑에 코드처럼 추가해보자.<br />
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nc">MyUtil</span> <span class="n">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyUtil</span><span class="o">();</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">MyUtil</span> <span class="n">my</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyUtil</span><span class="o">();</span>
 <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">my</span><span class="o">.</span><span class="na">sum</span><span class="o">();</span>
-</pre></td></tr></tbody></table></code></pre></div>    </div>
+</code></pre></div>    </div>
   </li>
   <li>이제 해당 데이터를 클라이언트와 연결을 시켜서 요청을 받고 응답을 하면<br />
 해당 값을 보낼 수 있도록 만들어야 한다.<br /></li>
@@ -42,38 +40,7 @@ HttpServlet 클래스가 가진 메서드를 재정의 해야하는데<br />
   <li>이제 HTML 코드를 하나 작성해서, <code class="language-plaintext highlighter-rouge">out</code> 변수에게 넘겨서, 클라이언트로 보내면 된다.<br /></li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">kr.web.controller</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.web.controller</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
@@ -104,7 +71,7 @@ HttpServlet 클래스가 가진 메서드를 재정의 해야하는데<br />
 		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"/&lt;html&gt;"</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>최종 서블릿 예제 코드이다. 이제 서블릿에 대해서 보니깐, 현재 내가 회사에서 보고 있는 프로젝트가….ㅠㅠ<br />

@@ -1,4 +1,4 @@
-I"(<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+I"('<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -20,35 +20,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
   <li><code class="language-plaintext highlighter-rouge">request.setCharacterEncoding("utf-8");</code>를 추가해주자</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-</pre></td><td class="rouge-code"><pre><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberInsert.do"</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberInsert.do"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberInsertController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
        
@@ -76,7 +48,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">vo</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <hr />
 

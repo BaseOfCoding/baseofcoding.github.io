@@ -1,4 +1,4 @@
-I"�<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"N<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -69,20 +69,7 @@
 
 <h3 id="4-jsp-페이지에-java-사용해서-시간-넣기">4. JSP 페이지에 JAVA 사용해서, 시간 넣기</h3>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
 	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -95,7 +82,7 @@
 	<span class="nt">&lt;p&gt;</span>지금 몇시야? 2시 50분!<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <p>위의 코드는 기본으로 만든 jsp 템플릿이다.<br />
 이제 java로 프로그래밍을 해서 현재 시간을 구해서, 2시 50분이 아닌 현재 시간을 넣어주면 끝난다.</p>
@@ -103,24 +90,7 @@
 <p>java로 프로그래밍을 할 때엔 <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code> 태그 안에서 하고, <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>에서 얻은 데이터 값을 출력할 때엔<br />
 <code class="language-plaintext highlighter-rouge">&lt;%= %&gt;</code>로 받아오면 된다. 코드를 한 번 보도록 하자.</p>
 
-<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"java.util.Date"</span><span class="nt">%&gt;</span>
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"java.util.Date"</span><span class="nt">%&gt;</span>
 <span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
 	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
 <span class="nt">&lt;%</span>
@@ -137,7 +107,7 @@
 	<span class="nt">&lt;p&gt;</span>지금 몇시야? <span class="nt">&lt;%=</span><span class="n">d</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="nt">%&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>위의 코드로 jsp를 만들어서 톰캣 서버를 실행해서, <code class="language-plaintext highlighter-rouge">localhost:port/time.jsp</code> 로 하면<br />

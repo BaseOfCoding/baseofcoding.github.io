@@ -1,4 +1,4 @@
-I"f<p>안녕하세요. Nerd Lee 입니다.</p>
+I"O<p>안녕하세요. Nerd Lee 입니다.</p>
 
 <p>Mac OS에서, 터미널보단 개발자분들은 iTerm2를 많이들 사용하시더라구요.
 저도 iTerm2를 사용한 지는 얼마 되진 않았는데 그래도 테마 적용을 하면 깔끔하니 보기가 좋았습니다.
@@ -13,47 +13,22 @@
 
 <h3 id="2-oh-my-zsh-다운로드하기">2. oh my zsh 다운로드하기</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
 <p>iTerm2에 입력해서 다운로드하시면 됩니다.</p>
 
 <hr />
 
 <h3 id="3-iterm2-테마-적용하기">3. iTerm2 테마 적용하기</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>vi ~/.zshrc
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi ~/.zshrc
+</code></pre></div></div>
 
 <ul>
   <li>입력하면, 아래와 같은 글들이 막 보일 것입니다.</li>
 </ul>
 
-<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-</pre></td><td class="rouge-code"><pre># If you come from bash you might have <span class="k">to</span> <span class="k">change</span> your $PATH<span class="p">.</span>
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code># If you come from bash you might have <span class="k">to</span> <span class="k">change</span> your $PATH<span class="p">.</span>
 # <span class="k">export</span> PATH<span class="p">=</span>$HOME<span class="sr">/bin:/</span>usr<span class="sr">/local/</span><span class="nb">bin</span><span class="p">:</span>$PATH
 
 # Path <span class="k">to</span> your oh<span class="p">-</span>my<span class="p">-</span>zsh installation<span class="p">.</span>
@@ -76,7 +51,7 @@ ZSH_THEME<span class="p">=</span><span class="s2">"robyrussell"</span> <span cla
 
 <span class="p">....</span> 등등
 
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <p>그럼 여기서 제일 중요한 부분은, <code class="language-plaintext highlighter-rouge">ZSH_THEME="robyrussell"</code> 을 찾아서 <code class="language-plaintext highlighter-rouge">ZSH_THEME="agnoster"</code> 로 변경을 해야합니다.</p>
 

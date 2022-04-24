@@ -1,4 +1,4 @@
-I"<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -23,17 +23,7 @@ JPA를 배우기에는 기본기가 없으니 기본기를 배우자..
   <li>일단, 기본 디렉터리 구조를 만들었다면 webapp 폴더에 index.html 파일을 만들어준다.</li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 	<span class="nt">&lt;head&gt;</span>
 		<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
@@ -43,22 +33,18 @@ JPA를 배우기에는 기본기가 없으니 기본기를 배우자..
 		<span class="nt">&lt;h2&gt;</span>Nerd-Lee의 홈페이지 방문을 환영합니다.<span class="nt">&lt;/h2&gt;</span>
 	<span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <p>이렇게 작성했다고 끝이 아니다. Tomcat 서버와 연결을 해줘야 하는데
 Servers 폴더에 있는 server.xml 에서, 150번째 줄에 있는</p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;Valve</span> <span class="na">className=</span><span class="s">"org.apache.catalina.valves.AccessLogValve"</span> <span class="na">directory=</span><span class="s">"logs"</span> 
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Valve</span> <span class="na">className=</span><span class="s">"org.apache.catalina.valves.AccessLogValve"</span> <span class="na">directory=</span><span class="s">"logs"</span> 
        <span class="na">pattern=</span><span class="s">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> <span class="na">prefix=</span><span class="s">"localhost_access_log"</span> 
        <span class="na">suffix=</span><span class="s">".txt"</span><span class="nt">/&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 <p>이 태그 밑에, Context 태그를 추가해줘야 한다.</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;Context</span> <span class="na">path=</span><span class="s">"/"</span> <span class="na">docBase=</span><span class="s">"${webapp의 경로}"</span> <span class="nt">/&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Context</span> <span class="na">path=</span><span class="s">"/"</span> <span class="na">docBase=</span><span class="s">"${webapp의 경로}"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
 
 <ul>
   <li>webapp의 경로는, webapp을 오른쪽 마우스 클릭한 다음, <code class="language-plaintext highlighter-rouge">properties</code> 를 클릭하면, webapp의 경로가 나오는 데, 그걸 docBase에 붙여넣어주면 끝이다.</li>

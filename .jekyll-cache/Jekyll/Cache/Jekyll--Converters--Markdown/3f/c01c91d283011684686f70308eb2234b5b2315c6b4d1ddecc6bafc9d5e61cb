@@ -1,4 +1,4 @@
-I"�<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"n<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -35,16 +35,7 @@
   <li><code class="language-plaintext highlighter-rouge">member.sql</code>에 회원 테이블을 생성하는 쿼리를 작성하자</li>
 </ul>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="rouge-code"><pre><span class="k">create</span> <span class="k">table</span> <span class="n">member</span><span class="p">(</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">table</span> <span class="n">member</span><span class="p">(</span>
 	<span class="n">number</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
 	<span class="n">id</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
 	<span class="n">password</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
@@ -53,7 +44,7 @@
 	<span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
 	<span class="n">phone</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span>
 <span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>쿼리 부분을 드래그해서, 오른쪽 마우스를 클릭<br />
@@ -64,11 +55,9 @@
 
 <h3 id="4-회원-테이블에-값-추가하기">4. 회원 테이블에 값 추가하기</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="k">insert</span> <span class="k">into</span> <span class="n">member</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">password</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">email</span><span class="p">,</span><span class="n">phone</span><span class="p">)</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">insert</span> <span class="k">into</span> <span class="n">member</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="n">password</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">email</span><span class="p">,</span><span class="n">phone</span><span class="p">)</span>
 <span class="k">values</span><span class="p">(</span><span class="s1">'id입력'</span><span class="p">,</span><span class="s1">'비밀번호 입력'</span><span class="p">,</span><span class="s1">'이름 입력'</span><span class="p">,</span><span class="err">나이입력</span><span class="p">,</span><span class="s1">'이메일'</span><span class="p">,</span><span class="s1">'전화번호 입력'</span><span class="p">);</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 <ul>
   <li>쿼리 실행 후, <code class="language-plaintext highlighter-rouge">select * from member;</code> 쿼리 실행해서, 데이터가 잘 들어갔는 지 확인</li>
 </ul>
@@ -81,17 +70,15 @@
   <li>만약 나이를 수정하고 싶다면??</li>
 </ul>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="k">update</span> <span class="n">member</span> <span class="k">set</span> <span class="n">age</span><span class="o">=</span><span class="err">나이입력</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="s1">'입력되어 있는 아이디'</span><span class="p">;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">update</span> <span class="n">member</span> <span class="k">set</span> <span class="n">age</span><span class="o">=</span><span class="err">나이입력</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="s1">'입력되어 있는 아이디'</span><span class="p">;</span>
+</code></pre></div></div>
 
 <hr />
 
 <h3 id="6-테이블에-등록되어-있는-값-삭제하기">6. 테이블에 등록되어 있는 값 삭제하기</h3>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="k">delete</span> <span class="k">from</span> <span class="n">member</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="s1">'입력되어 있는 아이디'</span><span class="p">;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">delete</span> <span class="k">from</span> <span class="n">member</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="s1">'입력되어 있는 아이디'</span><span class="p">;</span>
+</code></pre></div></div>
 
 <hr />
 

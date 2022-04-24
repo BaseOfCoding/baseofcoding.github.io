@@ -1,4 +1,4 @@
-I"U=<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+I"�:<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -45,103 +45,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
   <li><code class="language-plaintext highlighter-rouge">model</code> 패키지에, <code class="language-plaintext highlighter-rouge">MemberVO</code> 클래스를 만들어준다.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">model</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">model</span><span class="o">;</span>
 
 <span class="c1">// 회원(Object)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberVO</span> <span class="o">{</span>
@@ -237,7 +141,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 				<span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">", email="</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="s">", phone="</span> <span class="o">+</span> <span class="n">phone</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 <ul>
   <li>member 데이터베이스에 맞는 자료형 변수와, getter, setter 메서드, 그리고, 테스트를 위한 toString 메서드까지 만들어준다.<br /></li>
   <li>변수만 입력하고, <code class="language-plaintext highlighter-rouge">alt + shift + s</code>를 입력하면, getter,setter, tostring 메서드를 만들 수 있는 하위메뉴로 이동이 된다.<br /></li>
@@ -252,17 +156,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
   <li>JDBC 환경으로, 데이터베이스를 접근한다. 이 부분은 나중에 Mybatis 또는 JPA로 변경하게 된다.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">model</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">model</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
 
@@ -272,7 +166,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 	<span class="kd">private</span> <span class="nc">PreparedStatement</span> <span class="n">ps</span><span class="o">;</span>
 	<span class="kd">private</span> <span class="nc">ResultSet</span> <span class="n">rs</span><span class="o">;</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 <ul>
   <li>일단, DAO 부분보단, html로, 회원가입을 할 수 있게 하는 html 파일을 먼저 만든다.</li>
   <li>그 부분은, 다음 공부글에 작성하도록 하겠다.</li>

@@ -1,13 +1,12 @@
-I"�<p><img src="/assets/img/etc/error.png" alt="" /></p>
+I"�<p><img src="/assets/img/etc/error.png" alt="" /></p>
 
 <p>Mac OS 컴퓨터를 포맷하고 난 뒤 스프링 프로젝트가 다 다운받아지고, github에 업로드 할려고 했는데
 밑에와 같은 로그가 뜨면서 업로드에 실패했다고 한다.</p>
 
 <hr />
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>remote: Support <span class="k">for </span>password authentication was removed on August 13, 2021. Please use a personal access token instead.
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>remote: Support <span class="k">for </span>password authentication was removed on August 13, 2021. Please use a personal access token instead.
+</code></pre></div></div>
 <p>이러한 오류를 발견했다. 아니 맥북을 몇년전에 사용했던 것도 아니고.. 한 3개월만에 새로운 마음으로 포맷을 한건데.. 3개월 전에는 이런식으로 안했는데 왜 이러지? 라고 하고 해결법을 찾는다.</p>
 
 <p><a href="https://hyeo-noo.tistory.com/184">Github push token 에러 해결 링크</a></p>
@@ -36,11 +35,9 @@
 
 <h4 id="6-터미널에서-user-정보를-입력하자">6. 터미널에서, user 정보를 입력하자.</h4>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"username"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"username"</span>
 <span class="nv">$ </span>git config <span class="nt">--global</span> user.email <span class="s2">"user@email.com"</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>깃이 올라갈 때의 이름과, 깃허브의 이메일을 입력한다.</li>
@@ -48,11 +45,9 @@
 
 <h4 id="7-git-push">7. git push</h4>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>Username <span class="k">for </span>https://github.com : <span class="o">{</span>아이디 입력<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>Username <span class="k">for </span>https://github.com : <span class="o">{</span>아이디 입력<span class="o">}</span>
 <span class="nv">$ </span>Password <span class="k">for </span>https://github.com/id : <span class="o">{</span>복사한 토큰 붙여넣기 또는 입력<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>Username에서는, 자신의 아이디를 적고 Password는 token을 입력해야한다. macOS 같은 경우 비밀번호를 입력해도 보이지 않을텐데, 그냥 붙여넣기 하고 엔터를 눌러도 아무런 문제가 없다.</li>

@@ -1,4 +1,4 @@
-I"u<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"�<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -20,24 +20,7 @@
 서블릿 클래스와 매핑을 연결해줘야 한다. 보통 클래스 이름으로 맞춘다고 한다.</li>
 </ul>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-</pre></td><td class="rouge-code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;web-app</span> <span class="na">version=</span><span class="s">"3.1"</span>
 	<span class="na">xmlns=</span><span class="s">"http://xmlns.jcp.org/xml/ns/javaee"</span>
 	<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
@@ -54,7 +37,7 @@
 	<span class="nt">&lt;/servlet-mapping&gt;</span>
 
 <span class="nt">&lt;/web-app&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>톰캣 서버를 실행하고, <code class="language-plaintext highlighter-rouge">localhost:포트번호/hs.do</code> 를 입력하면<br />

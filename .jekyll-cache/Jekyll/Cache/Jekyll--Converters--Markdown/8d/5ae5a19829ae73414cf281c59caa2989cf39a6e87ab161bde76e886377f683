@@ -1,4 +1,4 @@
-I"ڙ<p><img src="/assets/img/etc/bootstrap.png" alt="" /></p>
+I"�<p><img src="/assets/img/etc/bootstrap.png" alt="" /></p>
 
 <ul>
   <li>안녕하세요. ‘Nerd-Lee’ 입니다.<br />
@@ -27,9 +27,8 @@
   <li>MySQL이 잘 설치되었는 지 확인하기 위해서, <code class="language-plaintext highlighter-rouge">dpkg -l | grep mysql-server</code> 를 입력하자.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>ii  mysql-server  5.7.37-0ubuntu0.18.04.1  all  MySQL database server <span class="o">(</span>metapackage depending on the latest version<span class="o">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ii  mysql-server  5.7.37-0ubuntu0.18.04.1  all  MySQL database server <span class="o">(</span>metapackage depending on the latest version<span class="o">)</span>
+</code></pre></div></div>
 
 <p>이런식으로 뜬다면, 설치가 성공한 것이다.</p>
 
@@ -44,11 +43,9 @@
   <li><code class="language-plaintext highlighter-rouge">sudo mysql</code> 을 입력해서, MySQL을 실행하자.</li>
 </ul>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="k">create</span> <span class="k">user</span> <span class="s1">'계정이름'</span><span class="o">@</span><span class="s1">'%'</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">'패스워드'</span><span class="p">;</span>                  <span class="o">//</span> <span class="err">외부</span> <span class="err">접속</span> <span class="err">계정이름과</span> <span class="err">비밀번호를</span> <span class="err">설정하자</span><span class="p">.</span>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">user</span> <span class="s1">'계정이름'</span><span class="o">@</span><span class="s1">'%'</span> <span class="n">identified</span> <span class="k">by</span> <span class="s1">'패스워드'</span><span class="p">;</span>                  <span class="o">//</span> <span class="err">외부</span> <span class="err">접속</span> <span class="err">계정이름과</span> <span class="err">비밀번호를</span> <span class="err">설정하자</span><span class="p">.</span>
 <span class="k">grant</span> <span class="k">all</span> <span class="k">privileges</span> <span class="k">on</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">'계정이름'</span><span class="o">@</span><span class="s1">'%'</span> <span class="k">with</span> <span class="k">grant</span> <span class="k">option</span><span class="p">;</span>     <span class="o">//</span> <span class="err">해당</span> <span class="err">계정이름에</span> <span class="err">권한을</span> <span class="err">부여하자</span><span class="p">.</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>이 다음은 내가 한 부분이 아닌 상사가 한 부분이기 때문에, 만약 aws를 사용하는 개발자라면
@@ -66,11 +63,9 @@
 그래서, 어쩔 수 없이 일단 sudo 명령어를 이용해서 삭제를 먼저 실행했다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">sudo </span>apt-get remove openjdk-8-jre
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get remove openjdk-8-jre
 <span class="nv">$ </span><span class="nb">sudo </span>apt-get remove openjdk-8-jdk
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>그리고, 다시 java 8 버전을 설치를 해봤으나.. 소용이 없었다.. <code class="language-plaintext highlighter-rouge">echo $JAVA_HOME</code> 을 입력하면 경로는 뜨지만<br />
@@ -78,11 +73,9 @@
 그럼 11버전으로 사용해야지ㅎㅎ 만약 8버전을 사용할 예정이라면, 11을 8로 바꾸면 된다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>openjdk-11-jdk
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>openjdk-11-jdk
 <span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>openjdk-11-jre
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>이후, <code class="language-plaintext highlighter-rouge">java -version</code> 이나, <code class="language-plaintext highlighter-rouge">javac -version</code> 명령어를 입력하면 자바의 버전이 뜰 것이다.<br />
@@ -92,44 +85,14 @@
 보통 자바가 설치된 경로는 /usr/lib/jvm 폴더에 설치가 되어있다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">sudo </span>nano /etc/profile
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>nano /etc/profile
+</code></pre></div></div>
 
 <ul>
   <li>위의 명령어를 입력하면, 다음과 같은 텍스트들이 출력된다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-</pre></td><td class="rouge-code"><pre><span class="c"># /etc/profile: system-wide .profile file for the Bourne shell (sh(1))</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /etc/profile: system-wide .profile file for the Bourne shell (sh(1))</span>
 <span class="c"># and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).</span>
 
 <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${</span><span class="nv">PS1</span><span class="p">-</span><span class="k">}</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
@@ -158,19 +121,16 @@ if</span> <span class="o">[</span> <span class="nt">-d</span> /etc/profile.d <sp
 <span class="k">fi
 </span><span class="nv">TMOUT</span><span class="o">=</span>324000
 <span class="nv">HISTFILESIZE</span><span class="o">=</span>0
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>그럼 제일 마지막에 다음과 같은 문장을 추가해주자.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-11-openjdk-amd64 // 만약 8 버전이면, 11대신 8입력
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-11-openjdk-amd64 // 만약 8 버전이면, 11대신 8입력
 <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin/:<span class="nv">$PATH</span>
 <span class="nb">export </span><span class="nv">CLASS_PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/lib:<span class="nv">$CLASS_PATH</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>이렇게 문장을 추가해줬다면, <code class="language-plaintext highlighter-rouge">Ctrl + O</code> 를 입력해주고, <code class="language-plaintext highlighter-rouge">Enter</code> 키 입력해서 저장해주고<br />
@@ -205,176 +165,10 @@ if</span> <span class="o">[</span> <span class="nt">-d</span> /etc/profile.d <sp
   <li>그 안에 server.xml 파일을 열어본다.</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>$ apache-tomcat-8.5.5/conf $ vi server.xml
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ apache-tomcat-8.5.5/conf $ vi server.xml
+</code></pre></div></div>
 
-<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-</pre></td><td class="rouge-code"><pre><span class="p">&lt;</span>?xml <span class="k">version</span><span class="p">=</span><span class="s2">"1.0"</span> <span class="nb">encoding</span><span class="p">=</span><span class="s2">"UTF-8"</span>?<span class="p">&gt;</span>
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span>?xml <span class="k">version</span><span class="p">=</span><span class="s2">"1.0"</span> <span class="nb">encoding</span><span class="p">=</span><span class="s2">"UTF-8"</span>?<span class="p">&gt;</span>
 <span class="p">&lt;!--</span>
   Licensed <span class="k">to</span> the Apache Software Foundation <span class="p">(</span>ASF<span class="p">)</span> under one <span class="nb">or</span> <span class="nb">more</span>
   contributor license agreements<span class="p">.</span>  See the NOTICE <span class="k">file</span> distributed with
@@ -539,7 +333,7 @@ if</span> <span class="o">[</span> <span class="nt">-d</span> /etc/profile.d <sp
     <span class="p">&lt;</span>/Engine<span class="p">&gt;</span>
   <span class="p">&lt;</span>/Service<span class="p">&gt;</span>
 <span class="p">&lt;</span>/Server<span class="p">&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>★★★ 이 부분 중요!! 라고 되어 있는 부분에, 해당 서버에 접근할 수 있도록 설정한 포트번호를 입력하면 된다.</li>
@@ -555,11 +349,9 @@ if</span> <span class="o">[</span> <span class="nt">-d</span> /etc/profile.d <sp
 실행하는 방법은 다음과 같다.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>tomcat/bin <span class="nv">$ </span>./startup.sh
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>tomcat/bin <span class="nv">$ </span>./startup.sh
 <span class="nv">$ </span>tomcat/bin <span class="nv">$ </span>./shutdown.sh
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>이렇게 입력하면, 톰캣서버가 실행이 된다.<br />
@@ -568,11 +360,9 @@ if</span> <span class="o">[</span> <span class="nt">-d</span> /etc/profile.d <sp
   <li>만약 안된다면, tomcat 경로에 있는 logs라는 폴더로 이동해서, catalina.out 파일을 열어보자.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>...apache-tomcat-8.5.5/logs/vi catalina.out
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>...apache-tomcat-8.5.5/logs/vi catalina.out
 <span class="nv">$ </span>...apache-tomcat-8.5.5/logs/tail <span class="nt">-f</span> catalina.out
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>첫 번째 명령어는 모든 로그를 다 볼 수 있고, <code class="language-plaintext highlighter-rouge">Shift + G</code> 키를 누르면, 제일 아래로 내려갈 수 있다.</li>
@@ -589,9 +379,8 @@ if</span> <span class="o">[</span> <span class="nt">-d</span> /etc/profile.d <sp
 이 부분은 다시 STS에서 수정하고 빌드를 해도 되지만 만약 ROOT 폴더에 있는 파일을 수정하고 싶은 거라면?</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>apache-tomcat-8.5.5 <span class="o">&gt;</span> <span class="nb">cd </span>webapps/ROOT/WEB-INF/classes
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>apache-tomcat-8.5.5 <span class="o">&gt;</span> <span class="nb">cd </span>webapps/ROOT/WEB-INF/classes
+</code></pre></div></div>
 
 <ul>
   <li>명령어를 입력하고, <code class="language-plaintext highlighter-rouge">ls</code> 라고 입력을 해보면, application.yml 또는 application.properties 파일이 있을 것이다.</li>

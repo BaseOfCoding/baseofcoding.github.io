@@ -1,4 +1,4 @@
-I"]4<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
+I"�2<p><img src="/assets/img/etc/javaspring.png" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 이 내용은 우아한형제들의 개발 팀장이신 김영한 님의<br />
@@ -101,24 +101,7 @@
   </li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-</pre></td><td class="rouge-code"><pre><span class="o">[</span><span class="nc">HelloController</span><span class="o">.</span><span class="na">java</span><span class="o">]</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="nc">HelloController</span><span class="o">.</span><span class="na">java</span><span class="o">]</span>
 
 <span class="kn">package</span> <span class="nn">jpabook.jpashop</span><span class="o">;</span>
 
@@ -135,7 +118,7 @@
         <span class="k">return</span> <span class="s">"hello"</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>Model이란 무엇인가?
@@ -154,19 +137,7 @@
   </li>
 </ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="rouge-code"><pre>[hello.html]
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[hello.html]
 
 <span class="cp">&lt;!DOCTYPE HTML&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">xmlns:th=</span><span class="s">"http://www.thymeleaf.org"</span><span class="nt">&gt;</span>
@@ -178,7 +149,7 @@
         <span class="nt">&lt;p</span> <span class="na">th:text=</span><span class="s">"'안녕하세요.' + ${data} "</span><span class="nt">&gt;</span>안녕하세요. 손님<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <ul>
   <li>th:text는 뭐야?

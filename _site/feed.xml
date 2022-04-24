@@ -1,285 +1,1431 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T02:06:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nerd-Lee</title><subtitle>웹 개발의 기록</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">[MVC SPRING] 16. Controller용 JSP_View용 JSP</title><link href="http://localhost:4000/study/0016/" rel="alternate" type="text/html" title="[MVC SPRING] 16. Controller용 JSP_View용 JSP" /><published>2022-04-24T00:00:00+09:00</published><updated>2022-04-24T00:00:00+09:00</updated><id>http://localhost:4000/study/0016</id><content type="html" xml:base="http://localhost:4000/study/0016/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
-
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:4000/</id>
-  <title>Nerd_Lee</title>
-  <subtitle>코딩을 말하다</subtitle>
-  <updated>2022-04-25T01:26:16+09:00</updated>
-  <author>
-    <name>jeongmin Lee</name>
-    <uri>http://localhost:4000/</uri>
-  </author>
-  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
-  <link rel="alternate" type="text/html" hreflang="ko"
-    href="http://localhost:4000/"/>
-  <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
-  <rights> © 2022 jeongmin Lee </rights>
-  <icon>/assets/img/favicons/favicon.ico</icon>
-  <logo>/assets/img/favicons/favicon-96x96.png</logo>
-
-
-  
-  <entry>
-    <title>[MVC SPRING] 17. JSP 버전 회원리스트 및 삭제 구현</title>
-    <link href="http://localhost:4000/posts/study-17/" rel="alternate" type="text/html" title="[MVC SPRING] 17. JSP 버전 회원리스트 및 삭제 구현" />
-    <published>2022-04-24T00:00:00+09:00</published>
-  
-    <updated>2022-04-24T00:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/study-17/</id>
-    <content src="http://localhost:4000/posts/study-17/" />
-    <author>
-      <name>jeongmin Lee</name>
-    </author>
-
-  
-    
-    <category term="Study" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      
-
-안녕하세요. Nerd-Lee입니다.
+<p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
-[NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.
-MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서
-나중에는 Spring Framework를 사용하는 방식의 강의입니다.
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br /></p>
 
-진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
 
-JSP는 서블릿이다. 와, JSP를 서블릿으로 변경하기에 관련 된 부분은 중요하지 않다 생각하여 적지 않았습니다.
+<p><code class="language-plaintext highlighter-rouge">JSP는 서블릿이다. 와, JSP를 서블릿으로 변경하기</code>에 관련 된 부분은 중요하지 않다 생각하여 적지 않았습니다.</p>
 
+<hr />
 
+<h3 id="1-jsp안에-왠만하면-java로-만든-함수나-로직들은-model로-빼자">1. JSP안에, 왠만하면 JAVA로 만든 함수나 로직들은 Model로 빼자.</h3>
 
-1. MemberList.jsp 부분 수정
+<ul>
+  <li>JSP안에, 데이터 처리 부분에 대한 JAVA로 만든 함수 또는 로직은 Model로 빼는 것이 일반적이다.</li>
+  <li>그리고, MVC01 프로젝트에서 만들었던, member 폴더에 있던 <code class="language-plaintext highlighter-rouge">memberRegister.html</code> 파일을 복사해서<br />
+MVC02 프로젝트에도, member 폴더에 넣거나 Member 폴더를 새로 만들고 html 파일을 만들어서 밑에 코드를 넣어주자.</li>
+</ul>
 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span>
+	<span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+	회원가입 화면
+	<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"memberInsert.jsp"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td&gt;</span>아이디<span class="nt">&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td&gt;</span>패스워드<span class="nt">&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"password"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td&gt;</span>나이<span class="nt">&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"age"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td&gt;</span>이메일<span class="nt">&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td&gt;</span>전화번호<span class="nt">&lt;/td&gt;</span>
+				<span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"phone"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+			<span class="nt">&lt;tr&gt;</span>
+				<span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span> <span class="na">align=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"가입"</span> <span class="nt">/&gt;</span>
+					<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"취소"</span> <span class="nt">/&gt;</span>
+				<span class="nt">&lt;/td&gt;</span>
+			<span class="nt">&lt;/tr&gt;</span>
+		<span class="nt">&lt;/table&gt;</span>
+	<span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
 
-  회원가입 페이지로 넘어가는 부분이랑 삭제 버튼을 추가해보자.
+<ul>
+  <li>그리고, <code class="language-plaintext highlighter-rouge">Member</code> 폴더에 <code class="language-plaintext highlighter-rouge">memberInsert.jsp</code> 파일을 만들어준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">memberInsert.jsp</code> 파일을 밑에 코드처럼 만들어주자.</li>
+</ul>
 
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberDAO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberVO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="c1">// 파라미터 수집(VO)</span>
+	<span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+	<span class="c1">// 1. 클라이언트에서 넘어온 파라미터 수집(VO에 하나의 정보로 묶어서 넣어주면 된다.)</span>
+	<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+	<span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"password"</span><span class="o">);</span>
+	<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+	<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
+	<span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+	<span class="nc">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">);</span>
 
-&amp;lt;%@page import="model.MemberV...
-    </summary>
-  
+	<span class="c1">// vo 수집은, 생성자로 해도 되고, Setter로 해도 된다.</span>
+	<span class="c1">//MemberVO vo = new MemberVO(id, password, name, age, email, phone);</span>
+	<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberVO</span><span class="o">();</span>
+	<span class="n">vo</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+	<span class="n">vo</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
+	<span class="n">vo</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
+	<span class="n">vo</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+	<span class="n">vo</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+	<span class="n">vo</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">phone</span><span class="o">);</span>
+	
+	<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+	<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberInsert</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+	<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="err">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 가입 성공시</span>
+		<span class="c1">// out.println("insert success!");</span>
+		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"memberList.jsp"</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="k">else</span> <span class="o">{</span>
+		<span class="c1">// 가입 실패시 예외객체를 만들어서 WAS(톰캣서버) 에게 던진다.</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not insert!"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
 
-  </entry>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
 
-  
-  <entry>
-    <title>[MVC SPRING] 16. Controller용 JSP_View용 JSP</title>
-    <link href="http://localhost:4000/posts/study-16/" rel="alternate" type="text/html" title="[MVC SPRING] 16. Controller용 JSP_View용 JSP" />
-    <published>2022-04-24T00:00:00+09:00</published>
-  
-    <updated>2022-04-24T00:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/study-16/</id>
-    <content src="http://localhost:4000/posts/study-16/" />
-    <author>
-      <name>jeongmin Lee</name>
-    </author>
+<ul>
+  <li>그리고, <code class="language-plaintext highlighter-rouge">memberList.jsp</code> 파일을 만들어서, 밑에 코드처럼 만들어주자.</li>
+</ul>
 
-  
-    
-    <category term="Study" />
-    
-  
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberVO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"java.util.ArrayList"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberDAO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+	<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="err">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberGetList</span><span class="o">();</span>
+<span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span>
+	<span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;tr&gt;</span>
+		<span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>아이디<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>패스워드<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>나이<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>이메일<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>전화번호<span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>
+	<span class="nt">&lt;%</span> <span class="k">for</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">:</span> <span class="n">list</span><span class="o">){</span> <span class="nt">%&gt;</span>
+		<span class="nt">&lt;tr&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+		<span class="nt">&lt;/tr&gt;</span>
+		<span class="nt">&lt;%</span> 	<span class="o">}</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
 
-  
-    <summary>
-      
+<hr />
 
+<h3 id="2-controller용-jsp와-view용-jsp">2. Controller용 jsp와 View용 jsp</h3>
 
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">memberInsert.jsp</code>는, Controller 역할을 하는 jsp다. 클라이언트가 요청을 하면, <code class="language-plaintext highlighter-rouge">memberInsert.jsp</code> 로 가서<br />
+DB에 접근을 해서 값을 저장한 다음, redirect를 통해 view로 넘어가게 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">memberList.jsp</code>는, View 역할을 하는 jsp라고 생각하면 된다.<br />데이터베이스에서 받아온 값을 출력만 해서 클라이언트에게 응답하기 때문이다.</li>
+</ul>
 
+<hr />
 
+<p><br /></p>
 
-      
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
 
-안녕하세요. Nerd-Lee입니다.
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="MVC" /><category term="spring" /><category term="스프링" /><category term="spring boot" /><category term="JSP" /><category term="Servlet" /><category term="view" /><category term="controller" /><summary type="html"><![CDATA[[MVC SPRING] 16. Controller용 JSP_View용 JSP]]></summary></entry><entry><title type="html">[MVC SPRING] 17. JSP 버전 회원리스트 및 삭제 구현</title><link href="http://localhost:4000/study/0017/" rel="alternate" type="text/html" title="[MVC SPRING] 17. JSP 버전 회원리스트 및 삭제 구현" /><published>2022-04-24T00:00:00+09:00</published><updated>2022-04-24T00:00:00+09:00</updated><id>http://localhost:4000/study/0017</id><content type="html" xml:base="http://localhost:4000/study/0017/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
-[NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.
-MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서
-나중에는 Spring Framework를 사용하는 방식의 강의입니다.
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br /></p>
 
-진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
 
-JSP는 서블릿이다. 와, JSP를 서블릿으로 변경하기에 관련 된 부분은 중요하지 않다 생각하여 적지 않았습니다.
+<p><code class="language-plaintext highlighter-rouge">JSP는 서블릿이다. 와, JSP를 서블릿으로 변경하기</code>에 관련 된 부분은 중요하지 않다 생각하여 적지 않았습니다.</p>
 
+<hr />
 
+<h3 id="1-memberlistjsp-부분-수정">1. MemberList.jsp 부분 수정</h3>
 
-1. JSP안에, 왠만하면 JAVA로 만든 함수나 로직들은 Model로 빼자.
+<ul>
+  <li>회원가입 페이지로 넘어가는 부분이랑 삭제 버튼을 추가해보자.</li>
+</ul>
 
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberVO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"java.util.ArrayList"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberDAO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+	<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="err">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberGetList</span><span class="o">();</span>
+<span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span>
+	<span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script
+	</span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+	<span class="kd">function</span> <span class="nx">deleteFn</span><span class="p">(</span><span class="nx">num</span><span class="p">){</span>
+		<span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">memberDelete.jsp?number=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">num</span><span class="p">;</span>
+	<span class="p">}</span>
 
-  JSP안에, 데이터 처리 부분에 대한 JAVA로 만든 함수 또는 로직은 Model로 빼...
-    </summary>
-  
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;tr&gt;</span>
+		<span class="nt">&lt;td&gt;</span>번호<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>아이디<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>패스워드<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>이름<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>나이<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>이메일<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>전화번호<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;td&gt;</span>삭제<span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>
+	<span class="nt">&lt;%</span> <span class="k">for</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">:</span> <span class="n">list</span><span class="o">){</span> <span class="nt">%&gt;</span>
+		<span class="nt">&lt;tr&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;</span>
+				<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"삭제"</span> <span class="na">onclick=</span><span class="s">"deleteFn(</span><span class="nt">&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">)"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;/tr&gt;</span>
+		<span class="nt">&lt;%</span> 	<span class="o">}</span> <span class="nt">%&gt;</span>
+		<span class="nt">&lt;tr&gt;</span>
+			<span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"8"</span> <span class="na">align=</span><span class="s">"right"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"회원가입"</span> <span class="na">onclick=</span><span class="s">"location.href='memberRegister.html'"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
 
-  </entry>
+<hr />
 
-  
-  <entry>
-    <title>[MVC SPRING] 15. MVC02(JSP 구성요소 알아보기)</title>
-    <link href="http://localhost:4000/posts/study-15/" rel="alternate" type="text/html" title="[MVC SPRING] 15. MVC02(JSP 구성요소 알아보기)" />
-    <published>2022-04-21T00:00:00+09:00</published>
-  
-    <updated>2022-04-21T00:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/study-15/</id>
-    <content src="http://localhost:4000/posts/study-15/" />
-    <author>
-      <name>jeongmin Lee</name>
-    </author>
+<h3 id="2-memberdeletejsp-파일을-만들자">2. memberDelete.jsp 파일을 만들자.</h3>
 
-  
-    
-    <category term="Study" />
-    
-  
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">memberDelete.jsp</code> 파일을 만들고, jsp에서 삭제를 하는 로직을 추가해주자 밑에 코드처럼.</li>
+</ul>
 
-  
-    <summary>
-      
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@page </span><span class="na">import=</span><span class="s">"model.MemberDAO"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"number"</span><span class="o">));</span>
+	<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+	<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberDelete</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+	<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="err">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+		<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"memberList.jsp"</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="k">else</span><span class="o">{</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not delete"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
 
+<ul>
+  <li>그리고, <code class="language-plaintext highlighter-rouge">memberList.jsp</code> 에, 상세보기 페이지로 넘어갈 수 있도록 id쪽 태그에 anchor 태그를 넣어주자.</li>
+</ul>
 
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%</span> <span class="k">for</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">:</span> <span class="n">list</span><span class="o">){</span> <span class="nt">%&gt;</span>
+		<span class="nt">&lt;tr&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			// 이 부분 추가
+			<span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"memberContent.jsp?number=</span><span class="nt">&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span><span class="nt">%&gt;&lt;/a&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span><span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="nt">%&gt;&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;</span>
+				<span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"삭제"</span> <span class="na">onclick=</span><span class="s">"deleteFn(</span><span class="nt">&lt;%=</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span><span class="nt">%&gt;</span><span class="s">)"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;/td&gt;</span>
+		<span class="nt">&lt;/tr&gt;</span>
+		<span class="nt">&lt;%</span> 	<span class="o">}</span> <span class="nt">%&gt;</span>
+</code></pre></div></div>
 
+<hr />
 
+<p><br /></p>
 
-      
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
 
-안녕하세요. Nerd-Lee입니다.
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="MVC" /><category term="spring" /><category term="스프링" /><category term="spring boot" /><category term="JSP" /><category term="Servlet" /><category term="view" /><category term="controller" /><category term="회원리스트 삭제" /><category term="삭제" /><category term="회원관리" /><summary type="html"><![CDATA[[MVC SPRING] 17. JSP 버전 회원리스트 및 삭제 구현]]></summary></entry><entry><title type="html">[MVC SPRING] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )</title><link href="http://localhost:4000/study/0014/" rel="alternate" type="text/html" title="[MVC SPRING] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/study/0014</id><content type="html" xml:base="http://localhost:4000/study/0014/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
-[NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.
-MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서
-나중에는 Spring Framework를 사용하는 방식의 강의입니다.
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 
-진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
 
+<hr />
 
+<h3 id="1-mvc01에-대한-내용">1. MVC01에 대한 내용</h3>
 
-1. MVC02 프로젝트 만들기
+<h4 id="11-controller">1.1. Controller</h4>
+<ul>
+  <li>MVC 1단계는, View는 없고, Model과 Controller로만 이루어져 있다.<br /></li>
+  <li>현재 서블릿으로 만든 프로젝트를 보면, Controller 소스 파일이 많다는 것을 느낄 수 있다.<br />
+<code class="language-plaintext highlighter-rouge">/memberList.do</code>, <code class="language-plaintext highlighter-rouge">/memberInsert.do</code>, <code class="language-plaintext highlighter-rouge">/memberContent.do</code>, <code class="language-plaintext highlighter-rouge">/memberDelete.do</code>, <code class="language-plaintext highlighter-rouge">/memberUpdate.do</code> 라는 url을 클라이언트가 요청을 하면
+각 서블릿에 가서, 서블릿에서 view까지 처리를 하기 때문에, 많아질 수 밖에 없어진다.<br /></li>
+  <li>그래서 Controller 갯수를 하나로 만들어서 처리를 할 수 있다.</li>
+</ul>
 
+<h4 id="12-modeljava">1.2. Model(Java)</h4>
+<ul>
+  <li>Model은, <code class="language-plaintext highlighter-rouge">VO</code>와 <code class="language-plaintext highlighter-rouge">DAO</code> 로 나눈다. <code class="language-plaintext highlighter-rouge">DAO</code> 는 JDBC를 이용해서 데이터베이스에 접근한 다음<br />
+쿼리에 맞는 데이터를 가지고 와서 컨트롤러에서, DAO를 호출해서 해당 값을 클라이언트에 응답해주는 형태이다.</li>
+  <li>JDBC는, <code class="language-plaintext highlighter-rouge">JAVA + SQL</code> 이기 때문에, SQL을 수정하려 해도, JAVA 코드를 수정해야 해서, 유지보수가 굉장히 까다로워진다.<br />
+그래서, MyBatis나, JPA를 사용하게 되는데, 이 강의는 MyBatis 프레임워크를 사용하게 된다.</li>
+</ul>
 
-  MVC02라는 프로젝트를 Dynamic Web Project로 생성한 후에 root는 MVC02로 설정하여 만든다.
-  WAS와 Context(연결)을 해줘야 한다. Servers -&amp;gt; Tomcat server 오른쪽 클릭하고, Add and ...
-    </summary>
-  
+<hr />
 
-  </entry>
+<h3 id="2-redirect-기법이란">2. Redirect 기법이란?</h3>
 
-  
-  <entry>
-    <title>[MVC SPRING] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )</title>
-    <link href="http://localhost:4000/posts/study-14/" rel="alternate" type="text/html" title="[MVC SPRING] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )" />
-    <published>2022-04-21T00:00:00+09:00</published>
-  
-    <updated>2022-04-21T00:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/study-14/</id>
-    <content src="http://localhost:4000/posts/study-14/" />
-    <author>
-      <name>jeongmin Lee</name>
-    </author>
+<ul>
+  <li>예를 들어, 보험회사에 김대리와 나과장이 있고, 타 부서인 조대리가 있다.<br />
+여기서 김대리와 나과장은 <code class="language-plaintext highlighter-rouge">Controller</code> 역할을 조대리는 <code class="language-plaintext highlighter-rouge">Model</code> 역할을 맡는다.<br /><br /></li>
+  <li>그런데, 고객<code class="language-plaintext highlighter-rouge">(client)</code> 한명이 교통사고를 당해, 김대리쪽에 전화를 걸었다고 치자.<br /><br /></li>
+  <li>하지만, 김대리는 교통사고에 대한 업무를 맡는 사람이 아니고 교통사고 업무는 나과장이 담당이라면?<br /><br /></li>
+  <li>그 때 김대리는 고객에게 설명한 후에, 나과장에게 전화를 돌릴 것이다. 이걸 <code class="language-plaintext highlighter-rouge">Redirect</code> 라고 부른다.<br /><br /></li>
+  <li>그럼 나과장은 자신의 담당업무이기 때문에 요청을 받았으면, 응답을 할 것이다.<br /><br /></li>
+</ul>
 
-  
-    
-    <category term="Study" />
-    
-  
+<hr />
 
-  
-    <summary>
-      
+<p><br /></p>
 
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
 
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="MVC" /><category term="MVC1단계" /><category term="Redirect" /><category term="redirect" /><summary type="html"><![CDATA[[Servlet] 14. MVC01(Servlet) 정리 및 Redirect 기법 ( 전화 돌리기 )]]></summary></entry><entry><title type="html">[MVC SPRING] 15. MVC02(JSP 구성요소 알아보기)</title><link href="http://localhost:4000/study/0015/" rel="alternate" type="text/html" title="[MVC SPRING] 15. MVC02(JSP 구성요소 알아보기)" /><published>2022-04-21T00:00:00+09:00</published><updated>2022-04-21T00:00:00+09:00</updated><id>http://localhost:4000/study/0015</id><content type="html" xml:base="http://localhost:4000/study/0015/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
-
-
-      
-
-안녕하세요. Nerd-Lee입니다.
+<p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
-[NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.
-MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고
-나중에는 Spring Framework를 사용하는 방식의 강의입니다.
-MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br /></p>
 
-진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
 
+<hr />
 
+<h3 id="1-mvc02-프로젝트-만들기">1. MVC02 프로젝트 만들기</h3>
 
-1. MVC01에 대한 내용
+<ul>
+  <li>MVC02라는 프로젝트를 Dynamic Web Project로 생성한 후에 root는 MVC02로 설정하여 만든다.</li>
+  <li>WAS와 Context(연결)을 해줘야 한다. Servers -&gt; Tomcat server 오른쪽 클릭하고, Add and Remove를 클릭<br />
+MVC02를 Add 해주면 완료.</li>
+</ul>
 
-1.1. Controller
+<hr />
 
-  MVC 1단계는, View는 없고, Model과 Controller로만 이루어져 있다.
-  현재 서블릿으로 만든 프로젝트를 보면, Controller 소스 파일이 많다는 것을 느낄...
-    </summary>
-  
+<h3 id="2-프로젝트-셋팅">2. 프로젝트 셋팅</h3>
 
-  </entry>
+<ul>
+  <li>MVC01에 사용했던 mysql-connector를 MVC02 프로젝트로 복사-붙혀넣기 한다.<br /></li>
+  <li>MVC01에 사용한 db와 model 패키지도 복사-붙혀넣기해서 src 폴더에 넣어주자.</li>
+</ul>
 
-  
-  <entry>
-    <title>[MVC SPRING] 13. 회원정보 수정하기</title>
-    <link href="http://localhost:4000/posts/study-13/" rel="alternate" type="text/html" title="[MVC SPRING] 13. 회원정보 수정하기" />
-    <published>2022-04-20T00:00:00+09:00</published>
-  
-    <updated>2022-04-20T00:00:00+09:00</updated>
-  
-    <id>http://localhost:4000/posts/study-13/</id>
-    <content src="http://localhost:4000/posts/study-13/" />
-    <author>
-      <name>jeongmin Lee</name>
-    </author>
+<hr />
 
-  
-    
-    <category term="Study" />
-    
-  
+<h3 id="3-jsp란">3. JSP란?</h3>
 
-  
-    <summary>
-      
+<ul>
+  <li>JSP는, <code class="language-plaintext highlighter-rouge">Java Server Page</code>의 약자이다. 서블릿도 물론 <code class="language-plaintext highlighter-rouge">Server + let</code> 을 붙인 단어로 100% 자바 웹 프로그래밍이지만<br />
+JSP와 Servlet의 차이는, <code class="language-plaintext highlighter-rouge">Servlet은 Controller</code>, <code class="language-plaintext highlighter-rouge">JSP는 View</code> 역할을 담당한다는 것이다.</li>
+  <li>그럼 간단하게, JSP 파일을 만들어보자. WebContent 폴더를 오른쪽 마우스로 클릭해서, new -&gt; JSP File을 클릭하자.<br /></li>
+  <li>그리고 <code class="language-plaintext highlighter-rouge">test01.jsp</code> 파일을 만든다.</li>
+</ul>
 
+<hr />
 
+<h3 id="4-jsp-구성요소-파헤치기">4. JSP 구성요소 파헤치기</h3>
 
+<ul>
+  <li>4-1. 아래와 같은 형태는 jsp에서, 지시자라고 부르게 된다. 지시자는 스크립트적인 요소(프로그래밍적인 요소) 이다.<br />
+지시자는 3가지 형태로 사용할 수 있다. 첫 번째는 <code class="language-plaintext highlighter-rouge">page 지시자</code>이다. <code class="language-plaintext highlighter-rouge">page 지시자</code>는 <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code> 안에, page라고 적혀있다.<br />
+두번째는 <code class="language-plaintext highlighter-rouge">include 지시자</code> 이다. <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>안에, include가 적혀있다.<br />
+세번째는 <code class="language-plaintext highlighter-rouge">taglib 지시자</code> 이다. <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>안에, taglib가 적혀있다.</li>
+</ul>
 
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+</code></pre></div></div>
 
-      
+<ul>
+  <li>4-2. JSP로 간단하게, 1~?? 까지 더했을 때 총합을 구하는 웹 프로그램을 만들어보자.<br />
+이 부분은 Spring-Boot 카테고리에도 적어놨던 부분이다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code> 사이에, 코드를 작성할 수 있다. 이렇게 코드를 작성할 수 있는 것을 <code class="language-plaintext highlighter-rouge">스크립트릿</code> 이라고 부른다.<br />
+아래의 코드를 살펴보자. 아래 코드는 1~10까지의 합을 구하는 코드이다.</li>
+</ul>
 
-안녕하세요. Nerd-Lee입니다.
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+		<span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="nt">%&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>4-3. 그럼 이제 sum의 값을 출력시켜줘야 하는데, 출력을 할 수 있는 방법은 <code class="language-plaintext highlighter-rouge">&lt;%=sum %&gt;</code> 이렇게 만들어줘야<br />
+스크립트릿에서 만들어준 코드를 return 받아서 출력할 수가 있고, 이와 같은 형식을 <code class="language-plaintext highlighter-rouge">출력식</code> 이라고 부른다.<br />
+아래 코드를 살펴보도록 하자.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+		<span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+1~10까지의 총합= <span class="nt">&lt;%=</span><span class="n">sum</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>서블릿과 jsp의 차이는, 서블릿은 html 코드를 따로따로 입력해줘야 하기 때문에<br />
+태그수가 적으면 상관이 없으나 많아지면 유지보수도 어려워지고 복잡해진다는 큰 단점이 있다.<br />
+하지만, JSP는 HTML 태그도 같이 사용할 수 있기 때문에, 디자인적 요소로도 서블릿보다는 간편하다는 장점이 있다.<br /><br /><br /></li>
+  <li>4-4. 그럼 이젠, 1부터 시작이 아니라, ?? ~ ?? 까지의 숫자를 입력한 합을 출력하는 방식을 만들어보도록 하자.<br />
+함수를 만들기 위해서는 <code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>가 아닌, <code class="language-plaintext highlighter-rouge">&lt;%! %&gt;</code> 선언문으로 만들어줘야 함수를 사용할 수가 있다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;%! %&gt;</code>는 JSP에서 선언문이라고 부른다. 아래의 코드를 보도록 하자.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%!</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">result</span><span class="o">(</span><span class="kt">int</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">e</span><span class="o">){</span>
+		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">s</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">e</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+			<span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="nt">%&gt;</span>    
+</code></pre></div></div>
+<ul>
+  <li>위는, 두 개의 수를 가지고 와서, 계산을 한 다음 값을 반환하는 함수이다. 그럼 출력을 해보도록 하자.</li>
+</ul>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%-- 지시자 --%&gt;</span>
+<span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+	pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+
+<span class="c">&lt;%-- 선언문 --%&gt;</span>
+<span class="nt">&lt;%!</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">result</span><span class="o">(</span><span class="kt">int</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">e</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="nt">%&gt;</span>
+
+<span class="c">&lt;%-- 스크립트릿 --%&gt;</span>
+<span class="nt">&lt;%</span>
+	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="n">sum</span> <span class="o">+=</span> <span class="n">i</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>Insert title here<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+	<span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;tr&gt;</span>
+			<span class="nt">&lt;td&gt;</span>1~100까지의 총합<span class="nt">&lt;/td&gt;</span>
+			<span class="c">&lt;%-- 출력식 --%&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">sum</span><span class="nt">%&gt;&lt;/td&gt;</span>
+		<span class="nt">&lt;/tr&gt;</span>
+		<span class="nt">&lt;tr&gt;</span>
+			<span class="nt">&lt;td&gt;</span>55~350까지의 총합<span class="nt">&lt;/td&gt;</span>
+			<span class="nt">&lt;td&gt;&lt;%=</span><span class="n">result</span><span class="o">(</span><span class="mi">55</span><span class="o">,</span> <span class="mi">350</span><span class="o">)</span><span class="nt">%&gt;&lt;/td&gt;</span>
+		<span class="nt">&lt;/tr&gt;</span>
+	<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>그럼 테이블 형태로, 5050과 59940이라는 결과값이 출력이 잘 되는 것을 확인할 수 있다.<br />
+마지막으로, JSP는 <code class="language-plaintext highlighter-rouge">&lt;% %&gt; (지시자)</code>, <code class="language-plaintext highlighter-rouge">&lt;%= %&gt; (출력식)</code>, <code class="language-plaintext highlighter-rouge">&lt;%! %&gt; (선언문)</code>, <code class="language-plaintext highlighter-rouge">&lt;%-- --%&gt; (JSP 주석)</code> 으로 구성되어 있다.<br />
+기억하도록 하자!</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="MVC" /><category term="spring" /><category term="스프링" /><category term="spring boot" /><category term="JSP" /><category term="Servlet" /><category term="JSP 구성요소" /><summary type="html"><![CDATA[[MVC SPRING] 15. MVC02(JSP 구성요소 알아보기)]]></summary></entry><entry><title type="html">[MVC SPRING] 13. 회원정보 수정하기</title><link href="http://localhost:4000/study/0013/" rel="alternate" type="text/html" title="[MVC SPRING] 13. 회원정보 수정하기" /><published>2022-04-20T00:00:00+09:00</published><updated>2022-04-20T00:00:00+09:00</updated><id>http://localhost:4000/study/0013</id><content type="html" xml:base="http://localhost:4000/study/0013/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
-[NarP Series]MVC 프레임워크는 내 손에[나프1탄] 을 참고하였습니다.
-MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고
-나중에는 Spring Framework를 사용하는 방식의 강의입니다.
-MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 
-진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
 
+<hr />
 
+<h3 id="1-회원정보-수정-취소-돌아가기-버튼-만들기">1. 회원정보 수정, 취소, 돌아가기 버튼 만들기</h3>
 
-1. 회원정보 수정, 취소, 돌아가기 버튼 만들기
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MemberContentController</code> 에서 만들어준다.</li>
+  <li>기본틀은 다음과 같다.</li>
+</ul>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberContent.do"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberContentController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
 
-  MemberContentController 에서 만들어준다.
-  기본틀은 다음과 같다.
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		
+		<span class="c1">// request로  파라미터 받아오기</span>
+		
+		<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+		
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+		<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberContent</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+		<span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;head&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/head&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;form action='/memberUpdate.do' method='post'&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;input type='hidden'  name='number' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;table border='2'&gt;"</span><span class="o">);</span>
+		<span class="c1">// 회원 정보가 있다면</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">vo</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td colspan='2'&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 회원님의 상세보기 &lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;번호&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;아이디&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;비밀번호&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;이름&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;나이&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;input type='text' name='age' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;이메일&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;input type='text' name='email' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;전화번호&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;input type='text' name='phone' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;일치하는 회원이 없습니다.&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td colspan='2' align='center'&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;input type='submit' value='수정하기'/&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;input type='reset' value='취소'/&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;input type='button' value='돌아가기'/&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/table&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/form&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>수정하기 버튼을 누르면, id와 input의 데이터인 나이, 이메일, 전화번호의 데이터를 같이 넘겨줘야한다.</li>
+  <li>form은, input의 데이터만 넘겨주기 때문에, id는 input이 아니다.<br />
+그래서 input의 type중에 hidden이란 타입이 있는데, 눈에는 보이지 않으면서<br />
+form 태그 안에 있으면 value의 값을 같이 넘겨줄 수 있게 된다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">memberUpdate.do</code> 라는 요청을 받는 서블릿을 만들어보자.</li>
+</ul>
 
+<hr />
 
-@WebServlet("/memberContent.do")
-public class MemberC...
-    </summary>
-  
+<h3 id="2-서블릿-페이지-만들기">2. 서블릿 페이지 만들기</h3>
 
-  </entry>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberUpdate.do"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberUpdateController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
 
-</feed>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// 1. 파라미터 수집(VO)</span>
+		
+		<span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"number"</span><span class="o">));</span>
+		<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"age"</span><span class="o">));</span>
+		<span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"phone"</span><span class="o">);</span>
+		
+		<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberVO</span><span class="o">();</span>
+		<span class="n">vo</span><span class="o">.</span><span class="na">setNumber</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+		<span class="n">vo</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
+		<span class="n">vo</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+		<span class="n">vo</span><span class="o">.</span><span class="na">setPhone</span><span class="o">(</span><span class="n">phone</span><span class="o">);</span>
+		
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberUpdate</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/memberList.do"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not update"</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
+<hr />
 
+<h3 id="3-dao-메서드-추가하기">3. DAO 메서드 추가하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">memberUpdate</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"update member set age=?, email=?, phone=? where number=?"</span><span class="o">;</span>
+		<span class="n">getConnect</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>
+
+			<span class="c1">// 4. 파라미터에 값 추가하기</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">());</span>
+			
+			<span class="n">success</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+			<span class="n">dbClose</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">success</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="4-실행해보기">4. 실행해보기</h3>
+
+<ul>
+  <li>memberList.do 페이지로 가서, 아이디를 클릭하고 상세보기 페이지에서 input 데이터 값만 수정하고<br />
+수정하기를 클릭하면 수정된 데이터가 잘 들어가고, 다시 <code class="language-plaintext highlighter-rouge">memberList.do</code> 페이지로 넘어오게 된다.</li>
+  <li>이제 돌아가기 버튼에만, <code class="language-plaintext highlighter-rouge">memberList.do</code> 페이지로 돌아가게 만들어주면 된다.</li>
+  <li>돌아가기 버튼은, 버튼이 아닌 anchor 태그로, href 태그에 붙여주자.</li>
+  <li>이 시간에는 javascript를 사용하지 않고 고전적인 방법으로 만드는 강의이기 때문이다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="회원정보 수정하기" /><summary type="html"><![CDATA[[Servlet] 13. 회원정보 수정하기]]></summary></entry><entry><title type="html">[MVC SPRING] 12. 회원상세보기 구현</title><link href="http://localhost:4000/study/0012/" rel="alternate" type="text/html" title="[MVC SPRING] 12. 회원상세보기 구현" /><published>2022-04-19T00:00:00+09:00</published><updated>2022-04-19T00:00:00+09:00</updated><id>http://localhost:4000/study/0012</id><content type="html" xml:base="http://localhost:4000/study/0012/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
+
+<hr />
+
+<h3 id="1-테이블에-아이디를-a태그로-감싸주기">1. 테이블에 아이디를 a태그로 감싸주기</h3>
+
+<ul>
+  <li>상세보기 페이지로 넘어갈 수 있는 anchor 태그를 id 컬럼에 감싸준다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;a href='/memberContent.do?num="</span><span class="o">+</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()+</span><span class="s">"'&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/a&gt;&lt;/td&gt;"</span><span class="o">);</span>	<span class="c1">// 이 부분 수정</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;&lt;a href='/memberDelete.do?num="</span><span class="o">+</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()+</span><span class="s">"'&gt;삭제&lt;/a&gt;&lt;/th&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" &lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-membercontentcontroller-서블릿-만들기">2. MemberContentController 서블릿 만들기</h3>
+
+<ul>
+  <li>상세보기 페이지를 보여줄 Controller를 만든다.</li>
+  <li>쿼리스트링에서의 데이터값을 받아오고, dao에 만들어 준 데이터베이스 쿼리 실행 메서드의 반환값을 받아와서<br />
+출력해주면 되는데…</li>
+  <li>일단 DAO를 먼저 만들어야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 선택 회원 상세보기</span>
+	<span class="kd">public</span> <span class="nc">MemberVO</span> <span class="nf">memberContent</span><span class="o">(</span><span class="kt">int</span> <span class="n">_number</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"select * from member where number=?"</span><span class="o">;</span>
+		<span class="n">getConnect</span><span class="o">();</span>
+		
+		<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">_number</span><span class="o">);</span>
+			
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+			<span class="k">if</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+				<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"number"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"password"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+				<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"age"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"phone"</span><span class="o">);</span>
+				<span class="n">vo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberVO</span><span class="o">(</span><span class="n">number</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">,</span> <span class="n">email</span><span class="o">,</span> <span class="n">phone</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">finally</span> <span class="o">{</span>
+			<span class="n">dbClose</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">vo</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>DAO를 만들었다면, 이제 데이터값을 받아와서 해당 데이터값으로 html로 출력을 해줘야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MemberContentController - 상세보기 컨트롤러</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberContent.do"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberContentController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		
+		<span class="c1">// request로  파라미터 받아오기</span>
+		
+		<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+		
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+		<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberContent</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+		<span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;head&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/head&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;table border='2'&gt;"</span><span class="o">);</span>
+		<span class="c1">// 회원 정보가 있다면</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">vo</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td colspan='2'&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 회원님의 상세보기 &lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;번호&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;아이디&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;비밀번호&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;이름&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;나이&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;input type='text' name='age' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;이메일&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;input type='text' name='email' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;전화번호&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;input type='text' name='phone' value='"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="o">+</span> <span class="s">"'/&gt;&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;일치하는 회원이 없습니다.&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+		
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/table&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="회원상세보기" /><summary type="html"><![CDATA[[Servlet] 12. 회원상세보기 구현]]></summary></entry><entry><title type="html">[MVC SPRING] 11. 회원삭제하기(QueryString)</title><link href="http://localhost:4000/study/0011/" rel="alternate" type="text/html" title="[MVC SPRING] 11. 회원삭제하기(QueryString)" /><published>2022-04-19T00:00:00+09:00</published><updated>2022-04-19T00:00:00+09:00</updated><id>http://localhost:4000/study/0011</id><content type="html" xml:base="http://localhost:4000/study/0011/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
+
+<hr />
+
+<h3 id="1-회원-테이블에-삭제-버튼-추가하기">1. 회원 테이블에 삭제 버튼 추가하기</h3>
+
+<ul>
+  <li>테이블에 삭제 버튼을 만들어주자.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberList.do"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberListController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span>
+			<span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// 1. 클라이언트 요청 받기</span>
+		
+		<span class="c1">// 2. 회원 전체리스트 가져오기(Model과 연동)</span>
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberGetList</span><span class="o">();</span>
+
+		<span class="c1">// 3. 회원 전체리스트 HTML로 만들어서 출력(응답)</span>
+		<span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span><span class="c1">// MIME TYPE</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;table border='1'&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;thead&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;번호&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;아이디&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;패스워드&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;이름&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;나이&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;이메일&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;전화번호&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;삭제&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/thead&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tbody&gt;"</span><span class="o">);</span>
+
+		<span class="k">for</span> <span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;&lt;a href='/memberDelete.do?num="</span><span class="o">+</span><span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()+</span><span class="s">"'&gt;삭제&lt;/a&gt;&lt;/th&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" &lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tbody&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td colspan='8' align='right'&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;a href='member/memberRegister.html'&gt;회원가입&lt;/a&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/table&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-delete-관련-servlet을-만들자">2. Delete 관련 Servlet을 만들자.</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">controller</code> 패키지에, <code class="language-plaintext highlighter-rouge">MemberDeleteController</code> 라는 서블릿을 하나 만들어준다.</li>
+  <li>그리고, 삭제를 할 때 해당 회원의 number 값을 memberDelete.do에 넘겨줘야 한다.</li>
+  <li>그 때 사용하는 것이 쿼리스트링(querystring) 이다.</li>
+  <li>쿼리스트링 값은, service에서 request가 가지고 있다. request에서, 값을 받아와서<br />
+DAO로 넘겨서 DB 쿼리를 실행하면 된다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//[delete Servlet]</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberDelete.do"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDeleteController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// 1. 쿼리스트링 값 파라미터 빼오기</span>
+		<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"num"</span><span class="o">));</span>
+		
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberDelete</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/memberList.do"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="c1">// 가입 실패시 예외객체를 만들어서 WAS(톰캣서버) 에게 던진다.</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not delete!"</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// [MemberDAO 추가]</span>
+
+<span class="c1">// 선택 회원 삭제하기</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">memberDelete</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"delete from member where number=?"</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+		<span class="c1">// 데이터베이스 연결</span>
+		<span class="n">getConnect</span><span class="o">();</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>
+			
+			<span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">number</span><span class="o">);</span>
+			<span class="n">success</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">finally</span> <span class="o">{</span>
+			<span class="n">dbClose</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">success</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="QueryString" /><category term="회원삭제하기" /><summary type="html"><![CDATA[[Servlet] 11. 회원삭제하기(QueryString)]]></summary></entry><entry><title type="html">[MVC SPRING] 10. 회원리스트 보기</title><link href="http://localhost:4000/study/0010/" rel="alternate" type="text/html" title="[MVC SPRING] 10. 회원리스트 보기" /><published>2022-04-19T00:00:00+09:00</published><updated>2022-04-19T00:00:00+09:00</updated><id>http://localhost:4000/study/0010</id><content type="html" xml:base="http://localhost:4000/study/0010/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
+
+<hr />
+
+<h3 id="1-controller에서-view-페이지-만들기">1. controller에서 view 페이지 만들기</h3>
+
+<ul>
+  <li>tablesgenerator 에서, 테이블 만들기 ( 2행 7열 )</li>
+  <li>그리고 <code class="language-plaintext highlighter-rouge">out.println</code>으로 테이블을 html 코드로 만들자.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;table&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;thead&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;번호&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;아이디&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;패스워드&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;이름&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;나이&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;이메일&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;전화번호&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/thead&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tbody&gt;"</span><span class="o">);</span>
+
+		<span class="c1">// 반복문 처리.</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" &lt;/tr&gt;"</span><span class="o">);</span>
+
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tbody&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/table&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-최종-데이터-출력코드">2. 최종 데이터 출력코드</h3>
+
+<ul>
+  <li>response.setContentType() 함수를 이용해서, 한글 문자가 깨지는 것을 방지해야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">response.setContentType("text/html;charset=utf-8")</code> 을 출력에 관련된 부분을 적기 전에 설정한다.</li>
+  <li>이렇게 설정하는 방식을 MIME TYPE이라고 한다.</li>
+  <li>그리고, 버튼을 누르면, 회원가입 페이지로 넘어가는 버튼도 하나 만들자.</li>
+  <li>또한 회원가입이 되면, 회원리스트를 보여주는 페이지로 넘어가도록 하게 하자.<br />
+<code class="language-plaintext highlighter-rouge">response.sendRedirect</code> 함수에, url을 문자열로 만들어주면 된다.</li>
+  <li>[전체 코드]</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberList.do"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberListController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span>
+			<span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+		<span class="c1">// 1. 클라이언트 요청 받기</span>
+		
+		<span class="c1">// 2. 회원 전체리스트 가져오기(Model과 연동)</span>
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberGetList</span><span class="o">();</span>
+
+		<span class="c1">// 3. 회원 전체리스트 HTML로 만들어서 출력(응답)</span>
+		<span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span><span class="c1">// MIME TYPE</span>
+		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;table border='1'&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;thead&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;번호&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;아이디&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;패스워드&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;이름&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;나이&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;이메일&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;th&gt;전화번호&lt;/th&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/thead&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tbody&gt;"</span><span class="o">);</span>
+
+		<span class="k">for</span> <span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getNumber</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td&gt;"</span> <span class="o">+</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" &lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tbody&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;td colspan='7' align='right'&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;a href='member/memberRegister.html'&gt;회원가입&lt;/a&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/td&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/tr&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/table&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;"</span><span class="o">);</span>
+		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// [MemberInsertController.java에서, sendRedirect 함수 실행 부분]</span>
+
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberInsert</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// 가입 성공시</span>
+			<span class="c1">// out.println("insert success!");</span>
+			<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/memberList.do"</span><span class="o">);</span>		<span class="c1">// /memberList.do로 url을 변경한다.</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="c1">// 가입 실패시 예외객체를 만들어서 WAS(톰캣서버) 에게 던진다.</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not insert!"</span><span class="o">);</span>
+		<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="회원리스트 보기" /><category term="회원리스트" /><summary type="html"><![CDATA[[Servlet] 10. 회원리스트 보기]]></summary></entry><entry><title type="html">[MVC SPRING] 09. 회원리스트 가져오기(묶고(VO)-담고(List))</title><link href="http://localhost:4000/study/0009/" rel="alternate" type="text/html" title="[MVC SPRING] 09. 회원리스트 가져오기(묶고(VO)-담고(List))" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/study/0009</id><content type="html" xml:base="http://localhost:4000/study/0009/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
+
+<hr />
+
+<h3 id="1-unique-key-만들기">1. unique key 만들기</h3>
+
+<ul>
+  <li>기존 회원테이블에 id를 unique key로 만들어서, 아이디가 중복이 될 경우 테이블에 추가를 못하게 만든다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">-- 테이블 삭제하기</span>
+<span class="k">drop</span> <span class="k">table</span> <span class="n">member</span><span class="p">;</span>
+
+<span class="c1">-- 테이블 생성</span>
+<span class="k">create</span> <span class="k">table</span> <span class="n">member</span><span class="p">(</span>
+<span class="n">number</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
+<span class="n">id</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+<span class="n">password</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+<span class="n">age</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+<span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+<span class="n">phone</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+<span class="k">unique</span> <span class="k">key</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-memberlistcontroller-및-dao-메서드-구현하기">2. MemberListController 및 DAO 메서드 구현하기</h3>
+
+<ul>
+  <li>member 테이블에 저장되어 있는 데이터들을 가져와서 출력해주는 서블릿을 하나 만든다.</li>
+  <li>이름은 <code class="language-plaintext highlighter-rouge">MemberListController</code> 다.</li>
+  <li>MemberDAO에서 전체 회원리스트를 가져오는 메서드를 구현한다.</li>
+  <li>이번 select 쿼리는 executeUpdate가 아닌 executeQuery 라는 메서드로, 실행을 시킨다.<br />
+실행을 하면, 반환값은 ResultSet이기 때문에, 위에 만들어준 ResultSet 형 변수 rs로 대입시킨다.</li>
+  <li>그리고 <code class="language-plaintext highlighter-rouge">rs.next()</code> 라는 함수를 이용해서, 값을 받아올 수 있을 때까지 받아온다.</li>
+  <li>그 다음, ArrayList를 만들어서, 값을 저장하면 된다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전체 회원 리스트 가져오기</span>
+	<span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;</span> <span class="nf">memberGetList</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"select * from member"</span><span class="o">;</span>
+		
+		<span class="c1">// 데이터베이스 연결</span>
+		<span class="n">getConnect</span><span class="o">();</span>
+		
+		<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;();</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>
+			
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+			
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+				<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"number"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"password"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+				<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"age"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+				<span class="nc">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"phone"</span><span class="o">);</span>
+				<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberVO</span><span class="o">(</span><span class="n">number</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">,</span> <span class="n">email</span><span class="o">,</span> <span class="n">phone</span><span class="o">);</span>
+				<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+			<span class="n">dbClose</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// 데이터베이스 연결 해제</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dbClose</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">ps</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">ps</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="회원리스트 가져오기" /><category term="vo" /><category term="list" /><category term="arraylist" /><summary type="html"><![CDATA[[Servlet] 09. 회원리스트 가져오기(묶고(VO)-담고(List))]]></summary></entry><entry><title type="html">[MVC SPRING] 08. 회원가입 구현하기</title><link href="http://localhost:4000/study/0008/" rel="alternate" type="text/html" title="[MVC SPRING] 08. 회원가입 구현하기" /><published>2022-04-17T00:00:00+09:00</published><updated>2022-04-17T00:00:00+09:00</updated><id>http://localhost:4000/study/0008</id><content type="html" xml:base="http://localhost:4000/study/0008/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
+MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
+
+<hr />
+
+<h3 id="1-회원-저장-메서드-생성">1. 회원 저장 메서드 생성</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">memberInsert</code> 라는 이름을 가진 메서드를 만들고, 매개변수를 <code class="language-plaintext highlighter-rouge">MemberVO</code> 클래스의 변수를 이용해서<br />
+받아온 값을 저장해주면 된다. 일일히 변수에 대한 데이터값을 파라미터로 받지 않고 말이다.<br /></li>
+  <li>그럼 받아온 값을, <code class="language-plaintext highlighter-rouge">insert</code> 쿼리로 데이터베이스에 저장하면 된다.<br /></li>
+  <li>메서드 안에 <code class="language-plaintext highlighter-rouge">String SQL = "insert into member(id, pass, name, age, email, phone) values(?,?,?,?,?,?)";</code> 라는 쿼리문을 만들어준다.<br /></li>
+  <li>쿼리문에서, <code class="language-plaintext highlighter-rouge">?</code>를 파라미터라고 한다.<br /></li>
+  <li>getConnect 함수를 호출해서, 데이터베이스를 연결할 수 있게 Connection 객체를 만들어주고<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">PreparedStatement</code> 형 변수를 이용해서, SQL 문장을 전송할 수 있는 객체를 생성해서, 미리 컴파일을 시킨다.<br /></li>
+  <li>미리 컴파일을 시키는 이유는 속도가 빠르기 때문이다.<br /></li>
+  <li>이제 <code class="language-plaintext highlighter-rouge">?</code> 로 된 쿼리 파라미터에 값만 추가해주고, 데이터베이스에 전송시키면 된다.</li>
+  <li>코드는 다음과 같다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">memberInsert</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 1. ? (파라미터 ) 순서는 1 2 3 4 5 6 으로, 0번이 아닌 1번으로 시작한다.</span>
+		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"insert into member(id, password, name, age, email, phone) values(?,?,?,?,?,?)"</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+		
+		<span class="c1">// 2. Connection 객체 만들기</span>
+		<span class="n">getConnect</span><span class="o">();</span>
+		
+		<span class="c1">// 3. SQL 문장을 전송하는 객체 생성하기</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>		<span class="c1">// 미리 컴파일을 시킨다. ( 속도가 빠르다. )</span>
+			
+			<span class="c1">// 4. 파라미터에 값 추가하기</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPassword</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+			<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">vo</span><span class="o">.</span><span class="na">getPhone</span><span class="o">());</span>
+			
+			<span class="c1">// 5. 전송</span>
+			<span class="n">success</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>		<span class="c1">// executeUpdate는, 0 or 1이 반환되는데. 반환 값이 0이면 전송이 실패된것이고 1이면 전송이 잘 된 것으로 처리가 된다.</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">success</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-controller에서-회원저장-메서드-실행하기">2. Controller에서, 회원저장 메서드 실행하기</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>		<span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+		
+		<span class="c1">// Model과 연동하기</span>
+		<span class="nc">MemberDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberDAO</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">memberInsert</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">success</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// 가입 성공시</span>
+			<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"insert success!"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="c1">// 가입 실패시 예외객체를 만들어서 WAS(톰캣서버) 에게 던진다.</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">ServletException</span><span class="o">(</span><span class="s">"not insert!"</span><span class="o">);</span>
+		<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-mysql-실행하기">3. MySQL 실행하기</h3>
+
+<ul>
+  <li>이전 공부내용에서, MySQL 실행하듯이 실행하고 서버를 실행해서 데이터들을 입력하고 가입버튼을 클릭해보자.<br />
+insert success! 라는 내용이 출력되면, sql 파일로 쿼리를 실행해서 데이터가 잘 들어갔는 지 확인하자. 난 잘됐다.<br /></li>
+</ul>
+
+<hr />
+
+<h3 id="4-sql-results-메뉴에-plug-in-error가-발생할-경우-해결법">4. SQL Results 메뉴에 plug-in error가 발생할 경우 해결법</h3>
+
+<ul>
+  <li>이클립스를 잠시 닫는다.<br /></li>
+  <li>프로젝트가 들어있는 상위 폴더로 가서, <code class="language-plaintext highlighter-rouge">.metadata</code> 를 클릭한다.</li>
+  <li>org.eclipse.datatools.sqltools.result 폴더 안에 들어가서 results라는 파일을 지워주고 실행하면 해결된다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="회원가입" /><category term="서블릿 회원가입" /><summary type="html"><![CDATA[[Servlet] 08. 회원가입 구현하기]]></summary></entry></feed>

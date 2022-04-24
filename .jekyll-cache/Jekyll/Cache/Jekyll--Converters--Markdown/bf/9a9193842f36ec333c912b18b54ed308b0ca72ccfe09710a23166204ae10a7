@@ -1,4 +1,4 @@
-I"0<p><img src="/assets/img/etc/reactjs.png" alt="" /></p>
+I"�<p><img src="/assets/img/etc/reactjs.png" alt="" /></p>
 
 <p>안녕하세요. React.js에서 Typescript를 사용하는 방법에 대해서 알아보도록 하겠습니다.</p>
 
@@ -8,9 +8,8 @@
 
 <p>react.js를 설치할 수 있는 환경이 갖춰졌다는 가정하에 작성이 되었습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>npx create-react-app <span class="s1">'프로젝트 이름'</span> <span class="nt">--template</span> typescript
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx create-react-app <span class="s1">'프로젝트 이름'</span> <span class="nt">--template</span> typescript
+</code></pre></div></div>
 
 <p>이렇게 입력을 하게 되면 React.js 환경에서 Typescript를 사용할 수 있게 됩니다.</p>
 

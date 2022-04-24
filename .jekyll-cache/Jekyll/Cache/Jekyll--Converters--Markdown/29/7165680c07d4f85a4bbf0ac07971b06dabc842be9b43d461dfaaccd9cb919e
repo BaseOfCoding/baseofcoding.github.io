@@ -1,4 +1,4 @@
-I"�a<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+I"�^<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -18,82 +18,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
   <li>기본틀은 다음과 같다.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-</pre></td><td class="rouge-code"><pre><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberContent.do"</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberContent.do"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberContentController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
 
@@ -168,7 +93,7 @@ MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
 		<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/html&gt;"</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 <ul>
   <li>수정하기 버튼을 누르면, id와 input의 데이터인 나이, 이메일, 전화번호의 데이터를 같이 넘겨줘야한다.</li>
   <li>form은, input의 데이터만 넘겨주기 때문에, id는 input이 아니다.<br />
@@ -181,38 +106,7 @@ form 태그 안에 있으면 value의 값을 같이 넘겨줄 수 있게 된다.
 
 <h3 id="2-서블릿-페이지-만들기">2. 서블릿 페이지 만들기</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberUpdate.do"</span><span class="o">)</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/memberUpdate.do"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberUpdateController</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
 
@@ -243,36 +137,13 @@ form 태그 안에 있으면 value의 값을 같이 넘겨줄 수 있게 된다.
 		<span class="o">}</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <hr />
 
 <h3 id="3-dao-메서드-추가하기">3. DAO 메서드 추가하기</h3>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kt">int</span> <span class="nf">memberUpdate</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">memberUpdate</span><span class="o">(</span><span class="nc">MemberVO</span> <span class="n">vo</span><span class="o">)</span> <span class="o">{</span>
 		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"update member set age=?, email=?, phone=? where number=?"</span><span class="o">;</span>
 		<span class="n">getConnect</span><span class="o">();</span>
 		<span class="kt">int</span> <span class="n">success</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
@@ -295,7 +166,7 @@ form 태그 안에 있으면 value의 값을 같이 넘겨줄 수 있게 된다.
 		
 		<span class="k">return</span> <span class="n">success</span><span class="o">;</span>
 	<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</code></pre></div></div>
 
 <hr />
 
