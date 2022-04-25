@@ -225,6 +225,10 @@
 <lastmod>2022-04-24T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/study/0018/</loc>
+<lastmod>2022-04-25T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/categories/</loc>
 </url>
 <url>
@@ -255,5 +259,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page6/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/google3f990bd62c168531.html</loc>
+<lastmod>2022-04-10T21:22:04+09:00</lastmod>
 </url>
 </urlset>
