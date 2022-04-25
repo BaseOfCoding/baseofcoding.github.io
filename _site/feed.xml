@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T23:10:22+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nerd-Lee</title><subtitle>웹 개발의 기록</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">[MVC SPRING] 18. MVC03(Model 2 방식)</title><link href="http://localhost:4000/study/0018/" rel="alternate" type="text/html" title="[MVC SPRING] 18. MVC03(Model 2 방식)" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/study/0018</id><content type="html" xml:base="http://localhost:4000/study/0018/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T23:55:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nerd-Lee</title><subtitle>웹 개발의 기록</subtitle><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><entry><title type="html">[MVC SPRING] 18. MVC03(Model 2 방식)</title><link href="http://localhost:4000/study/0018/" rel="alternate" type="text/html" title="[MVC SPRING] 18. MVC03(Model 2 방식)" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/study/0018</id><content type="html" xml:base="http://localhost:4000/study/0018/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -46,7 +46,57 @@ MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만�
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
 
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="MVC" /><category term="spring" /><category term="스프링" /><category term="spring boot" /><category term="JSP" /><category term="Servlet" /><category term="view" /><category term="controller" /><category term="Model2" /><category term="model 2 방식" /><summary type="html"><![CDATA[[MVC SPRING] 18. MVC03(Model 2 방식)]]></summary></entry><entry><title type="html">[MVC SPRING] 16. Controller용 JSP_View용 JSP</title><link href="http://localhost:4000/study/0016/" rel="alternate" type="text/html" title="[MVC SPRING] 16. Controller용 JSP_View용 JSP" /><published>2022-04-24T00:00:00+09:00</published><updated>2022-04-24T00:00:00+09:00</updated><id>http://localhost:4000/study/0016</id><content type="html" xml:base="http://localhost:4000/study/0016/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="MVC" /><category term="spring" /><category term="스프링" /><category term="spring boot" /><category term="JSP" /><category term="Servlet" /><category term="view" /><category term="controller" /><category term="Model2" /><category term="model 2 방식" /><summary type="html"><![CDATA[[MVC SPRING] 18. MVC03(Model 2 방식)]]></summary></entry><entry><title type="html">[MVC SPRING] 19. forword(포워드) 기법이란?</title><link href="http://localhost:4000/study/0019/" rel="alternate" type="text/html" title="[MVC SPRING] 19. forword(포워드) 기법이란?" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/study/0019</id><content type="html" xml:base="http://localhost:4000/study/0019/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
+
+<p>안녕하세요. Nerd-Lee입니다.<br />
+공부 내용은, 인프런 박매일님의
+<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
+MVC 2단계인, Servlet이 아닌 JSP로 View를 제작하는 환경으로 만들어보고, MVC 3단계로 넘어가서<br />
+나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br /></p>
+
+<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Model 2</code> 방식부터 배우는 것이 좋다 생각하여, 어느정도 건너뛰었습니다.</p>
+
+<hr />
+
+<h3 id="1-model-2-기법의-예">1. Model 2 기법의 예</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">김고객(client)</code>이 있고, <code class="language-plaintext highlighter-rouge">Server(보험회사)</code> 안에 <code class="language-plaintext highlighter-rouge">박과장(Controller)</code><br />
+<code class="language-plaintext highlighter-rouge">조대리(Model)</code>, <code class="language-plaintext highlighter-rouge">홍대리(View)</code> 가 있다고 예를 들어보자.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">김고객</code>이 <code class="language-plaintext highlighter-rouge">박과장</code>에게 <code class="language-plaintext highlighter-rouge">전화(요청)</code>를 해서 제가 가입한 보험의 정보를 출력해주실 수 있나요?<br />
+라고 부탁했다고 치자.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">Servlet</code> 개념이라면, 박과장이 조대리에게 데이터를 받아서 전부 처리를 했겠지만<br />
+<code class="language-plaintext highlighter-rouge">Model 2</code> 방식은 그렇지 않다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">박과장</code>이 가지고 있는 데이터를 <code class="language-plaintext highlighter-rouge">홍대리</code> 에게 전달해서, <code class="language-plaintext highlighter-rouge">홍대리</code>가 출력을 한 다음<br />
+<code class="language-plaintext highlighter-rouge">박과장</code>에게 넘겨서, <code class="language-plaintext highlighter-rouge">박과장</code>이 <code class="language-plaintext highlighter-rouge">김고객</code>에게 <code class="language-plaintext highlighter-rouge">전달(응답)</code>해주는 방식이 바로 <code class="language-plaintext highlighter-rouge">Model 2</code> 이다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">Model 1</code> 방식은, <code class="language-plaintext highlighter-rouge">홍대리</code>가 <code class="language-plaintext highlighter-rouge">김고객</code>에게 <code class="language-plaintext highlighter-rouge">전달(응답)</code> 해주는 방식이였다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-forward-기법이란">2. forward 기법이란?</h3>
+
+<ul>
+  <li>위의 예로, forward 기법은, <code class="language-plaintext highlighter-rouge">박과장</code>이 데이터를 <code class="language-plaintext highlighter-rouge">홍대리</code>에게 전달하고<br />
+<code class="language-plaintext highlighter-rouge">홍대리</code>가 전달받은 데이터로 <code class="language-plaintext highlighter-rouge">view</code>를 만들어서 <code class="language-plaintext highlighter-rouge">박과장</code>에게 전달하는 부분을 <code class="language-plaintext highlighter-rouge">forward</code> 라고 한다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">박과장</code>이 가지고 있는 데이터를 특정 메모리 공간에 집어 넣는다. 이 방식은 <code class="language-plaintext highlighter-rouge">객체 바인딩</code> 이라고 한다.</li>
+  <li>그럼 <code class="language-plaintext highlighter-rouge">홍대리</code>는 메모리 공간의 주소만 알고 있으면, 메모리 공간 안에 있는 데이터를 빼올 수 있다.<br /></li>
+  <li><code class="language-plaintext highlighter-rouge">박과장</code>이 데이터를 넘겨줄 때는 <code class="language-plaintext highlighter-rouge">setAttribute</code>를 사용.<br />
+<code class="language-plaintext highlighter-rouge">홍대리</code>가 데이터를 받아올 때는 <code class="language-plaintext highlighter-rouge">getAttribute</code>를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">forward</code>와 <code class="language-plaintext highlighter-rouge">객체 바인딩</code>, <code class="language-plaintext highlighter-rouge">RequestDispatcher(요청의뢰)</code> 가 포함되면, <code class="language-plaintext highlighter-rouge">forward 기법</code>이라고 볼 수 있다.</li>
+</ul>
+
+<hr />
+
+<p><br /></p>
+
+<div style="font-size:25px; text-align:center">
+이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
+다음 글로 찾아오겠습니다!
+
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="MVC" /><category term="spring" /><category term="스프링" /><category term="spring boot" /><category term="JSP" /><category term="Servlet" /><category term="view" /><category term="controller" /><category term="forword기법" /><category term="포워드기법" /><summary type="html"><![CDATA[[MVC SPRING] 19. forword(포워드) 기법이란?]]></summary></entry><entry><title type="html">[MVC SPRING] 16. Controller용 JSP_View용 JSP</title><link href="http://localhost:4000/study/0016/" rel="alternate" type="text/html" title="[MVC SPRING] 16. Controller용 JSP_View용 JSP" /><published>2022-04-24T00:00:00+09:00</published><updated>2022-04-24T00:00:00+09:00</updated><id>http://localhost:4000/study/0016</id><content type="html" xml:base="http://localhost:4000/study/0016/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
 
 <p>안녕하세요. Nerd-Lee입니다.<br />
 공부 내용은, 인프런 박매일님의
@@ -1263,115 +1313,4 @@ DAO로 넘겨서 DB 쿼리를 실행하면 된다.</li>
 이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
 다음 글로 찾아오겠습니다!
 
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="QueryString" /><category term="회원삭제하기" /><summary type="html"><![CDATA[[Servlet] 11. 회원삭제하기(QueryString)]]></summary></entry><entry><title type="html">[MVC SPRING] 09. 회원리스트 가져오기(묶고(VO)-담고(List))</title><link href="http://localhost:4000/study/0009/" rel="alternate" type="text/html" title="[MVC SPRING] 09. 회원리스트 가져오기(묶고(VO)-담고(List))" /><published>2022-04-18T00:00:00+09:00</published><updated>2022-04-18T00:00:00+09:00</updated><id>http://localhost:4000/study/0009</id><content type="html" xml:base="http://localhost:4000/study/0009/"><![CDATA[<p><img src="/assets/img/etc/java.jpg" alt="" /></p>
-
-<p>안녕하세요. Nerd-Lee입니다.<br />
-공부 내용은, 인프런 박매일님의
-<code class="language-plaintext highlighter-rouge">[NarP Series]MVC 프레임워크는 내 손에[나프1탄]</code> 을 참고하였습니다.<br />
-MVC 1단계인, Servlet 환경으로만 만들어보고, MVC 2단계로 넘어가고<br />
-나중에는 Spring Framework를 사용하는 방식의 강의입니다.<br />
-MVC 1단계는, Controller + Model 만을 사용하는 방식입니다.</p>
-
-<p>진도가 빠르게 나가지 않아, 중요하다고 생각하는 부분들만 작성할 예정입니다.</p>
-
-<hr />
-
-<h3 id="1-unique-key-만들기">1. unique key 만들기</h3>
-
-<ul>
-  <li>기존 회원테이블에 id를 unique key로 만들어서, 아이디가 중복이 될 경우 테이블에 추가를 못하게 만든다.</li>
-</ul>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1">-- 테이블 삭제하기</span>
-<span class="k">drop</span> <span class="k">table</span> <span class="n">member</span><span class="p">;</span>
-
-<span class="c1">-- 테이블 생성</span>
-<span class="k">create</span> <span class="k">table</span> <span class="n">member</span><span class="p">(</span>
-<span class="n">number</span> <span class="nb">int</span> <span class="k">primary</span> <span class="k">key</span> <span class="n">auto_increment</span><span class="p">,</span>
-<span class="n">id</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-<span class="n">password</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-<span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-<span class="n">age</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-<span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-<span class="n">phone</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
-<span class="k">unique</span> <span class="k">key</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">);</span>
-
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="2-memberlistcontroller-및-dao-메서드-구현하기">2. MemberListController 및 DAO 메서드 구현하기</h3>
-
-<ul>
-  <li>member 테이블에 저장되어 있는 데이터들을 가져와서 출력해주는 서블릿을 하나 만든다.</li>
-  <li>이름은 <code class="language-plaintext highlighter-rouge">MemberListController</code> 다.</li>
-  <li>MemberDAO에서 전체 회원리스트를 가져오는 메서드를 구현한다.</li>
-  <li>이번 select 쿼리는 executeUpdate가 아닌 executeQuery 라는 메서드로, 실행을 시킨다.<br />
-실행을 하면, 반환값은 ResultSet이기 때문에, 위에 만들어준 ResultSet 형 변수 rs로 대입시킨다.</li>
-  <li>그리고 <code class="language-plaintext highlighter-rouge">rs.next()</code> 라는 함수를 이용해서, 값을 받아올 수 있을 때까지 받아온다.</li>
-  <li>그 다음, ArrayList를 만들어서, 값을 저장하면 된다.</li>
-</ul>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전체 회원 리스트 가져오기</span>
-	<span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;</span> <span class="nf">memberGetList</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">String</span> <span class="no">SQL</span> <span class="o">=</span> <span class="s">"select * from member"</span><span class="o">;</span>
-		
-		<span class="c1">// 데이터베이스 연결</span>
-		<span class="n">getConnect</span><span class="o">();</span>
-		
-		<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MemberVO</span><span class="o">&gt;();</span>
-		
-		<span class="k">try</span> <span class="o">{</span>
-			<span class="n">ps</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="no">SQL</span><span class="o">);</span>
-			
-			<span class="n">rs</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
-			
-			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
-				<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"number"</span><span class="o">);</span>
-				<span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
-				<span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"password"</span><span class="o">);</span>
-				<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
-				<span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"age"</span><span class="o">);</span>
-				<span class="nc">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
-				<span class="nc">String</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"phone"</span><span class="o">);</span>
-				<span class="nc">MemberVO</span> <span class="n">vo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MemberVO</span><span class="o">(</span><span class="n">number</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">,</span> <span class="n">email</span><span class="o">,</span> <span class="n">phone</span><span class="o">);</span>
-				<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">vo</span><span class="o">);</span>
-			<span class="o">}</span>
-		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-		<span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
-			<span class="n">dbClose</span><span class="o">();</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">list</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// 데이터베이스 연결 해제</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dbClose</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">try</span> <span class="o">{</span>
-			<span class="k">if</span><span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-				<span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-			<span class="o">}</span>
-			<span class="k">if</span><span class="o">(</span><span class="n">ps</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-				<span class="n">ps</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-			<span class="o">}</span>
-			<span class="k">if</span><span class="o">(</span><span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-				<span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
-		<span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<p><br /></p>
-
-<div style="font-size:25px; text-align:center">
-이 글이 도움이 되셨다면 댓글 부탁드립니다^^<br />
-다음 글로 찾아오겠습니다!
-
-</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="회원리스트 가져오기" /><category term="vo" /><category term="list" /><category term="arraylist" /><summary type="html"><![CDATA[[Servlet] 09. 회원리스트 가져오기(묶고(VO)-담고(List))]]></summary></entry></feed>
+</div>]]></content><author><name>Nerd Lee</name><email>jmboc.0501@gmail.com</email></author><category term="Study" /><category term="Servlet" /><category term="서블릿" /><category term="JAVA" /><category term="servlet" /><category term="비지니스 로직" /><category term="프리젠테이션 로직" /><category term="QueryString" /><category term="회원삭제하기" /><summary type="html"><![CDATA[[Servlet] 11. 회원삭제하기(QueryString)]]></summary></entry></feed>
